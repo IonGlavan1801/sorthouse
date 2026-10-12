@@ -1,0 +1,77 @@
+name: sorthouse
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: sorthouse
+      POSTGRES_USER: sorthouse
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-local-only}
+    ports: ["127.0.0.1:5559:5432"]
+    volumes: ["database:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sorthouse"]
+      interval: 5s
+      retries: 20
+    restart: unless-stopped
+  redis:
+    image: redis:7.4-alpine
+    ports: ["127.0.0.1:6399:6379"]
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes: ["redis:/data"]
+    restart: unless-stopped
+  app:
+    profiles: [app]
+    build:
+      context: .
+      target: app
+    image: sorthouse-app:${RELEASE_TAG:-local}
+    env_file: .env
+    environment: &runtime
+      DB_CONNECTION: pgsql
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_DATABASE: sorthouse
+      DB_USERNAME: sorthouse
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      CACHE_STORE: redis
+      QUEUE_CONNECTION: redis
+      SESSION_DRIVER: database
+    volumes: ["storage:/var/www/html/storage"]
+    networks:
+      default:
+        aliases: [sorthouse-php]
+    depends_on:
+      db: {condition: service_healthy}
+    restart: unless-stopped
+  worker:
+    profiles: [app]
+    image: sorthouse-app:${RELEASE_TAG:-local}
+    env_file: .env
+    environment: *runtime
+    volumes: ["storage:/var/www/html/storage"]
+    command: ["php", "artisan", "horizon"]
+    depends_on: [app]
+    restart: unless-stopped
+  scheduler:
+    profiles: [app]
+    image: sorthouse-app:${RELEASE_TAG:-local}
+    env_file: .env
+    environment: *runtime
+    volumes: ["storage:/var/www/html/storage"]
+    command: ["php", "artisan", "schedule:work"]
+    depends_on: [app]
+    restart: unless-stopped
+  web:
+    profiles: [app]
+    build:
+      context: .
+      target: web
+    image: sorthouse-web:${RELEASE_TAG:-local}
+    ports: ["127.0.0.1:${WEB_PORT:-8139}:80"]
+    depends_on: [app]
+    restart: unless-stopped
+volumes:
+  database:
+  redis:
+  storage:
