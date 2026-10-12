@@ -13,7 +13,7 @@ Synthetic, deterministic (seeded generator `php artisan fixtures:build`): 163 em
 | failure | 10 | malware, MIME mismatch, EICAR, PDF JavaScript, oversized, too many attachments, corrupt PDF, empty, unicode noise, huge body |
 | showcase | 9 | guided demo only, not evaluated |
 
-Across dev+holdout: 38 invoices (PDF, photographed JPEG, image-only PDF; 6 layouts of labels, 6 currencies, 6 date styles, deliberate mismatches, ambiguous dates, unknown vendors, missing PO), 22 complaints, 22 RFQs, 19 general questions, 17 spam/phishing, 9 order requests and 27 ambiguous or low-confidence cases. About a quarter of dev and a third of holdout messages in each family are paraphrases without the keywords the baseline knows ("hard" cases, expected route review).
+Across dev+holdout: 38 invoices (PDF, photographed JPEG, image-only PDF; 3 label layouts, 6 currencies, 6 date styles, deliberate mismatches, ambiguous dates, unknown vendors, missing PO), 22 complaints, 22 RFQs, 19 general questions, 17 spam/phishing, 9 order requests and 27 ambiguous or low-confidence cases. About a quarter of dev and a third of holdout messages in each family are paraphrases without the keywords the baseline knows ("hard" cases, expected route review).
 
 Ground truth per case: category, expected normalized fields, fields that must stay null, expected route (`AUTO_ELIGIBLE`/`REVIEW_REQUIRED`/`BLOCKED`), expected action, reason codes.
 

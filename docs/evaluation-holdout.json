@@ -1,6 +1,6 @@
 {
     "run": {
-        "id": "01a1320d-5ec7-7143-b937-d3c94b0ff0f2",
+        "id": "01a13227-2ef9-724a-9b2e-37d85b6e628d",
         "dataset": "holdout",
         "provider": "heuristic",
         "model": "heuristic-baseline-v1",
@@ -22,7 +22,7 @@
                 "failure": 10
             }
         },
-        "at": "2026-10-12T21:38:19+00:00"
+        "at": "2026-10-12T22:06:31+00:00"
     },
     "metrics": {
         "classification": {
@@ -247,10 +247,10 @@
             "critical_fields_wrong_rate": 0.0694
         },
         "system": {
-            "latency_ms_p50": 98,
-            "latency_ms_p95": 175,
-            "stage_ms_p50": 31,
-            "stage_ms_p95": 78,
+            "latency_ms_p50": 139,
+            "latency_ms_p95": 248,
+            "stage_ms_p50": 45,
+            "stage_ms_p95": 121,
             "cost_usd_median": 0,
             "cost_usd_p95": 0,
             "note": "Latency is wall time of the in-process pipeline on this machine (synchronous queue, simulated heuristic provider); it does not include queue wait or any network call to an LLM."

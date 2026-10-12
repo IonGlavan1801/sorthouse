@@ -25,7 +25,7 @@ class SimulatePolicy extends Command
         $rows = $run->hasMany(EvaluationResult::class, 'evaluation_run_id')->get()->map(fn ($r) => $r->result);
         $summ = function (float $t) use ($rows) {
             $auto = $rows->filter(fn ($r) => $r['would_auto_without_threshold'] && $r['signal'] >= $t);
-            $ok = $auto->filter(fn ($r) => ($r['truth']['route'] ?? '') === 'AUTO_ELIGIBLE' && $r['predicted_category'] === $r['truth']['category'] && $r['predicted_action'] === ($r['truth']['action'] ?? null) && ($r['critical_correct'] ?? true));
+            $ok = $auto->filter(fn ($r) => $r['correct_if_automated']);
 
             return ['auto' => $auto->count(), 'coverage' => round($auto->count() / max(1, $rows->count()), 4), 'false_auto' => $auto->count() - $ok->count()];
         };

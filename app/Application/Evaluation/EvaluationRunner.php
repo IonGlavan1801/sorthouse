@@ -128,7 +128,9 @@ final class EvaluationRunner
         $row['route_correct'] = $row['predicted_route'] === ($truth['route'] ?? null);
         $row['category_correct'] = $category === ($truth['category'] ?? null) || (($truth['route'] ?? '') === 'BLOCKED' && $row['predicted_route'] === 'BLOCKED');
         $row['would_auto_without_threshold'] = $this->wouldAuto($row, $decision?->reasons ?? []);
-        $row['auto_correct'] = $row['predicted_route'] === 'AUTO_ELIGIBLE' && ($truth['route'] ?? '') === 'AUTO_ELIGIBLE' && $category === $truth['category'] && $row['predicted_action'] === ($truth['action'] ?? null) && ($row['critical_correct'] ?? true);
+        // would an automatic action on this case be right? (independent of the route actually taken, so thresholds can be replayed)
+        $row['correct_if_automated'] = ($truth['route'] ?? '') === 'AUTO_ELIGIBLE' && $category === $truth['category'] && $row['predicted_action'] === ($truth['action'] ?? null) && ($row['critical_correct'] ?? true);
+        $row['auto_correct'] = $row['predicted_route'] === 'AUTO_ELIGIBLE' && $row['correct_if_automated'];
 
         return $row;
     }
@@ -165,7 +167,7 @@ final class EvaluationRunner
         foreach (range(50, 99) as $pct) {
             $t = $pct / 100;
             $auto = collect($rows)->filter(fn ($r) => $r['would_auto_without_threshold'] && $r['signal'] >= $t);
-            $correct = $auto->filter(fn ($r) => $r['auto_correct'] || ($r['predicted_category'] === ($r['truth']['category'] ?? null) && ($r['truth']['route'] ?? '') === 'AUTO_ELIGIBLE' && $r['predicted_action'] === ($r['truth']['action'] ?? null) && ($r['critical_correct'] ?? true)));
+            $correct = $auto->filter(fn ($r) => $r['correct_if_automated']);
             $out[] = [
                 'threshold' => $t, 'coverage' => round($auto->count() / max(1, count($rows)), 4), 'auto_count' => $auto->count(),
                 'precision' => $auto->count() ? round($correct->count() / $auto->count(), 4) : null, 'false_auto' => $auto->count() - $correct->count(),
