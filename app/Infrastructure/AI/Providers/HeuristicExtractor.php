@@ -123,6 +123,7 @@ final class HeuristicExtractor implements StructuredExtractor
         if (stripos($rawAmount, 'lei') !== false) {
             return ['value' => 'lei', 'signal' => 0.8, 'signal_source' => 'model', 'evidence' => $evidence];
         }
+
         // currency printed elsewhere in the document
         return $this->find($input, '/\b(USD|EUR|GBP|RON|MDL|CHF|PLN)\b/', 0.75);
     }
@@ -235,8 +236,9 @@ final class HeuristicExtractor implements StructuredExtractor
         $proposed = [];
         $injectionMarker = preg_match('/\b(?:ignore|disregard|override|new instructions|system prompt|you must now|do not follow)\b/i', $text) === 1;
         if ($injectionMarker && preg_match('/\b(?:send|forward|email|mail)\b[^.\n]{0,80}?\bto\s+([\w.+-]+@[\w-]+\.[\w.-]+)/i', $text, $m)) {
-            $proposed[] = ['type' => 'send_reply', 'params' => ['to' => $m[1]], 'recipient' => $m[1]];
-            $warnings[] = 'EMBEDDED_INSTRUCTION_FOLLOWED: heuristic baseline proposed send_reply to '.$m[1].' because the content asked for it';
+            $to = rtrim($m[1], '.,;:!?');
+            $proposed[] = ['type' => 'send_reply', 'params' => ['to' => $to], 'recipient' => $to];
+            $warnings[] = 'EMBEDDED_INSTRUCTION_FOLLOWED: heuristic baseline proposed send_reply to '.$to.' because the content asked for it';
         }
         if (preg_match('/\bmark\b[^.\n]{0,40}\bas approved\b/i', $text)) {
             $proposed[] = ['type' => 'approve_case', 'params' => []];

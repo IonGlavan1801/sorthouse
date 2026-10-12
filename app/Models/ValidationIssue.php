@@ -2,5 +2,4 @@
 
 namespace App\Models;
 
-class ValidationIssue extends Model
-{}
+class ValidationIssue extends Model {}

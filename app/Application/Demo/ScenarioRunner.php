@@ -40,7 +40,7 @@ final class ScenarioRunner
     {
         abort_unless(isset(self::SCENARIOS[$scenario]), 404, 'Unknown scenario');
         $suffix = substr(bin2hex(random_bytes(3)), 0, 6);
-        $inject = fn (string $fixture, ?string $externalId = null) => $this->demo->inject($workspace, $fixture, $externalId ?? "{$fixture}-{$suffix}", 1);
+        $inject = fn (string $fixture, ?string $externalId = null) => $this->demo->inject($workspace, $fixture, $externalId ?? "{$fixture}-{$suffix}", 1, variant: $suffix);
 
         $result = match ($scenario) {
             'low_confidence' => ['case' => $inject('showcase-low-confidence')->case],
@@ -73,15 +73,15 @@ final class ScenarioRunner
     {
         $this->faults->set($workspace->id, $fault, $times);
 
-        return ['case' => $this->demo->inject($workspace, $fixture, "{$fixture}-{$suffix}", 1)->case, 'armed' => [$fault => $times]];
+        return ['case' => $this->demo->inject($workspace, $fixture, "{$fixture}-{$suffix}", 1, variant: $suffix)->case, 'armed' => [$fault => $times]];
     }
 
     private function duplicates(Workspace $workspace, string $suffix): array
     {
         $ext = "showcase-rfq-dup-{$suffix}";
-        $first = $this->demo->inject($workspace, 'showcase-rfq', $ext, 1);
-        $second = $this->demo->inject($workspace, 'showcase-rfq', $ext, 1);                   // same external id
-        $third = $this->demo->inject($workspace, 'showcase-rfq', $ext.'-redelivery', 1);       // different id, identical content
+        $first = $this->demo->inject($workspace, 'showcase-rfq', $ext, 1, variant: $suffix);
+        $second = $this->demo->inject($workspace, 'showcase-rfq', $ext, 1, variant: $suffix);                   // same external id
+        $third = $this->demo->inject($workspace, 'showcase-rfq', $ext.'-redelivery', 1, variant: $suffix);       // different id, identical content
 
         return ['case' => $first->case, 'deliveries' => [['external_id' => $ext, 'duplicate' => $first->duplicate], ['external_id' => $ext, 'duplicate' => $second->duplicate], ['external_id' => $ext.'-redelivery', 'duplicate' => $third->duplicate]]];
     }
@@ -89,7 +89,7 @@ final class ScenarioRunner
     private function concurrent(Workspace $workspace, string $suffix): array
     {
         // processed inline so both reviewers see the same awaiting_review version
-        $case = $this->demo->inject($workspace, 'showcase-complaint', "showcase-complaint-{$suffix}", 1, dispatch: false)->case;
+        $case = $this->demo->inject($workspace, 'showcase-complaint', "showcase-complaint-{$suffix}", 1, dispatch: false, variant: $suffix)->case;
         $this->pipeline->run($case);
         $case->refresh();
         $version = $case->version;

@@ -7,6 +7,7 @@ use App\Infrastructure\Faults\FaultInjector;
 use App\Models\ActionRequest;
 use App\Models\Draft;
 use App\Models\SimulatedEffect;
+use App\Models\TriageCase;
 use Illuminate\Database\UniqueConstraintViolationException;
 
 /**
@@ -30,7 +31,7 @@ final class SimulatedActionExecutor implements ActionExecutor
     public function execute(ActionRequest $request): ExecutionResult
     {
         $type = ActionType::from($request->action_type);
-        $case = $request->workspace_id ? \App\Models\TriageCase::find($request->triage_case_id) : null;
+        $case = $request->workspace_id ? TriageCase::find($request->triage_case_id) : null;
         $payload = ['params' => $request->params, 'description' => $this->describe($type, $request)];
 
         if ($type === ActionType::QueueReply || $type === ActionType::SendReply) {

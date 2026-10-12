@@ -140,7 +140,7 @@ final class ValidationEngine
 
     private function invoiceRules(TriageCase $case, array $o, array $effective, callable $add): void
     {
-        if ($o['subtotal_minor'] !== null && $o['tax_minor'] !== null && $o['total_minor'] !== null && $o['subtotal_minor'] + $o['tax_minor'] !== $o['total_minor']) {
+        if ($o['subtotal_minor'] !== null && $o['tax_minor'] !== null && $o['total_minor'] !== null && $o['total_minor'] !== $o['subtotal_minor'] + $o['tax_minor']) {
             $add('TOTAL_MISMATCH', 'error', 'total', sprintf('subtotal %d + tax %d = %d, but the invoice total is %d (minor units)', $o['subtotal_minor'], $o['tax_minor'], $o['subtotal_minor'] + $o['tax_minor'], $o['total_minor']));
         }
         if ($o['issue_date'] && $o['due_date'] && $o['due_date'] < $o['issue_date']) {

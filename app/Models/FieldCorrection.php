@@ -2,5 +2,4 @@
 
 namespace App\Models;
 
-class FieldCorrection extends Model
-{}
+class FieldCorrection extends Model {}

@@ -3,6 +3,7 @@
 namespace Tests;
 
 use App\Application\Demo\DemoSessionService;
+use App\Infrastructure\Faults\FaultInjector;
 use App\Models\TriageCase;
 use App\Models\Workspace;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -24,6 +25,16 @@ abstract class TestCase extends BaseTestCase
     protected function workspace(): Workspace
     {
         return app(DemoSessionService::class)->launch('127.0.0.1', preload: false)['workspace'];
+    }
+
+    protected function fault(Workspace $ws, string $key, int $times = 1): void
+    {
+        app(FaultInjector::class)->set($ws->id, $key, $times);
+    }
+
+    protected function codes(TriageCase $case): array
+    {
+        return collect($case->policyDecisions()->latest()->first()?->reasons ?? [])->pluck('code')->all();
     }
 
     /** Ingests a fixture; with the sync queue the whole pipeline runs inside this call. */

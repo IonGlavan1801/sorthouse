@@ -38,12 +38,12 @@ final class DemoSessionService
         return ['session' => $session, 'workspace' => $workspace, 'token' => $token];
     }
 
-    public function inject(Workspace $workspace, string $fixtureKey, ?string $externalId = null, ?int $minutesAgo = null, bool $dispatch = true)
+    public function inject(Workspace $workspace, string $fixtureKey, ?string $externalId = null, ?int $minutesAgo = null, bool $dispatch = true, ?string $variant = null)
     {
         $fixture = $this->fixtures->get($fixtureKey) ?? throw new \InvalidArgumentException("Unknown fixture {$fixtureKey}");
         $mailbox = Mailbox::where('workspace_id', $workspace->id)->firstOrFail();
 
-        return $this->ingest->handle($workspace, $mailbox, $this->fixtures->toIncoming($fixture, $externalId, $minutesAgo), $dispatch);
+        return $this->ingest->handle($workspace, $mailbox, $this->fixtures->toIncoming($fixture, $externalId, $minutesAgo, $variant), $dispatch);
     }
 
     public function resolve(string $sessionId): ?DemoSession

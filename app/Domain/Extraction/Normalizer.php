@@ -46,7 +46,7 @@ final class Normalizer
     public function currency(string $raw): ?string
     {
         $upper = strtoupper(trim($raw));
-        if (preg_match('/\b([A-Z]{3})\b/', $upper, $m)) {
+        if (preg_match('/\b(USD|EUR|GBP|RON|MDL|CHF|PLN)\b/', $upper, $m)) {
             return $m[1];
         }
         foreach (self::SYMBOLS as $symbol => $code) {
@@ -55,7 +55,8 @@ final class Normalizer
             }
         }
 
-        return null;
+        // an unknown 3-letter code is returned as is so validation can reject it (INVALID_CURRENCY)
+        return preg_match('/\b([A-Z]{3})\b/', $upper, $m) ? $m[1] : null;
     }
 
     /** @return array{value:?int,warnings:list<string>} amount in minor units (two decimals) */

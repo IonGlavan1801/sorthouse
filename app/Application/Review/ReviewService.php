@@ -71,7 +71,7 @@ final class ReviewService
             ExecuteOutboxMessage::dispatch($outboxId)->afterCommit();
         }
 
-        return $result;
+        return $result->refresh();
     }
 
     /** Policy-approved low-risk case: same path as a human approval, attributed to the policy. */
@@ -91,7 +91,7 @@ final class ReviewService
             ExecuteOutboxMessage::dispatch($outboxId)->afterCommit();
         }
 
-        return $result;
+        return $result->refresh();
     }
 
     /** @return string outbox id */

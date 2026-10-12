@@ -7,6 +7,7 @@ use App\Application\ActionExecution\SimulatedActionExecutor;
 use App\Application\Pipeline\AttachmentProcessor;
 use App\Infrastructure\AI\Contracts\EvidenceResolver;
 use App\Infrastructure\AI\Contracts\MalwareScanner;
+use App\Infrastructure\AI\ProviderGateway;
 use App\Infrastructure\AI\QuoteEvidenceResolver;
 use App\Infrastructure\Documents\FixtureOcrExtractor;
 use App\Infrastructure\Documents\PdfTextExtractor;
@@ -23,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(EvidenceResolver::class, QuoteEvidenceResolver::class);
         $this->app->bind(MalwareScanner::class, SimulatedMalwareScanner::class);
         $this->app->bind(ActionExecutor::class, SimulatedActionExecutor::class);
-        $this->app->bind(AttachmentProcessor::class, fn ($app) => new AttachmentProcessor([$app->make(PdfTextExtractor::class), $app->make(FixtureOcrExtractor::class)], $app->make(\App\Infrastructure\AI\ProviderGateway::class)));
+        $this->app->bind(AttachmentProcessor::class, fn ($app) => new AttachmentProcessor([$app->make(PdfTextExtractor::class), $app->make(FixtureOcrExtractor::class)], $app->make(ProviderGateway::class)));
     }
 
     public function boot(): void

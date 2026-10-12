@@ -11,6 +11,9 @@ abstract class Model extends Eloquent
 
     protected $guarded = [];
 
+    /** Microsecond precision so "latest" is well defined for rows written in the same second. */
+    protected $dateFormat = 'Y-m-d H:i:s.u';
+
     public $incrementing = false;
 
     protected $keyType = 'string';

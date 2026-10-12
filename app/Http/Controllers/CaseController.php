@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Application\ActionExecution\OutboxProcessor;
 use App\Application\Review\ReviewService;
+use App\Domain\Triage\Category;
+use App\Domain\Triage\ErrorCategory;
 use App\Http\Presenters\CasePresenter;
-use App\Jobs\RunTriagePipeline;
+use App\Jobs\ExecuteOutboxMessage;
 use App\Models\Attachment;
 use App\Models\FieldEvidence;
 use App\Models\OutboxMessage;
@@ -46,9 +48,9 @@ class CaseController extends Controller
     public function correct(Request $request, string $id): JsonResponse
     {
         $data = $request->validate([
-            'expected_version' => 'required|integer|min:1', 'category' => 'nullable|string|in:'.implode(',', array_map(fn ($c) => $c->value, \App\Domain\Triage\Category::cases())),
+            'expected_version' => 'required|integer|min:1', 'category' => 'nullable|string|in:'.implode(',', array_map(fn ($c) => $c->value, Category::cases())),
             'fields' => 'nullable|array|max:20', 'fields.*' => 'nullable|string|max:2000', 'draft_body' => 'nullable|string|max:5000',
-            'reason' => 'nullable|string|max:500', 'error_category' => 'nullable|string|in:'.implode(',', array_map(fn ($c) => $c->value, \App\Domain\Triage\ErrorCategory::cases())),
+            'reason' => 'nullable|string|max:500', 'error_category' => 'nullable|string|in:'.implode(',', array_map(fn ($c) => $c->value, ErrorCategory::cases())),
         ]);
         $result = $this->review->correct($this->find($request, $id), $data['expected_version'], $request->attributes->get('actor'), $data);
 
@@ -77,7 +79,7 @@ class CaseController extends Controller
         abort_unless($outbox, 409, 'Nothing to reconcile');
         $result = $processor->reconcile($outbox->id);
         if ($result === 'reconciled_missing') {
-            \App\Jobs\ExecuteOutboxMessage::dispatch($outbox->id)->afterCommit();
+            ExecuteOutboxMessage::dispatch($outbox->id)->afterCommit();
         }
 
         return response()->json(['reconciliation' => $result] + ['case' => $this->presenter->detail($case->fresh('message'))]);

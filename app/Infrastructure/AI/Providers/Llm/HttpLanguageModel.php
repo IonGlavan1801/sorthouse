@@ -2,6 +2,7 @@
 
 namespace App\Infrastructure\AI\Providers\Llm;
 
+use App\Infrastructure\AI\CapabilityMatrix;
 use App\Infrastructure\AI\Contracts\LanguageModel;
 use App\Infrastructure\AI\DTO\ProviderMeta;
 use App\Infrastructure\AI\Exceptions\ProviderException;
@@ -82,6 +83,6 @@ abstract class HttpLanguageModel implements LanguageModel
 
     public function capabilities(): array
     {
-        return \App\Infrastructure\AI\CapabilityMatrix::all()[$this->name()] ?? [];
+        return CapabilityMatrix::all()[$this->name()] ?? [];
     }
 }

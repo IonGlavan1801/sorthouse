@@ -9,6 +9,7 @@ namespace App\Console\Support;
 final class InvoiceRenderer
 {
     private const CW = 9;      // GD font 5 char width
+
     private const CH = 15;
 
     /** @param list<string> $lines */

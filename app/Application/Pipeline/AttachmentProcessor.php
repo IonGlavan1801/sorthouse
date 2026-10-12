@@ -4,7 +4,6 @@ namespace App\Application\Pipeline;
 
 use App\Infrastructure\AI\Contracts\DocumentExtractor;
 use App\Infrastructure\AI\ProviderGateway;
-use App\Models\Attachment;
 use App\Models\TriageCase;
 use Illuminate\Support\Facades\Storage;
 

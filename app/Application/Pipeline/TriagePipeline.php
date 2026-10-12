@@ -4,7 +4,9 @@ namespace App\Application\Pipeline;
 
 use App\Application\Classification\ClassificationProcessor;
 use App\Application\Extraction\ExtractionProcessor;
+use App\Application\Policy\ActionPolicy;
 use App\Application\Policy\InjectionScanner;
+use App\Application\Policy\PolicyOutcome;
 use App\Application\Review\ReviewService;
 use App\Application\Usage\PricingTable;
 use App\Application\Usage\UsageRecorder;
@@ -16,9 +18,11 @@ use App\Domain\Triage\Route;
 use App\Infrastructure\AI\Exceptions\ProviderException;
 use App\Infrastructure\AI\ProviderGateway;
 use App\Infrastructure\AI\ProviderRegistry;
+use App\Infrastructure\AI\ProviderSet;
 use App\Infrastructure\Faults\FaultInjector;
 use App\Models\ExtractionRun;
 use App\Models\TriageCase;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Orchestrates received -> sanitized -> classified -> attachments -> extracted -> validated -> policy checked -> review/ready.
@@ -45,7 +49,18 @@ final class TriagePipeline
         private ReviewService $review,
     ) {}
 
+    /** Concurrent runs for one case are serialised (Postgres advisory lock); the second resumes from the first one's persisted state. */
     public function run(TriageCase $case, int $jobAttempt = 1): void
+    {
+        DB::select('select pg_advisory_lock(hashtext(?))', ['pipeline:'.$case->id]);
+        try {
+            $this->runLocked($case, $jobAttempt);
+        } finally {
+            DB::select('select pg_advisory_unlock(hashtext(?))', ['pipeline:'.$case->id]);
+        }
+    }
+
+    private function runLocked(TriageCase $case, int $jobAttempt): void
     {
         $case->refresh();
         $state = CaseState::from($case->state);
@@ -125,9 +140,9 @@ final class TriagePipeline
 
     private function recordSecurityDecision(TriageCase $case, string $code, string $message): void
     {
-        $policy = app(\App\Application\Policy\ActionPolicy::class);
+        $policy = app(ActionPolicy::class);
         $version = $policy->activeVersion();
-        $policy->record($case, new \App\Application\Policy\PolicyOutcome(Route::Blocked, [['code' => $code, 'message' => $message]], $version), ['category' => $case->category]);
+        $policy->record($case, new PolicyOutcome(Route::Blocked, [['code' => $code, 'message' => $message]], $version), ['category' => $case->category]);
     }
 
     private function attachmentsStage(TriageCase $case): string
@@ -157,11 +172,11 @@ final class TriagePipeline
 
     private function policyReview(TriageCase $case, string $code, string $message): void
     {
-        $policy = app(\App\Application\Policy\ActionPolicy::class);
-        $policy->record($case, new \App\Application\Policy\PolicyOutcome(Route::ReviewRequired, [['code' => $code, 'message' => $message]], $policy->activeVersion()), ['category' => $case->category]);
+        $policy = app(ActionPolicy::class);
+        $policy->record($case, new PolicyOutcome(Route::ReviewRequired, [['code' => $code, 'message' => $message]], $policy->activeVersion()), ['category' => $case->category]);
     }
 
-    private function classify(TriageCase $case, \App\Infrastructure\AI\ProviderSet $provider): string
+    private function classify(TriageCase $case, ProviderSet $provider): string
     {
         if (! empty($case->flags['category_corrected'])) {
             $this->machine->ensure($case, CaseState::Classified, 'system:pipeline', ['category' => $case->category, 'source' => 'human correction']);
@@ -198,7 +213,7 @@ final class TriagePipeline
         return 'continue';
     }
 
-    private function extract(TriageCase $case, \App\Infrastructure\AI\ProviderSet $provider): string
+    private function extract(TriageCase $case, ProviderSet $provider): string
     {
         $category = Category::from($case->category);
         $schemaKey = $category->schemaKey();

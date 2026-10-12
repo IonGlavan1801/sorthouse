@@ -21,7 +21,7 @@ return new class extends Migration
             $t->uuid('id')->primary();
             $t->string('name');
             $t->string('kind')->default('demo');
-            $t->timestamps();
+            $t->timestamps(6);
         });
 
         Schema::create('demo_sessions', function (Blueprint $t) {
@@ -29,11 +29,11 @@ return new class extends Migration
             $t->foreignUuid('workspace_id')->constrained()->cascadeOnDelete();
             $t->string('token_hash', 64)->unique();
             $t->string('ip_hash', 64)->nullable();
-            $t->timestamp('expires_at')->index();
-            $t->timestamp('revoked_at')->nullable();
-            $t->timestamp('purged_at')->nullable();
+            $t->timestamp('expires_at', 6)->index();
+            $t->timestamp('revoked_at', 6)->nullable();
+            $t->timestamp('purged_at', 6)->nullable();
             $t->json('fault_flags')->nullable();
-            $t->timestamps();
+            $t->timestamps(6);
         });
 
         Schema::create('mailboxes', function (Blueprint $t) {
@@ -42,7 +42,7 @@ return new class extends Migration
             $t->string('provider')->default('demo');
             $t->string('address');
             $t->json('allowed_recipients')->nullable();
-            $t->timestamps();
+            $t->timestamps(6);
         });
 
         Schema::create('messages', function (Blueprint $t) {
@@ -62,7 +62,7 @@ return new class extends Migration
             $t->string('fixture_key')->nullable();
             $t->unsignedInteger('duplicate_count')->default(0);
             $t->json('sanitization')->nullable();
-            $t->timestamps();
+            $t->timestamps(6);
             $t->unique(['workspace_id', 'provider', 'external_id']);
             $t->index(['workspace_id', 'content_hash']);
         });
@@ -72,7 +72,7 @@ return new class extends Migration
             $t->foreignUuid('message_id')->constrained()->cascadeOnDelete();
             $t->text('text_plain');
             $t->text('html_sanitized')->nullable();
-            $t->timestamps();
+            $t->timestamps(6);
         });
 
         Schema::create('attachments', function (Blueprint $t) {
@@ -89,7 +89,7 @@ return new class extends Migration
             $t->string('scan_reason')->nullable();
             $t->string('extraction_status')->default('pending');
             $t->json('metadata')->nullable();
-            $t->timestamps();
+            $t->timestamps(6);
         });
 
         Schema::create('ingestion_runs', function (Blueprint $t) {
@@ -100,7 +100,7 @@ return new class extends Migration
             $t->string('outcome'); // created|duplicate|rejected
             $t->string('dedupe_key');
             $t->json('detail')->nullable();
-            $t->timestamps();
+            $t->timestamps(6);
         });
 
         Schema::create('triage_cases', function (Blueprint $t) {
@@ -118,11 +118,11 @@ return new class extends Migration
             $t->string('proposed_action')->nullable();
             $t->json('proposed_action_params')->nullable();
             $t->string('assigned_reviewer')->nullable();
-            $t->timestamp('due_at')->nullable();
+            $t->timestamp('due_at', 6)->nullable();
             $t->unsignedInteger('version')->default(1);
             $t->unsignedInteger('attempts')->default(0);
             $t->json('flags')->nullable();
-            $t->timestamps();
+            $t->timestamps(6);
             $t->unique(['workspace_id', 'message_id']);
         });
 
@@ -144,7 +144,7 @@ return new class extends Migration
             $t->unsignedInteger('latency_ms')->default(0);
             $t->string('status')->default('ok');
             $t->boolean('cached')->default(false);
-            $t->timestamps();
+            $t->timestamps(6);
             $t->unique(['triage_case_id', 'input_hash', 'taxonomy_version', 'provider']);
         });
 
@@ -152,7 +152,7 @@ return new class extends Migration
             $t->uuid('id')->primary();
             $t->string('key')->unique(); // invoice, complaint, rfq
             $t->string('title');
-            $t->timestamps();
+            $t->timestamps(6);
         });
 
         Schema::create('schema_versions', function (Blueprint $t) {
@@ -161,7 +161,7 @@ return new class extends Migration
             $t->string('version'); // invoice.v1
             $t->json('definition');
             $t->string('definition_hash', 64);
-            $t->timestamps();
+            $t->timestamps(6);
             $t->unique(['extraction_schema_id', 'version']);
         });
 
@@ -185,7 +185,7 @@ return new class extends Migration
             $t->unsignedInteger('retries')->default(0);
             $t->boolean('cached')->default(false);
             $t->boolean('is_current')->default(true);
-            $t->timestamps();
+            $t->timestamps(6);
             $t->unique(['triage_case_id', 'input_hash', 'schema_version', 'provider']);
         });
 
@@ -202,7 +202,7 @@ return new class extends Migration
             $t->string('signal_source')->nullable(); // model|ocr|rule
             $t->string('validation_status')->default('pending'); // valid|invalid|unsupported|needs_review|pending|missing
             $t->string('source_type')->nullable(); // email_body|pdf_text|image_ocr
-            $t->timestamps();
+            $t->timestamps(6);
             $t->unique(['extraction_run_id', 'field_name']);
         });
 
@@ -221,7 +221,7 @@ return new class extends Migration
             $t->text('snippet');
             $t->string('snippet_hash', 64);
             $t->string('provenance'); // resolver|ocr
-            $t->timestamps();
+            $t->timestamps(6);
         });
 
         Schema::create('validation_runs', function (Blueprint $t) {
@@ -234,7 +234,7 @@ return new class extends Migration
             $t->boolean('with_corrections')->default(false);
             $t->string('rules_version');
             $t->unsignedInteger('issue_count')->default(0);
-            $t->timestamps();
+            $t->timestamps(6);
         });
 
         Schema::create('validation_issues', function (Blueprint $t) {
@@ -244,7 +244,7 @@ return new class extends Migration
             $t->string('severity'); // error|warning
             $t->string('field_name')->nullable();
             $t->text('message');
-            $t->timestamps();
+            $t->timestamps(6);
         });
 
         Schema::create('confidence_assessments', function (Blueprint $t) {
@@ -257,14 +257,14 @@ return new class extends Migration
             $t->decimal('overall', 5, 4);
             $t->string('band');
             $t->boolean('calibrated')->default(false);
-            $t->timestamps();
+            $t->timestamps(6);
         });
 
         Schema::create('automation_policies', function (Blueprint $t) {
             $t->uuid('id')->primary();
             $t->string('key')->unique();
             $t->foreignUuid('active_version_id')->nullable();
-            $t->timestamps();
+            $t->timestamps(6);
         });
 
         Schema::create('policy_versions', function (Blueprint $t) {
@@ -272,7 +272,7 @@ return new class extends Migration
             $t->foreignUuid('automation_policy_id')->constrained()->cascadeOnDelete();
             $t->string('version');
             $t->json('rules');
-            $t->timestamps();
+            $t->timestamps(6);
             $t->unique(['automation_policy_id', 'version']);
         });
 
@@ -285,7 +285,7 @@ return new class extends Migration
             $t->string('decision'); // AUTO_PROCESS|REVIEW_REQUIRED|BLOCKED
             $t->json('reasons');
             $t->json('context')->nullable();
-            $t->timestamps();
+            $t->timestamps(6);
         });
 
         Schema::create('review_decisions', function (Blueprint $t) {
@@ -298,7 +298,7 @@ return new class extends Migration
             $t->text('note')->nullable();
             $t->unsignedInteger('case_version');
             $t->json('snapshot');
-            $t->timestamps();
+            $t->timestamps(6);
         });
 
         Schema::create('field_corrections', function (Blueprint $t) {
@@ -315,7 +315,7 @@ return new class extends Migration
             $t->text('reason')->nullable();
             $t->string('actor');
             $t->string('dataset')->default('production_demo'); // never evaluation_holdout
-            $t->timestamps();
+            $t->timestamps(6);
         });
 
         Schema::create('drafts', function (Blueprint $t) {
@@ -330,7 +330,7 @@ return new class extends Migration
             $t->text('edited_body')->nullable();
             $t->json('claims');
             $t->string('status')->default('draft'); // draft|approved|queued|discarded
-            $t->timestamps();
+            $t->timestamps(6);
         });
 
         Schema::create('action_requests', function (Blueprint $t) {
@@ -343,7 +343,7 @@ return new class extends Migration
             $t->unsignedInteger('case_version');
             $t->string('status')->default('queued'); // queued|executing|executed|execution_failed|pending_reconciliation|cancelled
             $t->string('requested_by');
-            $t->timestamps();
+            $t->timestamps(6);
         });
 
         Schema::create('outbox_messages', function (Blueprint $t) {
@@ -353,9 +353,9 @@ return new class extends Migration
             $t->string('idempotency_key', 64)->unique();
             $t->string('status')->default('pending'); // pending|processing|done|pending_reconciliation|failed
             $t->unsignedInteger('attempts')->default(0);
-            $t->timestamp('available_at')->nullable();
-            $t->timestamp('processed_at')->nullable();
-            $t->timestamps();
+            $t->timestamp('available_at', 6)->nullable();
+            $t->timestamp('processed_at', 6)->nullable();
+            $t->timestamps(6);
             $t->index(['status', 'available_at']);
         });
 
@@ -368,7 +368,7 @@ return new class extends Migration
             $t->string('outcome'); // executed|failed|unknown_timeout|reconciled_executed|reconciled_missing
             $t->json('detail')->nullable();
             $t->unsignedInteger('latency_ms')->default(0);
-            $t->timestamps();
+            $t->timestamps(6);
         });
 
         // Stand-in for the third party that receives simulated effects: lets reconciliation prove no double execution.
@@ -378,7 +378,7 @@ return new class extends Migration
             $t->string('idempotency_key', 64)->unique();
             $t->string('action_type');
             $t->json('payload');
-            $t->timestamps();
+            $t->timestamps(6);
         });
 
         Schema::create('provider_calls', function (Blueprint $t) {
@@ -394,7 +394,7 @@ return new class extends Migration
             $t->unsignedInteger('latency_ms')->default(0);
             $t->boolean('cached')->default(false);
             $t->text('error')->nullable();
-            $t->timestamps();
+            $t->timestamps(6);
         });
 
         Schema::create('usage_events', function (Blueprint $t) {
@@ -411,7 +411,7 @@ return new class extends Migration
             $t->unsignedInteger('latency_ms')->default(0);
             $t->decimal('estimated_cost_usd', 10, 6)->default(0);
             $t->string('pricing_version');
-            $t->timestamps();
+            $t->timestamps(6);
             $t->index('created_at');
         });
 
@@ -425,8 +425,8 @@ return new class extends Migration
             $t->unsignedInteger('duration_ms')->default(0);
             $t->unsignedInteger('retries')->default(0);
             $t->json('detail')->nullable();
-            $t->timestamp('started_at');
-            $t->timestamps();
+            $t->timestamp('started_at', 6);
+            $t->timestamps(6);
         });
 
         Schema::create('audit_events', function (Blueprint $t) {
@@ -440,7 +440,7 @@ return new class extends Migration
             $t->string('to_state')->nullable();
             $t->unsignedInteger('case_version')->nullable();
             $t->json('detail')->nullable();
-            $t->timestamps();
+            $t->timestamps(6);
             $t->index(['triage_case_id', 'created_at']);
         });
 
@@ -448,7 +448,7 @@ return new class extends Migration
             $t->uuid('id')->primary();
             $t->string('key')->unique(); // dev|holdout
             $t->string('description');
-            $t->timestamps();
+            $t->timestamps(6);
         });
 
         Schema::create('evaluation_cases', function (Blueprint $t) {
@@ -456,7 +456,7 @@ return new class extends Migration
             $t->foreignUuid('evaluation_dataset_id')->constrained()->cascadeOnDelete();
             $t->string('fixture_key')->unique();
             $t->json('ground_truth');
-            $t->timestamps();
+            $t->timestamps(6);
         });
 
         Schema::create('evaluation_runs', function (Blueprint $t) {
@@ -470,7 +470,7 @@ return new class extends Migration
             $t->json('config');
             $t->json('metrics');
             $t->unsignedInteger('case_count');
-            $t->timestamps();
+            $t->timestamps(6);
         });
 
         Schema::create('evaluation_results', function (Blueprint $t) {
@@ -478,7 +478,7 @@ return new class extends Migration
             $t->foreignUuid('evaluation_run_id')->constrained()->cascadeOnDelete();
             $t->foreignUuid('evaluation_case_id')->constrained()->cascadeOnDelete();
             $t->json('result');
-            $t->timestamps();
+            $t->timestamps(6);
         });
     }
 

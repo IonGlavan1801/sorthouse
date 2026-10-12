@@ -11,6 +11,7 @@ use App\Models\ConfidenceAssessment;
 use App\Models\Draft;
 use App\Models\ExtractionRun;
 use App\Models\FieldCorrection;
+use App\Models\IngestionRun;
 use App\Models\PolicyDecision;
 use App\Models\ProviderCall;
 use App\Models\ReviewDecision;
@@ -168,7 +169,7 @@ final class CasePresenter
             'provider_calls' => $calls->map(fn ($c) => ['stage' => $c->stage, 'provider' => $c->provider, 'model' => $c->model, 'status' => $c->status, 'attempt' => $c->attempt, 'latency_ms' => $c->latency_ms, 'error' => $c->error])->all(),
             'usage' => ['input_tokens' => $usage->sum('input_tokens'), 'output_tokens' => $usage->sum('output_tokens'), 'estimated_cost_usd' => round($usage->sum('estimated_cost_usd'), 6), 'cost_label' => 'estimated (versioned price table, not reconciled with a provider invoice)'],
             'total_ms' => $stages->sum('duration_ms'), 'duplicates' => $case->message->duplicate_count, 'attempts' => $case->attempts,
-            'ingestion' => \App\Models\IngestionRun::where('message_id', $case->message_id)->orderBy('created_at')->get()->map(fn ($i) => ['outcome' => $i->outcome, 'detail' => $i->detail, 'at' => $i->created_at->toIso8601String()])->all(),
+            'ingestion' => IngestionRun::where('message_id', $case->message_id)->orderBy('created_at')->get()->map(fn ($i) => ['outcome' => $i->outcome, 'detail' => $i->detail, 'at' => $i->created_at->toIso8601String()])->all(),
         ];
     }
 }

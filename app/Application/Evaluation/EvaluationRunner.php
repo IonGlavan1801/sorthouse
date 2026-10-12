@@ -7,6 +7,7 @@ use App\Application\Ingestion\IngestMessage;
 use App\Application\Pipeline\TriagePipeline;
 use App\Application\Policy\ActionPolicy;
 use App\Application\Validation\ValidationEngine;
+use App\Domain\Extraction\SchemaCatalog;
 use App\Domain\Triage\Category;
 use App\Infrastructure\AI\ProviderRegistry;
 use App\Models\EvaluationCase;
@@ -97,7 +98,7 @@ final class EvaluationRunner
         $run = $schemaKey ? ExtractionRun::where('triage_case_id', $case->id)->where('is_current', true)->latest()->first() : null;
         if ($run && isset($truth['schema']) && $truth['schema'] === $schemaKey) {
             $effective = $this->validation->effectiveFields($case, $run);
-            $critical = $truth['critical_fields'] ?? \App\Domain\Extraction\SchemaCatalog::criticalFields($schemaKey);
+            $critical = $truth['critical_fields'] ?? SchemaCatalog::criticalFields($schemaKey);
             $allCriticalOk = true;
             foreach ($effective as $name => $e) {
                 $expected = $truth['fields'][$name] ?? null;
@@ -234,7 +235,7 @@ final class EvaluationRunner
                 'critical_field_accuracy' => round($criticalCells->avg(fn ($f) => $f['ok'] ? 1 : 0) ?? 0, 4), 'critical_cells' => $criticalCells->count(),
                 'document_exactness' => round($fieldRows->avg(fn ($r) => $r['critical_correct'] ? 1 : 0) ?? 0, 4), 'documents' => $fieldRows->count(),
                 'invoice_document_exactness' => round($invoiceRows->avg(fn ($r) => $r['critical_correct'] ? 1 : 0) ?? 0, 4), 'invoice_documents' => $invoiceRows->count(),
-                'invoice_critical_by_medium' => collect(['pdf', 'photo', 'scan'])->mapWithKeys(fn ($m) => [$m => ($rs = $invoiceRows->filter(fn ($r) => in_array($m, $r['tags']))) ->count() ? round($rs->avg(fn ($r) => $r['critical_correct'] ? 1 : 0), 4) : null])->all(),
+                'invoice_critical_by_medium' => collect(['pdf', 'photo', 'scan'])->mapWithKeys(fn ($m) => [$m => ($rs = $invoiceRows->filter(fn ($r) => in_array($m, $r['tags'])))->count() ? round($rs->avg(fn ($r) => $r['critical_correct'] ? 1 : 0), 4) : null])->all(),
                 'by_field' => collect($byField)->map(fn ($v) => ['n' => $v['n'], 'accuracy' => round($v['ok'] / $v['n'], 4)])->sortKeys()->all(),
                 'optional_field_precision' => $optPred->count() ? round($optPred->filter(fn ($f) => $f['ok'])->count() / $optPred->count(), 4) : null,
                 'evidence_coverage' => $evidenceNonNull ? round($evidenceWith / $evidenceNonNull, 4) : null, 'evidence_validity' => 1.0,

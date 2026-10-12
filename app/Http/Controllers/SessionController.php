@@ -8,6 +8,7 @@ use App\Application\Demo\ScenarioRunner;
 use App\Http\Presenters\CasePresenter;
 use App\Infrastructure\Faults\FaultInjector;
 use App\Jobs\PurgeWorkspace;
+use App\Models\AuditEvent;
 use App\Models\TriageCase;
 use App\Models\Workspace;
 use Illuminate\Http\JsonResponse;
@@ -59,7 +60,7 @@ class SessionController extends Controller
     {
         $this->assertOwn($request, $id);
         abort_unless($catalog->get($fixture), 404, 'Unknown fixture');
-        $result = $this->demo->inject($request->attributes->get('workspace'), $fixture, $fixture.'-'.bin2hex(random_bytes(3)), 1);
+        $result = $this->demo->inject($request->attributes->get('workspace'), $fixture, $fixture.'-'.($ref = bin2hex(random_bytes(3))), 1, variant: $ref);
 
         return response()->json(['case_id' => $result->case->id, 'duplicate' => $result->duplicate], 201);
     }
@@ -68,7 +69,7 @@ class SessionController extends Controller
     {
         $this->assertOwn($request, $id);
         $workspace = $request->attributes->get('workspace');
-        $events = \App\Models\AuditEvent::where('workspace_id', $workspace->id)->latest('created_at')->limit(40)->get()
+        $events = AuditEvent::where('workspace_id', $workspace->id)->latest('created_at')->limit(40)->get()
             ->map(fn ($e) => ['case_id' => $e->triage_case_id, 'event' => $e->event, 'actor' => $e->actor, 'from' => $e->from_state, 'to' => $e->to_state, 'at' => $e->created_at->toIso8601String()]);
 
         return response()->json(['events' => $events, 'counters' => $this->counterSnapshot($workspace), 'faults' => $this->faults->active($workspace->id)]);

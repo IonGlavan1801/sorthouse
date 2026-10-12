@@ -13,8 +13,8 @@ use App\Domain\Triage\Category;
 use App\Infrastructure\AI\ProviderRegistry;
 use App\Models\ClassificationRun;
 use App\Models\ExtractionRun;
-use App\Models\ValidationRun;
 use App\Models\TriageCase;
+use App\Models\ValidationRun;
 
 /** Scores a case and asks the ActionPolicy what may happen. Used after the pipeline and again after every human correction. */
 final class CaseEvaluator

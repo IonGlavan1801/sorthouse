@@ -67,4 +67,9 @@ class TriageCase extends Model
     {
         return $this->hasMany(StageTiming::class);
     }
+
+    public function validationRuns(): HasMany
+    {
+        return $this->hasMany(ValidationRun::class);
+    }
 }

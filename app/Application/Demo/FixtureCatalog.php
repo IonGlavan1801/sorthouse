@@ -60,7 +60,8 @@ final class FixtureCatalog
         return array_column($items, 'key');
     }
 
-    public function toIncoming(array $fixture, ?string $externalId = null, ?int $minutesAgo = null): IncomingMessage
+    /** $variant appends a harmless reference line so a re-injected fixture is new content (otherwise it is, correctly, a duplicate). */
+    public function toIncoming(array $fixture, ?string $externalId = null, ?int $minutesAgo = null, ?string $variant = null): IncomingMessage
     {
         $e = $fixture['email'];
         $attachments = [];
@@ -75,7 +76,7 @@ final class FixtureCatalog
 
         return new IncomingMessage(
             'demo', $externalId ?? $fixture['key'], $fixture['key'].'-thread', $e['from_name'] ?? null, $e['from_email'], [$e['to'] ?? 'inbox@acme-demo.example.test'],
-            $e['subject'], CarbonImmutable::now()->subMinutes($minutesAgo ?? ($e['minutes_ago'] ?? 30)), $e['body'], $e['html'] ?? null, $attachments, $fixture['key'],
+            $e['subject'], CarbonImmutable::now()->subMinutes($minutesAgo ?? ($e['minutes_ago'] ?? 30)), $variant && $e['body'] !== '' ? $e['body']."\n\n[demo ref {$variant}]" : $e['body'], isset($e['html']) && $variant ? $e['html'].'<!-- ref '.$variant.' -->' : ($e['html'] ?? null), $attachments, $fixture['key'],
         );
     }
 }
