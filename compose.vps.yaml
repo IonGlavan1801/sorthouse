@@ -14,6 +14,8 @@ x-runtime: &runtime
 services:
   db:
     ports: !reset []
+    environment:
+      DB_RUNTIME_PASSWORD: ${DB_RUNTIME_PASSWORD}
     mem_limit: 512m
   redis:
     ports: !reset []
