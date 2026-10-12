@@ -427,19 +427,7 @@ parameters:
 			path: app/Console/Commands/SimulatePolicy.php
 
 		-
-			message: '#^Offset ''critical_correct'' on string on left side of \?\? does not exist\.$#'
-			identifier: nullCoalesce.offset
-			count: 1
-			path: app/Console/Commands/SimulatePolicy.php
-
-		-
-			message: '#^Offset ''predicted_action'' does not exist on string\.$#'
-			identifier: offsetAccess.notFound
-			count: 1
-			path: app/Console/Commands/SimulatePolicy.php
-
-		-
-			message: '#^Offset ''predicted_category'' does not exist on string\.$#'
+			message: '#^Offset ''correct_if_automated'' does not exist on string\.$#'
 			identifier: offsetAccess.notFound
 			count: 1
 			path: app/Console/Commands/SimulatePolicy.php
@@ -451,32 +439,8 @@ parameters:
 			path: app/Console/Commands/SimulatePolicy.php
 
 		-
-			message: '#^Offset ''truth'' does not exist on string\.$#'
-			identifier: offsetAccess.notFound
-			count: 1
-			path: app/Console/Commands/SimulatePolicy.php
-
-		-
-			message: '#^Offset ''truth'' on string on left side of \?\? does not exist\.$#'
-			identifier: nullCoalesce.offset
-			count: 2
-			path: app/Console/Commands/SimulatePolicy.php
-
-		-
 			message: '#^Offset ''would_auto_without_threshold'' does not exist on string\.$#'
 			identifier: offsetAccess.notFound
-			count: 1
-			path: app/Console/Commands/SimulatePolicy.php
-
-		-
-			message: '#^Result of && is always false\.$#'
-			identifier: booleanAnd.alwaysFalse
-			count: 2
-			path: app/Console/Commands/SimulatePolicy.php
-
-		-
-			message: '#^Strict comparison using \=\=\= between '''' and ''AUTO_ELIGIBLE'' will always evaluate to false\.$#'
-			identifier: identical.alwaysFalse
 			count: 1
 			path: app/Console/Commands/SimulatePolicy.php
 
