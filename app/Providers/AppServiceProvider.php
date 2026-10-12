@@ -15,6 +15,7 @@ use App\Infrastructure\Security\SimulatedMalwareScanner;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -29,6 +30,12 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        if (app()->isProduction() && str_starts_with((string) config('app.url'), 'https://')) {
+            // behind Cloudflare/Traefik the internal port must not leak into asset URLs
+            URL::forceRootUrl(config('app.url'));
+            URL::forceScheme('https');
+        }
+
         // separate limits for session creation, ingestion, reprocessing/AI-heavy work and failure simulation
         $key = fn (Request $r) => $r->session()->getId() ?: $r->ip();
         RateLimiter::for('demo-launch', fn (Request $r) => Limit::perMinute(config('sorthouse.limits.launch_per_minute'))->by($r->ip()));
