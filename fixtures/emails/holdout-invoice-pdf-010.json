@@ -1,0 +1,53 @@
+{
+    "key": "holdout-invoice-pdf-010",
+    "split": "holdout",
+    "order": 99,
+    "tags": [
+        "invoice",
+        "pdf",
+        "layout-A"
+    ],
+    "email": {
+        "from_name": "Elena Moreau",
+        "from_email": "elena.moreau@zenith.example.test",
+        "subject": "Billing: FA-19854",
+        "body": "Hello,\n\nPlease find attached invoice FA-19854. Payment terms are on the document.\n\nRegards,\nElena Moreau",
+        "minutes_ago": 559
+    },
+    "attachments": [
+        {
+            "file": "invoices/holdout-invoice-pdf-010.pdf",
+            "filename": "invoice-FA-19854.pdf",
+            "declared_mime": "application/pdf"
+        }
+    ],
+    "truth": {
+        "category": "invoice",
+        "schema": "invoice.v1",
+        "fields": {
+            "vendor_name": "Zenith Cable & Wire",
+            "invoice_number": "FA-19854",
+            "issue_date": "2026-01-18",
+            "due_date": "2026-02-01",
+            "currency": "EUR",
+            "subtotal": "394925",
+            "tax": "39493",
+            "total": "434418",
+            "purchase_order_number": "4519355"
+        },
+        "expect_null": [],
+        "route": "REVIEW_REQUIRED",
+        "action": "export_invoice_json",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ],
+        "ocr_misread": null,
+        "critical_fields": [
+            "invoice_number",
+            "total",
+            "currency",
+            "due_date",
+            "purchase_order_number"
+        ]
+    }
+}

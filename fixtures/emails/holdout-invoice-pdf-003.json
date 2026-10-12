@@ -1,0 +1,53 @@
+{
+    "key": "holdout-invoice-pdf-003",
+    "split": "holdout",
+    "order": 99,
+    "tags": [
+        "invoice",
+        "pdf",
+        "layout-B"
+    ],
+    "email": {
+        "from_name": "Maria Keller",
+        "from_email": "maria.keller@northwind.example.test",
+        "subject": "Billing: 2026/67957",
+        "body": "Hi,\n\nAttached is our invoice. Let us know if you need anything else.\n\nThanks,\nMaria Keller",
+        "minutes_ago": 111
+    },
+    "attachments": [
+        {
+            "file": "invoices/holdout-invoice-pdf-003.pdf",
+            "filename": "invoice-2026/67957.pdf",
+            "declared_mime": "application/pdf"
+        }
+    ],
+    "truth": {
+        "category": "invoice",
+        "schema": "invoice.v1",
+        "fields": {
+            "vendor_name": "Northwind Components Ltd",
+            "invoice_number": "2026/67957",
+            "issue_date": "2026-07-17",
+            "due_date": "2026-08-16",
+            "currency": "PLN",
+            "subtotal": "96525",
+            "tax": "0",
+            "total": "96525",
+            "purchase_order_number": "4553075"
+        },
+        "expect_null": [],
+        "route": "REVIEW_REQUIRED",
+        "action": "export_invoice_json",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ],
+        "ocr_misread": null,
+        "critical_fields": [
+            "invoice_number",
+            "total",
+            "currency",
+            "due_date",
+            "purchase_order_number"
+        ]
+    }
+}

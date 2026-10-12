@@ -1,0 +1,21 @@
+{
+    "key": "dev-spam-040",
+    "split": "dev",
+    "tags": [
+        "spam"
+    ],
+    "email": {
+        "from_name": "Jonas Rossi",
+        "from_email": "jonas.rossi@promo-mailer.example.test",
+        "subject": "Earn $5000 weekly with bitcoin",
+        "body": "Make money fast with crypto. Guaranteed returns! Click here: http://btc-easy.example.top/join\nAct now.",
+        "minutes_ago": 724
+    },
+    "attachments": [],
+    "truth": {
+        "category": "spam_or_phishing",
+        "route": "AUTO_ELIGIBLE",
+        "action": "move_to_demo_folder",
+        "reason_codes": []
+    }
+}

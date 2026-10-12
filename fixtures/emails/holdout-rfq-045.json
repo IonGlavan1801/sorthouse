@@ -1,0 +1,47 @@
+{
+    "key": "holdout-rfq-045",
+    "split": "holdout",
+    "tags": [
+        "rfq"
+    ],
+    "email": {
+        "from_name": "Pavel Popescu",
+        "from_email": "pavel.popescu@harbor.example.test",
+        "subject": "Quotation request",
+        "body": "Hello,\n\nCould you please send us a quote for the following items:\n- 60 x office chairs\n- 190 x thermal labels\n- 180 x garden hoses 25m\n- 120 x network patch cables 2m\n\nWe need the offer by 24 Oct 2026.\n\nRegards,\nPavel Popescu\nHarbor Point Ltd",
+        "minutes_ago": 532
+    },
+    "attachments": [],
+    "truth": {
+        "category": "request_for_quote",
+        "schema": "rfq.v1",
+        "fields": {
+            "company_name": "Harbor Point Ltd",
+            "contact_name": "Pavel Popescu",
+            "contact_email": "pavel.popescu@harbor.example.test",
+            "deadline": "2026-10-24"
+        },
+        "items": [
+            {
+                "description": "office chairs",
+                "quantity": 60
+            },
+            {
+                "description": "thermal labels",
+                "quantity": 190
+            },
+            {
+                "description": "garden hoses 25m",
+                "quantity": 180
+            },
+            {
+                "description": "network patch cables 2m",
+                "quantity": 120
+            }
+        ],
+        "expect_null": [],
+        "route": "AUTO_ELIGIBLE",
+        "action": "create_demo_task",
+        "reason_codes": []
+    }
+}

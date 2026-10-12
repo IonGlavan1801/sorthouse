@@ -1,0 +1,21 @@
+{
+    "key": "dev-spam-043",
+    "split": "dev",
+    "tags": [
+        "spam"
+    ],
+    "email": {
+        "from_name": "Mihai Weber",
+        "from_email": "mihai.weber@promo-mailer.example.test",
+        "subject": "Congratulations, you are the lottery winner!",
+        "body": "Dear friend,\n\nCongratulations! You are our lottery winner. Claim your 100% free prize now, limited time offer. Act now: http://claim-prize.example.xyz/win\n\nUnsubscribe",
+        "minutes_ago": 450
+    },
+    "attachments": [],
+    "truth": {
+        "category": "spam_or_phishing",
+        "route": "AUTO_ELIGIBLE",
+        "action": "move_to_demo_folder",
+        "reason_codes": []
+    }
+}

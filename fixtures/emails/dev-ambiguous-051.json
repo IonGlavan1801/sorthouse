@@ -1,0 +1,24 @@
+{
+    "key": "dev-ambiguous-051",
+    "split": "dev",
+    "tags": [
+        "ambiguous"
+    ],
+    "email": {
+        "from_name": "Mihai Petrov",
+        "from_email": "mihai.petrov@mail.example.test",
+        "subject": "Info",
+        "body": "Thanks.",
+        "minutes_ago": 544
+    },
+    "attachments": [],
+    "truth": {
+        "category": "other_or_uncertain",
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [
+            "UNCERTAIN_CATEGORY"
+        ],
+        "ambiguous": true
+    }
+}

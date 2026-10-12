@@ -1,0 +1,21 @@
+{
+    "key": "holdout-general-054",
+    "split": "holdout",
+    "tags": [
+        "general"
+    ],
+    "email": {
+        "from_name": "Nadia Novak",
+        "from_email": "nadia.novak@mail.example.test",
+        "subject": "Quick question",
+        "body": "Hi,\n\nWhich plan includes the API access?\n\nThanks,\nNadia Novak",
+        "minutes_ago": 876
+    },
+    "attachments": [],
+    "truth": {
+        "category": "general_question",
+        "route": "AUTO_ELIGIBLE",
+        "action": "mark_demo_status",
+        "reason_codes": []
+    }
+}

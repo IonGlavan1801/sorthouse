@@ -1,0 +1,47 @@
+{
+    "key": "holdout-rfq-052",
+    "split": "holdout",
+    "tags": [
+        "rfq"
+    ],
+    "email": {
+        "from_name": "Sofia Novak",
+        "from_email": "sofia.novak@evergreen.example.test",
+        "subject": "Pricing inquiry",
+        "body": "Hello,\n\nWe would like to request a quotation for:\n- 10 x office chairs\n- 95 x USB-C docking stations\n- 200 x cardboard boxes 40x30\n- 35 x paper reams A4\n\nWe need the offer by Nov 22, 2026.\n\nRegards,\nSofia Novak\nEvergreen Retail Inc",
+        "minutes_ago": 805
+    },
+    "attachments": [],
+    "truth": {
+        "category": "request_for_quote",
+        "schema": "rfq.v1",
+        "fields": {
+            "company_name": "Evergreen Retail Inc",
+            "contact_name": "Sofia Novak",
+            "contact_email": "sofia.novak@evergreen.example.test",
+            "deadline": "2026-11-22"
+        },
+        "items": [
+            {
+                "description": "office chairs",
+                "quantity": 10
+            },
+            {
+                "description": "USB-C docking stations",
+                "quantity": 95
+            },
+            {
+                "description": "cardboard boxes 40x30",
+                "quantity": 200
+            },
+            {
+                "description": "paper reams A4",
+                "quantity": 35
+            }
+        ],
+        "expect_null": [],
+        "route": "AUTO_ELIGIBLE",
+        "action": "create_demo_task",
+        "reason_codes": []
+    }
+}

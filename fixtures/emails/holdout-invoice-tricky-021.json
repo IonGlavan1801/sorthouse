@@ -1,0 +1,55 @@
+{
+    "key": "holdout-invoice-tricky-021",
+    "split": "holdout",
+    "order": 99,
+    "tags": {
+        "0": "invoice",
+        "1": "pdf",
+        "2": "layout-B",
+        "9": "tricky"
+    },
+    "email": {
+        "from_name": "Victor Keller",
+        "from_email": "victor.keller@zenith.example.test",
+        "subject": "Billing: IN93072",
+        "body": "Hi,\n\nAttached is our invoice. Let us know if you need anything else.\n\nThanks,\nVictor Keller",
+        "minutes_ago": 247
+    },
+    "attachments": [
+        {
+            "file": "invoices/holdout-invoice-tricky-021.pdf",
+            "filename": "invoice-IN93072.pdf",
+            "declared_mime": "application/pdf"
+        }
+    ],
+    "truth": {
+        "category": "invoice",
+        "schema": "invoice.v1",
+        "fields": {
+            "vendor_name": "Zenith Cable & Wire",
+            "invoice_number": "IN93072",
+            "issue_date": "2026-04-16",
+            "due_date": "2026-04-30",
+            "currency": "CHF",
+            "subtotal": "412925",
+            "tax": "41293",
+            "total": "456718",
+            "purchase_order_number": "PO49317"
+        },
+        "expect_null": [],
+        "route": "REVIEW_REQUIRED",
+        "action": "export_invoice_json",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION",
+            "TOTAL_MISMATCH"
+        ],
+        "ocr_misread": null,
+        "critical_fields": [
+            "invoice_number",
+            "total",
+            "currency",
+            "due_date",
+            "purchase_order_number"
+        ]
+    }
+}

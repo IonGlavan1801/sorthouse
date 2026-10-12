@@ -1,0 +1,49 @@
+{
+    "key": "dev-rfq-025",
+    "split": "dev",
+    "tags": [
+        "rfq"
+    ],
+    "email": {
+        "from_name": "Sofia Marin",
+        "from_email": "sofia.marin@crestline.example.test",
+        "subject": "RFQ: office chairs",
+        "body": "Hello,\n\nWe would like to request a quotation for:\n- 75 x office chairs\n- 40 x thermal labels\n- 70 x cardboard boxes 40x30\n- 185 x paper reams A4\n\nRegards,\nSofia Marin\nCrestline Foods SRL",
+        "minutes_ago": 33
+    },
+    "attachments": [],
+    "truth": {
+        "category": "request_for_quote",
+        "schema": "rfq.v1",
+        "fields": {
+            "company_name": "Crestline Foods SRL",
+            "contact_name": "Sofia Marin",
+            "contact_email": "sofia.marin@crestline.example.test",
+            "deadline": null
+        },
+        "items": [
+            {
+                "description": "office chairs",
+                "quantity": 75
+            },
+            {
+                "description": "thermal labels",
+                "quantity": 40
+            },
+            {
+                "description": "cardboard boxes 40x30",
+                "quantity": 70
+            },
+            {
+                "description": "paper reams A4",
+                "quantity": 185
+            }
+        ],
+        "expect_null": [
+            "deadline"
+        ],
+        "route": "AUTO_ELIGIBLE",
+        "action": "create_demo_task",
+        "reason_codes": []
+    }
+}

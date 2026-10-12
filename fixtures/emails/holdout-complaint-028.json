@@ -1,0 +1,33 @@
+{
+    "key": "holdout-complaint-028",
+    "split": "holdout",
+    "tags": [
+        "complaint"
+    ],
+    "email": {
+        "from_name": "Alex Ionescu",
+        "from_email": "alex.ionescu@customer-mail.example.test",
+        "subject": "Order WEB-28499 - complaint",
+        "body": "Hello,\n\nI am writing to complain about order WEB-28499. I received the wrong item, it is not what I ordered. Please send a replacement as soon as possible.\n\nRegards,\nAlex Ionescu",
+        "minutes_ago": 354
+    },
+    "attachments": [],
+    "truth": {
+        "category": "customer_complaint",
+        "schema": "complaint.v1",
+        "fields": {
+            "order_number": "WEB-28499",
+            "customer_name": "Alex Ionescu"
+        },
+        "expect_null": [],
+        "presence": {
+            "issue_summary": true,
+            "requested_resolution": true
+        },
+        "route": "REVIEW_REQUIRED",
+        "action": "queue_reply",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ]
+    }
+}

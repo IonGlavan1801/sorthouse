@@ -1,0 +1,55 @@
+{
+    "key": "showcase-invoice-mismatch",
+    "split": "showcase",
+    "order": 8,
+    "tags": {
+        "0": "invoice",
+        "1": "pdf",
+        "2": "layout-B",
+        "9": "tricky"
+    },
+    "email": {
+        "from_name": "Hana Petrov",
+        "from_email": "hana.petrov@orbit.example.test",
+        "subject": "Your invoice FA-77120 is attached",
+        "body": "Hello,\n\nPlease find attached invoice FA-77120. Payment terms are on the document.\n\nRegards,\nHana Petrov",
+        "minutes_ago": 481
+    },
+    "attachments": [
+        {
+            "file": "invoices/showcase-invoice-mismatch.pdf",
+            "filename": "invoice-FA-77120.pdf",
+            "declared_mime": "application/pdf"
+        }
+    ],
+    "truth": {
+        "category": "invoice",
+        "schema": "invoice.v1",
+        "fields": {
+            "vendor_name": "Orbit Office Furniture",
+            "invoice_number": "FA-77120",
+            "issue_date": "2026-07-18",
+            "due_date": "2026-08-01",
+            "currency": "GBP",
+            "subtotal": "254075",
+            "tax": "50815",
+            "total": "305890",
+            "purchase_order_number": "PO68934"
+        },
+        "expect_null": [],
+        "route": "REVIEW_REQUIRED",
+        "action": "export_invoice_json",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION",
+            "TOTAL_MISMATCH"
+        ],
+        "ocr_misread": null,
+        "critical_fields": [
+            "invoice_number",
+            "total",
+            "currency",
+            "due_date",
+            "purchase_order_number"
+        ]
+    }
+}

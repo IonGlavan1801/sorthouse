@@ -1,0 +1,51 @@
+{
+    "key": "holdout-rfq-050",
+    "split": "holdout",
+    "tags": [
+        "rfq",
+        "hard"
+    ],
+    "email": {
+        "from_name": "Ana Dumont",
+        "from_email": "ana.dumont@evergreen.example.test",
+        "subject": "Prices?",
+        "body": "Hello,\n\nHi, how much for the following?\n- 45 x cable ties (pack of 100)\n- 60 x office chairs\n- 75 x USB-C docking stations\n- 50 x ceramic mugs\n\nRegards,\nAna Dumont\nEvergreen Retail Inc",
+        "minutes_ago": 839
+    },
+    "attachments": [],
+    "truth": {
+        "category": "request_for_quote",
+        "schema": "rfq.v1",
+        "fields": {
+            "company_name": "Evergreen Retail Inc",
+            "contact_name": "Ana Dumont",
+            "contact_email": "ana.dumont@evergreen.example.test",
+            "deadline": null
+        },
+        "items": [
+            {
+                "description": "cable ties (pack of 100)",
+                "quantity": 45
+            },
+            {
+                "description": "office chairs",
+                "quantity": 60
+            },
+            {
+                "description": "USB-C docking stations",
+                "quantity": 75
+            },
+            {
+                "description": "ceramic mugs",
+                "quantity": 50
+            }
+        ],
+        "expect_null": [
+            "deadline"
+        ],
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [],
+        "ambiguous": true
+    }
+}

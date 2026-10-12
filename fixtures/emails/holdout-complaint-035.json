@@ -1,0 +1,35 @@
+{
+    "key": "holdout-complaint-035",
+    "split": "holdout",
+    "tags": [
+        "complaint"
+    ],
+    "email": {
+        "from_name": "Hana Alves",
+        "from_email": "hana.alves@customer-mail.example.test",
+        "subject": "Very disappointed",
+        "body": "Hello,\n\nI am writing to complain about order 77296. The order arrived late and the product is not working. Please let me know what you can do.\n\nRegards,\nHana Alves",
+        "minutes_ago": 234
+    },
+    "attachments": [],
+    "truth": {
+        "category": "customer_complaint",
+        "schema": "complaint.v1",
+        "fields": {
+            "order_number": "77296",
+            "customer_name": "Hana Alves"
+        },
+        "expect_null": [
+            "requested_resolution"
+        ],
+        "presence": {
+            "issue_summary": true,
+            "requested_resolution": false
+        },
+        "route": "REVIEW_REQUIRED",
+        "action": "queue_reply",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ]
+    }
+}

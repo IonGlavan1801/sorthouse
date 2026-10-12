@@ -1,0 +1,24 @@
+{
+    "key": "holdout-ambiguous-088",
+    "split": "holdout",
+    "tags": [
+        "ambiguous"
+    ],
+    "email": {
+        "from_name": "Samir Horvat",
+        "from_email": "samir.horvat@mail.example.test",
+        "subject": "Cables",
+        "body": "Need 40 x cable ties and 10 x gloves, thanks\nSamir Horvat",
+        "minutes_ago": 197
+    },
+    "attachments": [],
+    "truth": {
+        "category": "other_or_uncertain",
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [
+            "UNCERTAIN_CATEGORY"
+        ],
+        "ambiguous": true
+    }
+}

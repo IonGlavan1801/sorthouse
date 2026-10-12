@@ -1,0 +1,22 @@
+{
+    "key": "dev-spam-044",
+    "split": "dev",
+    "tags": [
+        "spam"
+    ],
+    "email": {
+        "from_name": "Alex Alves",
+        "from_email": "alex.alves@promo-mailer.example.test",
+        "subject": "Limited time: partnership offer",
+        "body": "Hello,\n\nWe have a limited time offer for resellers. Interested in a call next week?\n\nBest,\nSales team",
+        "minutes_ago": 191
+    },
+    "attachments": [],
+    "truth": {
+        "category": "other_or_uncertain",
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [],
+        "ambiguous": true
+    }
+}

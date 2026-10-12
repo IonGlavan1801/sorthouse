@@ -1,0 +1,23 @@
+{
+    "key": "holdout-spam-073",
+    "split": "holdout",
+    "tags": [
+        "spam",
+        "hard"
+    ],
+    "email": {
+        "from_name": "Chloe Fischer",
+        "from_email": "chloe.fischer@promo-mailer.example.test",
+        "subject": "Shared document",
+        "body": "A colleague shared a document with you. Open it here: http://docs-share.example.test/d/88121",
+        "minutes_ago": 250
+    },
+    "attachments": [],
+    "truth": {
+        "category": "spam_or_phishing",
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [],
+        "ambiguous": true
+    }
+}

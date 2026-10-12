@@ -1,0 +1,59 @@
+{
+    "key": "fail-too-many-attachments",
+    "split": "failure",
+    "tags": [
+        "failure"
+    ],
+    "email": {
+        "from_name": "Test Sender",
+        "from_email": "sender@external.example.test",
+        "subject": "Lots of files",
+        "body": "Seven small files.",
+        "minutes_ago": 2
+    },
+    "attachments": [
+        {
+            "filename": "note-1.txt",
+            "declared_mime": "text/plain",
+            "inline_bytes_b64": "bm90ZSAx"
+        },
+        {
+            "filename": "note-2.txt",
+            "declared_mime": "text/plain",
+            "inline_bytes_b64": "bm90ZSAy"
+        },
+        {
+            "filename": "note-3.txt",
+            "declared_mime": "text/plain",
+            "inline_bytes_b64": "bm90ZSAz"
+        },
+        {
+            "filename": "note-4.txt",
+            "declared_mime": "text/plain",
+            "inline_bytes_b64": "bm90ZSA0"
+        },
+        {
+            "filename": "note-5.txt",
+            "declared_mime": "text/plain",
+            "inline_bytes_b64": "bm90ZSA1"
+        },
+        {
+            "filename": "note-6.txt",
+            "declared_mime": "text/plain",
+            "inline_bytes_b64": "bm90ZSA2"
+        },
+        {
+            "filename": "note-7.txt",
+            "declared_mime": "text/plain",
+            "inline_bytes_b64": "bm90ZSA3"
+        }
+    ],
+    "truth": {
+        "category": "other_or_uncertain",
+        "route": "REVIEW_REQUIRED",
+        "reason_codes": [
+            "ATTACHMENT_REJECTED"
+        ],
+        "action": "none"
+    }
+}

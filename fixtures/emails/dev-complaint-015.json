@@ -1,0 +1,33 @@
+{
+    "key": "dev-complaint-015",
+    "split": "dev",
+    "tags": [
+        "complaint"
+    ],
+    "email": {
+        "from_name": "Victor Duarte",
+        "from_email": "victor.duarte@customer-mail.example.test",
+        "subject": "Order ORD-10585 - complaint",
+        "body": "Hello,\n\nI want to complain about order ORD-10585. The order arrived late and the product is not working. I would like a full refund.\n\nThanks",
+        "minutes_ago": 31
+    },
+    "attachments": [],
+    "truth": {
+        "category": "customer_complaint",
+        "schema": "complaint.v1",
+        "fields": {
+            "order_number": "ORD-10585",
+            "customer_name": null
+        },
+        "expect_null": [],
+        "presence": {
+            "issue_summary": true,
+            "requested_resolution": true
+        },
+        "route": "REVIEW_REQUIRED",
+        "action": "queue_reply",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ]
+    }
+}

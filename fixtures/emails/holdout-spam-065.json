@@ -1,0 +1,21 @@
+{
+    "key": "holdout-spam-065",
+    "split": "holdout",
+    "tags": [
+        "spam"
+    ],
+    "email": {
+        "from_name": "Victor Santos",
+        "from_email": "victor.santos@promo-mailer.example.test",
+        "subject": "Congratulations, you are the lottery winner!",
+        "body": "Dear friend,\n\nCongratulations! You are our lottery winner. Claim your 100% free prize now, limited time offer. Act now: http://claim-prize.example.xyz/win\n\nUnsubscribe",
+        "minutes_ago": 677
+    },
+    "attachments": [],
+    "truth": {
+        "category": "spam_or_phishing",
+        "route": "AUTO_ELIGIBLE",
+        "action": "move_to_demo_folder",
+        "reason_codes": []
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "key": "holdout-ambiguous-089",
+    "split": "holdout",
+    "tags": [
+        "ambiguous"
+    ],
+    "email": {
+        "from_name": "Elena Weber",
+        "from_email": "elena.weber@mail.example.test",
+        "subject": "Quick one",
+        "body": "Do you do repairs? Also might need a price, not sure yet.\nElena Weber",
+        "minutes_ago": 161
+    },
+    "attachments": [],
+    "truth": {
+        "category": "other_or_uncertain",
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [
+            "UNCERTAIN_CATEGORY"
+        ],
+        "ambiguous": true
+    }
+}

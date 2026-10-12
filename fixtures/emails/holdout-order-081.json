@@ -1,0 +1,23 @@
+{
+    "key": "holdout-order-081",
+    "split": "holdout",
+    "tags": [
+        "order"
+    ],
+    "email": {
+        "from_name": "Ana Keller",
+        "from_email": "ana.keller@buyer.example.test",
+        "subject": "Order request",
+        "body": "Hello,\n\nWe would like to place an order for 13 x ink cartridges. Please confirm the order and delivery date.\n\nRegards,\nAna Keller",
+        "minutes_ago": 678
+    },
+    "attachments": [],
+    "truth": {
+        "category": "order_or_purchase_request",
+        "route": "REVIEW_REQUIRED",
+        "action": "create_demo_task",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ]
+    }
+}

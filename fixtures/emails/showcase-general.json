@@ -1,0 +1,22 @@
+{
+    "key": "showcase-general",
+    "split": "showcase",
+    "tags": [
+        "general"
+    ],
+    "email": {
+        "from_name": "Victor Popescu",
+        "from_email": "victor.popescu@mail.example.test",
+        "subject": "Question about your service",
+        "body": "Hi,\n\nWhich plan includes the API access?\n\nThanks,\nVictor Popescu",
+        "minutes_ago": 458
+    },
+    "attachments": [],
+    "truth": {
+        "category": "general_question",
+        "route": "AUTO_ELIGIBLE",
+        "action": "mark_demo_status",
+        "reason_codes": []
+    },
+    "order": 6
+}

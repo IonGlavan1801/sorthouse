@@ -1,0 +1,33 @@
+{
+    "key": "holdout-complaint-037",
+    "split": "holdout",
+    "tags": [
+        "complaint"
+    ],
+    "email": {
+        "from_name": "Petra Rossi",
+        "from_email": "petra.rossi@customer-mail.example.test",
+        "subject": "Very disappointed",
+        "body": "Hello,\n\nThis is a complaint regarding order 61840. I received the wrong item, it is not what I ordered. Please send a replacement as soon as possible.\n\nRegards,\nPetra Rossi",
+        "minutes_ago": 867
+    },
+    "attachments": [],
+    "truth": {
+        "category": "customer_complaint",
+        "schema": "complaint.v1",
+        "fields": {
+            "order_number": "61840",
+            "customer_name": "Petra Rossi"
+        },
+        "expect_null": [],
+        "presence": {
+            "issue_summary": true,
+            "requested_resolution": true
+        },
+        "route": "REVIEW_REQUIRED",
+        "action": "queue_reply",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ]
+    }
+}

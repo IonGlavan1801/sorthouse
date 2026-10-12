@@ -1,0 +1,24 @@
+{
+    "key": "holdout-ambiguous-092",
+    "split": "holdout",
+    "tags": [
+        "ambiguous"
+    ],
+    "email": {
+        "from_name": "Mihai Marin",
+        "from_email": "mihai.marin@mail.example.test",
+        "subject": "Following up",
+        "body": "Hi, just following up on my last message. Let me know.\nMihai Marin",
+        "minutes_ago": 575
+    },
+    "attachments": [],
+    "truth": {
+        "category": "other_or_uncertain",
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [
+            "UNCERTAIN_CATEGORY"
+        ],
+        "ambiguous": true
+    }
+}

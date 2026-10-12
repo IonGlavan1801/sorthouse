@@ -1,0 +1,24 @@
+{
+    "key": "dev-ambiguous-054",
+    "split": "dev",
+    "tags": [
+        "ambiguous"
+    ],
+    "email": {
+        "from_name": "Irina Horvat",
+        "from_email": "irina.horvat@mail.example.test",
+        "subject": "Quick one",
+        "body": "Do you do repairs? Also might need a price, not sure yet.\nIrina Horvat",
+        "minutes_ago": 737
+    },
+    "attachments": [],
+    "truth": {
+        "category": "other_or_uncertain",
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [
+            "UNCERTAIN_CATEGORY"
+        ],
+        "ambiguous": true
+    }
+}

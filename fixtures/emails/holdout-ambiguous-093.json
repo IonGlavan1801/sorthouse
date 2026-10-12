@@ -1,0 +1,24 @@
+{
+    "key": "holdout-ambiguous-093",
+    "split": "holdout",
+    "tags": [
+        "ambiguous"
+    ],
+    "email": {
+        "from_name": "Chloe Marin",
+        "from_email": "chloe.marin@mail.example.test",
+        "subject": "Re: yesterday",
+        "body": "Can we talk about it tomorrow?",
+        "minutes_ago": 822
+    },
+    "attachments": [],
+    "truth": {
+        "category": "other_or_uncertain",
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [
+            "UNCERTAIN_CATEGORY"
+        ],
+        "ambiguous": true
+    }
+}

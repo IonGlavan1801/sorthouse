@@ -1,0 +1,53 @@
+{
+    "key": "holdout-invoice-pdf-001",
+    "split": "holdout",
+    "order": 99,
+    "tags": [
+        "invoice",
+        "pdf",
+        "layout-C"
+    ],
+    "email": {
+        "from_name": "Lena Berg",
+        "from_email": "lena.berg@tidewater.example.test",
+        "subject": "Invoice IN98712",
+        "body": "Hi,\n\nAttached is our invoice. Let us know if you need anything else.\n\nThanks,\nLena Berg",
+        "minutes_ago": 49
+    },
+    "attachments": [
+        {
+            "file": "invoices/holdout-invoice-pdf-001.pdf",
+            "filename": "invoice-IN98712.pdf",
+            "declared_mime": "application/pdf"
+        }
+    ],
+    "truth": {
+        "category": "invoice",
+        "schema": "invoice.v1",
+        "fields": {
+            "vendor_name": "Tidewater Marine Parts",
+            "invoice_number": "IN98712",
+            "issue_date": "2026-05-21",
+            "due_date": "2026-06-20",
+            "currency": "USD",
+            "subtotal": "670975",
+            "tax": "127485",
+            "total": "798460",
+            "purchase_order_number": "7738624"
+        },
+        "expect_null": [],
+        "route": "REVIEW_REQUIRED",
+        "action": "export_invoice_json",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ],
+        "ocr_misread": null,
+        "critical_fields": [
+            "invoice_number",
+            "total",
+            "currency",
+            "due_date",
+            "purchase_order_number"
+        ]
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "key": "dev-invoice-pdf-005",
+    "split": "dev",
+    "order": 99,
+    "tags": [
+        "invoice",
+        "pdf",
+        "layout-A"
+    ],
+    "email": {
+        "from_name": "Marco Popescu",
+        "from_email": "marco.popescu@maple.example.test",
+        "subject": "Billing: R58385",
+        "body": "Hello,\n\nPlease find attached invoice R58385. Payment terms are on the document.\n\nRegards,\nMarco Popescu",
+        "minutes_ago": 46
+    },
+    "attachments": [
+        {
+            "file": "invoices/dev-invoice-pdf-005.pdf",
+            "filename": "invoice-R58385.pdf",
+            "declared_mime": "application/pdf"
+        }
+    ],
+    "truth": {
+        "category": "invoice",
+        "schema": "invoice.v1",
+        "fields": {
+            "vendor_name": "Maple Harbor Foods SRL",
+            "invoice_number": "R58385",
+            "issue_date": "2026-02-24",
+            "due_date": "2026-04-10",
+            "currency": "GBP",
+            "subtotal": "596050",
+            "tax": "29803",
+            "total": "625853",
+            "purchase_order_number": "4586486"
+        },
+        "expect_null": [],
+        "route": "REVIEW_REQUIRED",
+        "action": "export_invoice_json",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ],
+        "ocr_misread": null,
+        "critical_fields": [
+            "invoice_number",
+            "total",
+            "currency",
+            "due_date",
+            "purchase_order_number"
+        ]
+    }
+}

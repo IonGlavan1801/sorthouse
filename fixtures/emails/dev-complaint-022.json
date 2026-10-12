@@ -1,0 +1,37 @@
+{
+    "key": "dev-complaint-022",
+    "split": "dev",
+    "tags": [
+        "complaint",
+        "hard"
+    ],
+    "email": {
+        "from_name": "Alex Ionescu",
+        "from_email": "alex.ionescu@customer-mail.example.test",
+        "subject": "Problem with my order",
+        "body": "Hi there,\n\nHonestly the whole thing was a mess from start to finish. Reference SO-57783. Please make this right.\n\nCheers,\nAlex Ionescu",
+        "minutes_ago": 686
+    },
+    "attachments": [],
+    "truth": {
+        "category": "customer_complaint",
+        "schema": "complaint.v1",
+        "fields": {
+            "order_number": "SO-57783",
+            "customer_name": "Alex Ionescu"
+        },
+        "expect_null": [
+            "requested_resolution"
+        ],
+        "presence": {
+            "issue_summary": true,
+            "requested_resolution": false
+        },
+        "route": "REVIEW_REQUIRED",
+        "action": "queue_reply",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ],
+        "ambiguous": true
+    }
+}

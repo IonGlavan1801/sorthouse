@@ -1,0 +1,23 @@
+{
+    "key": "dev-order-046",
+    "split": "dev",
+    "tags": [
+        "order"
+    ],
+    "email": {
+        "from_name": "Alex Rossi",
+        "from_email": "alex.rossi@buyer.example.test",
+        "subject": "Order request",
+        "body": "Hello,\n\nWe would like to place an order for 15 x steel brackets. Please confirm the order and delivery date.\n\nRegards,\nAlex Rossi",
+        "minutes_ago": 852
+    },
+    "attachments": [],
+    "truth": {
+        "category": "order_or_purchase_request",
+        "route": "REVIEW_REQUIRED",
+        "action": "create_demo_task",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ]
+    }
+}

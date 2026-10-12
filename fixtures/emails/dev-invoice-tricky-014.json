@@ -1,0 +1,55 @@
+{
+    "key": "dev-invoice-tricky-014",
+    "split": "dev",
+    "order": 99,
+    "tags": {
+        "0": "invoice",
+        "1": "pdf",
+        "2": "layout-C",
+        "9": "tricky"
+    },
+    "email": {
+        "from_name": "Maria Ionescu",
+        "from_email": "maria.ionescu@willow.example.test",
+        "subject": "Billing: IN95141",
+        "body": "Hi,\n\nAttached is our invoice. Let us know if you need anything else.\n\nThanks,\nMaria Ionescu",
+        "minutes_ago": 78
+    },
+    "attachments": [
+        {
+            "file": "invoices/dev-invoice-tricky-014.pdf",
+            "filename": "invoice-IN95141.pdf",
+            "declared_mime": "application/pdf"
+        }
+    ],
+    "truth": {
+        "category": "invoice",
+        "schema": "invoice.v1",
+        "fields": {
+            "vendor_name": "Willow Bend Consulting",
+            "invoice_number": "IN95141",
+            "issue_date": "2026-01-23",
+            "due_date": "2026-02-06",
+            "currency": "RON",
+            "subtotal": "849725",
+            "tax": "84973",
+            "total": "934698",
+            "purchase_order_number": "PO87635"
+        },
+        "expect_null": [],
+        "route": "REVIEW_REQUIRED",
+        "action": "export_invoice_json",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION",
+            "VENDOR_NOT_FOUND"
+        ],
+        "ocr_misread": null,
+        "critical_fields": [
+            "invoice_number",
+            "total",
+            "currency",
+            "due_date",
+            "purchase_order_number"
+        ]
+    }
+}

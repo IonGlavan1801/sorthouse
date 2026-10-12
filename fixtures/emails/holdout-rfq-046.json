@@ -1,0 +1,47 @@
+{
+    "key": "holdout-rfq-046",
+    "split": "holdout",
+    "tags": [
+        "rfq"
+    ],
+    "email": {
+        "from_name": "Irina Rossi",
+        "from_email": "irina.rossi@harbor.example.test",
+        "subject": "RFQ: steel brackets",
+        "body": "Hello,\n\nRequest for quote - we need pricing for:\n- 70 x steel brackets\n- 90 x cable ties (pack of 100)\n- 115 x office chairs\n- 175 x garden hoses 25m\n\nWe need the offer by 2026-10-17.\n\nRegards,\nIrina Rossi\nHarbor Point Ltd",
+        "minutes_ago": 196
+    },
+    "attachments": [],
+    "truth": {
+        "category": "request_for_quote",
+        "schema": "rfq.v1",
+        "fields": {
+            "company_name": "Harbor Point Ltd",
+            "contact_name": "Irina Rossi",
+            "contact_email": "irina.rossi@harbor.example.test",
+            "deadline": "2026-10-17"
+        },
+        "items": [
+            {
+                "description": "steel brackets",
+                "quantity": 70
+            },
+            {
+                "description": "cable ties (pack of 100)",
+                "quantity": 90
+            },
+            {
+                "description": "office chairs",
+                "quantity": 115
+            },
+            {
+                "description": "garden hoses 25m",
+                "quantity": 175
+            }
+        ],
+        "expect_null": [],
+        "route": "AUTO_ELIGIBLE",
+        "action": "create_demo_task",
+        "reason_codes": []
+    }
+}

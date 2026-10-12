@@ -1,0 +1,21 @@
+{
+    "key": "dev-general-035",
+    "split": "dev",
+    "tags": [
+        "general"
+    ],
+    "email": {
+        "from_name": "Tomas Petrov",
+        "from_email": "tomas.petrov@mail.example.test",
+        "subject": "Question about your service",
+        "body": "Hi,\n\nWhere can I find the user manual for the older model?\n\nThanks,\nTomas Petrov",
+        "minutes_ago": 290
+    },
+    "attachments": [],
+    "truth": {
+        "category": "general_question",
+        "route": "AUTO_ELIGIBLE",
+        "action": "mark_demo_status",
+        "reason_codes": []
+    }
+}

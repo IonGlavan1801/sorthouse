@@ -1,0 +1,21 @@
+{
+    "key": "dev-general-031",
+    "split": "dev",
+    "tags": [
+        "general"
+    ],
+    "email": {
+        "from_name": "Jonas Marin",
+        "from_email": "jonas.marin@mail.example.test",
+        "subject": "Information request",
+        "body": "Hi,\n\nWhich plan includes the API access?\n\nThanks,\nJonas Marin",
+        "minutes_ago": 682
+    },
+    "attachments": [],
+    "truth": {
+        "category": "general_question",
+        "route": "AUTO_ELIGIBLE",
+        "action": "mark_demo_status",
+        "reason_codes": []
+    }
+}

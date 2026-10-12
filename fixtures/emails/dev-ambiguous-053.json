@@ -1,0 +1,24 @@
+{
+    "key": "dev-ambiguous-053",
+    "split": "dev",
+    "tags": [
+        "ambiguous"
+    ],
+    "email": {
+        "from_name": "Sofia Santos",
+        "from_email": "sofia.santos@mail.example.test",
+        "subject": "Cables",
+        "body": "Need 40 x cable ties and 10 x gloves, thanks\nSofia Santos",
+        "minutes_ago": 662
+    },
+    "attachments": [],
+    "truth": {
+        "category": "other_or_uncertain",
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [
+            "UNCERTAIN_CATEGORY"
+        ],
+        "ambiguous": true
+    }
+}

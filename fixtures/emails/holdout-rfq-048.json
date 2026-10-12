@@ -1,0 +1,43 @@
+{
+    "key": "holdout-rfq-048",
+    "split": "holdout",
+    "tags": [
+        "rfq"
+    ],
+    "email": {
+        "from_name": "Alex Popescu",
+        "from_email": "alex.popescu@foxglove.example.test",
+        "subject": "Request for quote",
+        "body": "Hello,\n\nCould you please send us a quote for the following items:\n- 190 x steel brackets\n- 140 x garden hoses 25m\n- 20 x fire extinguishers\n\nWe need the offer by 17 Dec 2026.\n\nRegards,\nAlex Popescu\nFoxglove Studio Co",
+        "minutes_ago": 736
+    },
+    "attachments": [],
+    "truth": {
+        "category": "request_for_quote",
+        "schema": "rfq.v1",
+        "fields": {
+            "company_name": "Foxglove Studio Co",
+            "contact_name": "Alex Popescu",
+            "contact_email": "alex.popescu@foxglove.example.test",
+            "deadline": "2026-12-17"
+        },
+        "items": [
+            {
+                "description": "steel brackets",
+                "quantity": 190
+            },
+            {
+                "description": "garden hoses 25m",
+                "quantity": 140
+            },
+            {
+                "description": "fire extinguishers",
+                "quantity": 20
+            }
+        ],
+        "expect_null": [],
+        "route": "AUTO_ELIGIBLE",
+        "action": "create_demo_task",
+        "reason_codes": []
+    }
+}

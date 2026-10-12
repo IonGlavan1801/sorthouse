@@ -1,0 +1,43 @@
+{
+    "key": "holdout-rfq-047",
+    "split": "holdout",
+    "tags": [
+        "rfq",
+        "hard"
+    ],
+    "email": {
+        "from_name": "Ana Weber",
+        "from_email": "ana.weber@hollow.example.test",
+        "subject": "Supplier comparison",
+        "body": "Hello,\n\nWe are comparing suppliers, can you tell us your rates for:\n- 200 x steel brackets\n- 195 x LED panels 60x60\n\nRegards,\nAna Weber\nHollow Oak BV",
+        "minutes_ago": 768
+    },
+    "attachments": [],
+    "truth": {
+        "category": "request_for_quote",
+        "schema": "rfq.v1",
+        "fields": {
+            "company_name": "Hollow Oak BV",
+            "contact_name": "Ana Weber",
+            "contact_email": "ana.weber@hollow.example.test",
+            "deadline": null
+        },
+        "items": [
+            {
+                "description": "steel brackets",
+                "quantity": 200
+            },
+            {
+                "description": "LED panels 60x60",
+                "quantity": 195
+            }
+        ],
+        "expect_null": [
+            "deadline"
+        ],
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [],
+        "ambiguous": true
+    }
+}

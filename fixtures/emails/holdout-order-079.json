@@ -1,0 +1,25 @@
+{
+    "key": "holdout-order-079",
+    "split": "holdout",
+    "tags": [
+        "order",
+        "hard"
+    ],
+    "email": {
+        "from_name": "Samir Ionescu",
+        "from_email": "samir.ionescu@buyer.example.test",
+        "subject": "Order request",
+        "body": "Hello,\n\nPlease send us 7 x ceramic mugs on the usual terms.\n\nRegards,\nSamir Ionescu",
+        "minutes_ago": 761
+    },
+    "attachments": [],
+    "truth": {
+        "category": "order_or_purchase_request",
+        "route": "REVIEW_REQUIRED",
+        "action": "create_demo_task",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ],
+        "ambiguous": true
+    }
+}

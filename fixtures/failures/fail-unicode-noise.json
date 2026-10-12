@@ -1,0 +1,23 @@
+{
+    "key": "fail-unicode-noise",
+    "split": "failure",
+    "tags": [
+        "failure"
+    ],
+    "email": {
+        "from_name": "Test Sender",
+        "from_email": "sender@external.example.test",
+        "subject": "Re: ‮ofnI ðŸ”¥",
+        "body": "​Hello there ‮ ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ïñtërnâtiônàl ?",
+        "minutes_ago": 2
+    },
+    "attachments": [],
+    "truth": {
+        "category": "other_or_uncertain",
+        "route": "REVIEW_REQUIRED",
+        "reason_codes": [
+            "UNCERTAIN_CATEGORY"
+        ],
+        "action": "none"
+    }
+}

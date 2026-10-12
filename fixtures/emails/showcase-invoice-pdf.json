@@ -1,0 +1,53 @@
+{
+    "key": "showcase-invoice-pdf",
+    "split": "showcase",
+    "order": 1,
+    "tags": [
+        "invoice",
+        "pdf",
+        "layout-C"
+    ],
+    "email": {
+        "from_name": "Sofia Costa",
+        "from_email": "sofia.costa@northwind.example.test",
+        "subject": "Invoice INV-20481 for October",
+        "body": "Hi,\n\nAttached is our invoice. Let us know if you need anything else.\n\nThanks,\nSofia Costa",
+        "minutes_ago": 132
+    },
+    "attachments": [
+        {
+            "file": "invoices/showcase-invoice-pdf.pdf",
+            "filename": "invoice-INV-20481.pdf",
+            "declared_mime": "application/pdf"
+        }
+    ],
+    "truth": {
+        "category": "invoice",
+        "schema": "invoice.v1",
+        "fields": {
+            "vendor_name": "Northwind Components Ltd",
+            "invoice_number": "INV-20481",
+            "issue_date": "2026-08-22",
+            "due_date": "2026-09-21",
+            "currency": "EUR",
+            "subtotal": "493050",
+            "tax": "0",
+            "total": "493050",
+            "purchase_order_number": "771766"
+        },
+        "expect_null": [],
+        "route": "REVIEW_REQUIRED",
+        "action": "export_invoice_json",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ],
+        "ocr_misread": null,
+        "critical_fields": [
+            "invoice_number",
+            "total",
+            "currency",
+            "due_date",
+            "purchase_order_number"
+        ]
+    }
+}

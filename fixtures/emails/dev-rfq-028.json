@@ -1,0 +1,41 @@
+{
+    "key": "dev-rfq-028",
+    "split": "dev",
+    "tags": [
+        "rfq"
+    ],
+    "email": {
+        "from_name": "Nadia Popescu",
+        "from_email": "nadia.popescu@evergreen.example.test",
+        "subject": "Request for quote",
+        "body": "Hello,\n\nWe would like to request a quotation for:\n- 150 x office chairs\n- 85 x pallet wrap rolls\n\nRegards,\nNadia Popescu\nEvergreen Retail Inc",
+        "minutes_ago": 821
+    },
+    "attachments": [],
+    "truth": {
+        "category": "request_for_quote",
+        "schema": "rfq.v1",
+        "fields": {
+            "company_name": "Evergreen Retail Inc",
+            "contact_name": "Nadia Popescu",
+            "contact_email": "nadia.popescu@evergreen.example.test",
+            "deadline": null
+        },
+        "items": [
+            {
+                "description": "office chairs",
+                "quantity": 150
+            },
+            {
+                "description": "pallet wrap rolls",
+                "quantity": 85
+            }
+        ],
+        "expect_null": [
+            "deadline"
+        ],
+        "route": "AUTO_ELIGIBLE",
+        "action": "create_demo_task",
+        "reason_codes": []
+    }
+}

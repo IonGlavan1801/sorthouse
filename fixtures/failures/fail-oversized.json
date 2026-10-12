@@ -1,0 +1,29 @@
+{
+    "key": "fail-oversized",
+    "split": "failure",
+    "tags": [
+        "failure"
+    ],
+    "email": {
+        "from_name": "Test Sender",
+        "from_email": "sender@external.example.test",
+        "subject": "Big scan",
+        "body": "Large attachment.",
+        "minutes_ago": 2
+    },
+    "attachments": [
+        {
+            "filename": "huge.pdf",
+            "declared_mime": "application/pdf",
+            "generate_zeros": 4400000
+        }
+    ],
+    "truth": {
+        "category": "other_or_uncertain",
+        "route": "REVIEW_REQUIRED",
+        "reason_codes": [
+            "ATTACHMENT_REJECTED"
+        ],
+        "action": "none"
+    }
+}

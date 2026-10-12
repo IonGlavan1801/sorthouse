@@ -1,0 +1,21 @@
+{
+    "key": "dev-general-037",
+    "split": "dev",
+    "tags": [
+        "general"
+    ],
+    "email": {
+        "from_name": "Petra Berg",
+        "from_email": "petra.berg@mail.example.test",
+        "subject": "Quick question",
+        "body": "Hi,\n\nDo you have this item in stock in blue?\n\nThanks,\nPetra Berg",
+        "minutes_ago": 688
+    },
+    "attachments": [],
+    "truth": {
+        "category": "general_question",
+        "route": "AUTO_ELIGIBLE",
+        "action": "mark_demo_status",
+        "reason_codes": []
+    }
+}

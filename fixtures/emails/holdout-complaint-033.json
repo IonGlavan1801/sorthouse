@@ -1,0 +1,35 @@
+{
+    "key": "holdout-complaint-033",
+    "split": "holdout",
+    "tags": [
+        "complaint",
+        "hard"
+    ],
+    "email": {
+        "from_name": "Oliver Santos",
+        "from_email": "oliver.santos@customer-mail.example.test",
+        "subject": "Very disappointed",
+        "body": "Hi there,\n\nHonestly the whole thing was a mess from start to finish. Reference 95307. Please make this right.\n\nCheers,\nOliver Santos",
+        "minutes_ago": 849
+    },
+    "attachments": [],
+    "truth": {
+        "category": "customer_complaint",
+        "schema": "complaint.v1",
+        "fields": {
+            "order_number": "95307",
+            "customer_name": "Oliver Santos"
+        },
+        "expect_null": [],
+        "presence": {
+            "issue_summary": true,
+            "requested_resolution": true
+        },
+        "route": "REVIEW_REQUIRED",
+        "action": "queue_reply",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ],
+        "ambiguous": true
+    }
+}

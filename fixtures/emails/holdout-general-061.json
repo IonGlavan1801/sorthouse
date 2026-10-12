@@ -1,0 +1,23 @@
+{
+    "key": "holdout-general-061",
+    "split": "holdout",
+    "tags": [
+        "general",
+        "hard"
+    ],
+    "email": {
+        "from_name": "Jonas Alves",
+        "from_email": "jonas.alves@mail.example.test",
+        "subject": "Information request",
+        "body": "Hi,\n\nNot sure who to ask, is anyone around on Saturday\n\nThanks,\nJonas Alves",
+        "minutes_ago": 208
+    },
+    "attachments": [],
+    "truth": {
+        "category": "general_question",
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [],
+        "ambiguous": true
+    }
+}

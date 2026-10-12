@@ -1,0 +1,47 @@
+{
+    "key": "dev-rfq-027",
+    "split": "dev",
+    "tags": [
+        "rfq"
+    ],
+    "email": {
+        "from_name": "Petra Marin",
+        "from_email": "petra.marin@harbor.example.test",
+        "subject": "Pricing inquiry",
+        "body": "Hello,\n\nPlease provide your best price for:\n- 85 x steel brackets\n- 50 x garden hoses 25m\n- 70 x network patch cables 2m\n- 120 x paper reams A4\n\nWe need the offer by 20 Oct 2026.\n\nRegards,\nPetra Marin\nHarbor Point Ltd",
+        "minutes_ago": 369
+    },
+    "attachments": [],
+    "truth": {
+        "category": "request_for_quote",
+        "schema": "rfq.v1",
+        "fields": {
+            "company_name": "Harbor Point Ltd",
+            "contact_name": "Petra Marin",
+            "contact_email": "petra.marin@harbor.example.test",
+            "deadline": "2026-10-20"
+        },
+        "items": [
+            {
+                "description": "steel brackets",
+                "quantity": 85
+            },
+            {
+                "description": "garden hoses 25m",
+                "quantity": 50
+            },
+            {
+                "description": "network patch cables 2m",
+                "quantity": 70
+            },
+            {
+                "description": "paper reams A4",
+                "quantity": 120
+            }
+        ],
+        "expect_null": [],
+        "route": "AUTO_ELIGIBLE",
+        "action": "create_demo_task",
+        "reason_codes": []
+    }
+}

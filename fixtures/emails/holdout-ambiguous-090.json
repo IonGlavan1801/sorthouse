@@ -1,0 +1,24 @@
+{
+    "key": "holdout-ambiguous-090",
+    "split": "holdout",
+    "tags": [
+        "ambiguous"
+    ],
+    "email": {
+        "from_name": "Pavel Costa",
+        "from_email": "pavel.costa@mail.example.test",
+        "subject": "Hello",
+        "body": "Hello, I am interested in your services and I may want to buy something later or ask for an offer, who knows.",
+        "minutes_ago": 791
+    },
+    "attachments": [],
+    "truth": {
+        "category": "other_or_uncertain",
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [
+            "UNCERTAIN_CATEGORY"
+        ],
+        "ambiguous": true
+    }
+}

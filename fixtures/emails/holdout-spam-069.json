@@ -1,0 +1,21 @@
+{
+    "key": "holdout-spam-069",
+    "split": "holdout",
+    "tags": [
+        "spam"
+    ],
+    "email": {
+        "from_name": "Pavel Novak",
+        "from_email": "pavel.novak@promo-mailer.example.test",
+        "subject": "Unusual sign-in detected",
+        "body": "We noticed an unusual sign-in. Account suspended until you verify your identity: http://192.0.2.7/verify",
+        "minutes_ago": 189
+    },
+    "attachments": [],
+    "truth": {
+        "category": "spam_or_phishing",
+        "route": "AUTO_ELIGIBLE",
+        "action": "move_to_demo_folder",
+        "reason_codes": []
+    }
+}

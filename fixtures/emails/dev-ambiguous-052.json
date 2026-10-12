@@ -1,0 +1,24 @@
+{
+    "key": "dev-ambiguous-052",
+    "split": "dev",
+    "tags": [
+        "ambiguous"
+    ],
+    "email": {
+        "from_name": "Daniel Santos",
+        "from_email": "daniel.santos@mail.example.test",
+        "subject": "Meeting notes",
+        "body": "Please see my notes from the meeting. We need to decide on the supplier soon.\n\nBest,\nDaniel Santos",
+        "minutes_ago": 467
+    },
+    "attachments": [],
+    "truth": {
+        "category": "other_or_uncertain",
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [
+            "UNCERTAIN_CATEGORY"
+        ],
+        "ambiguous": true
+    }
+}

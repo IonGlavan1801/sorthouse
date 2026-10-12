@@ -1,0 +1,33 @@
+{
+    "key": "dev-complaint-020",
+    "split": "dev",
+    "tags": [
+        "complaint"
+    ],
+    "email": {
+        "from_name": "Elena Lindgren",
+        "from_email": "elena.lindgren@customer-mail.example.test",
+        "subject": "Problem with my order",
+        "body": "Hello,\n\nThis is a complaint regarding order SO-75628. Several parts were missing from the package and I am very unhappy. Please send a replacement as soon as possible.\n\nRegards,\nElena Lindgren",
+        "minutes_ago": 288
+    },
+    "attachments": [],
+    "truth": {
+        "category": "customer_complaint",
+        "schema": "complaint.v1",
+        "fields": {
+            "order_number": "SO-75628",
+            "customer_name": "Elena Lindgren"
+        },
+        "expect_null": [],
+        "presence": {
+            "issue_summary": true,
+            "requested_resolution": true
+        },
+        "route": "REVIEW_REQUIRED",
+        "action": "queue_reply",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ]
+    }
+}

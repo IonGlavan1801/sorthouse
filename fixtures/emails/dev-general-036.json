@@ -1,0 +1,21 @@
+{
+    "key": "dev-general-036",
+    "split": "dev",
+    "tags": [
+        "general"
+    ],
+    "email": {
+        "from_name": "Marco Lindgren",
+        "from_email": "marco.lindgren@mail.example.test",
+        "subject": "Information request",
+        "body": "Hi,\n\nWhat is the warranty period for refurbished devices?\n\nThanks,\nMarco Lindgren",
+        "minutes_ago": 434
+    },
+    "attachments": [],
+    "truth": {
+        "category": "general_question",
+        "route": "AUTO_ELIGIBLE",
+        "action": "mark_demo_status",
+        "reason_codes": []
+    }
+}

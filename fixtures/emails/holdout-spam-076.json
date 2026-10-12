@@ -1,0 +1,23 @@
+{
+    "key": "holdout-spam-076",
+    "split": "holdout",
+    "tags": [
+        "spam",
+        "hard"
+    ],
+    "email": {
+        "from_name": "Maria Santos",
+        "from_email": "maria.santos@promo-mailer.example.test",
+        "subject": "Delivery attempt failed",
+        "body": "We could not deliver your parcel. Reschedule at http://parcel-help.example.test/r/5512 within 24h.",
+        "minutes_ago": 162
+    },
+    "attachments": [],
+    "truth": {
+        "category": "spam_or_phishing",
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [],
+        "ambiguous": true
+    }
+}

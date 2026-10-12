@@ -1,0 +1,53 @@
+{
+    "key": "dev-invoice-pdf-006",
+    "split": "dev",
+    "order": 99,
+    "tags": [
+        "invoice",
+        "pdf",
+        "layout-B"
+    ],
+    "email": {
+        "from_name": "Samir Marin",
+        "from_email": "samir.marin@quanta.example.test",
+        "subject": "Invoice attached",
+        "body": "Hi,\n\nAttached is our invoice. Let us know if you need anything else.\n\nThanks,\nSamir Marin",
+        "minutes_ago": 542
+    },
+    "attachments": [
+        {
+            "file": "invoices/dev-invoice-pdf-006.pdf",
+            "filename": "invoice-R48376.pdf",
+            "declared_mime": "application/pdf"
+        }
+    ],
+    "truth": {
+        "category": "invoice",
+        "schema": "invoice.v1",
+        "fields": {
+            "vendor_name": "Quanta Cloud Services",
+            "invoice_number": "R48376",
+            "issue_date": "2026-04-24",
+            "due_date": "2026-05-08",
+            "currency": "GBP",
+            "subtotal": "471225",
+            "tax": "0",
+            "total": "471225",
+            "purchase_order_number": "PO-87452"
+        },
+        "expect_null": [],
+        "route": "REVIEW_REQUIRED",
+        "action": "export_invoice_json",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ],
+        "ocr_misread": null,
+        "critical_fields": [
+            "invoice_number",
+            "total",
+            "currency",
+            "due_date",
+            "purchase_order_number"
+        ]
+    }
+}

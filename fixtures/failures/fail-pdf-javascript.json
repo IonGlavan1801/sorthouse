@@ -1,0 +1,29 @@
+{
+    "key": "fail-pdf-javascript",
+    "split": "failure",
+    "tags": [
+        "failure"
+    ],
+    "email": {
+        "from_name": "Test Sender",
+        "from_email": "sender@external.example.test",
+        "subject": "Document",
+        "body": "Please read.",
+        "minutes_ago": 2
+    },
+    "attachments": [
+        {
+            "filename": "doc.pdf",
+            "declared_mime": "application/pdf",
+            "inline_bytes_b64": "JVBERi0xLjQKMSAwIG9iaiA8PCAvVHlwZSAvQ2F0YWxvZyAvT3BlbkFjdGlvbiA8PCAvUyAvSmF2YVNjcmlwdCAvSlMgKGFwcC5hbGVydCgneCcpKSA+PiA+PiBlbmRvYmoKdHJhaWxlciA8PCAvUm9vdCAxIDAgUiA+PgolJUVPRg=="
+        }
+    ],
+    "truth": {
+        "reason_codes": [
+            "ATTACHMENT_QUARANTINED"
+        ],
+        "category": "invoice",
+        "route": "BLOCKED",
+        "action": "none"
+    }
+}

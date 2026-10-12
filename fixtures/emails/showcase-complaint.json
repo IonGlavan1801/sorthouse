@@ -1,0 +1,34 @@
+{
+    "key": "showcase-complaint",
+    "split": "showcase",
+    "tags": [
+        "complaint"
+    ],
+    "email": {
+        "from_name": "Elena Costa",
+        "from_email": "elena.costa@customer-mail.example.test",
+        "subject": "Order ORD-58213 arrived damaged",
+        "body": "Hello,\n\nI want to complain about order ORD-58213. The parcel arrived damaged and two of the items are broken. I would like a full refund.\n\nRegards,\nElena Costa",
+        "minutes_ago": 70
+    },
+    "attachments": [],
+    "truth": {
+        "category": "customer_complaint",
+        "schema": "complaint.v1",
+        "fields": {
+            "order_number": "ORD-58213",
+            "customer_name": "Elena Costa"
+        },
+        "expect_null": [],
+        "presence": {
+            "issue_summary": true,
+            "requested_resolution": true
+        },
+        "route": "REVIEW_REQUIRED",
+        "action": "queue_reply",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ]
+    },
+    "order": 3
+}

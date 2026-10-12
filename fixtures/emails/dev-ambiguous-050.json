@@ -1,0 +1,24 @@
+{
+    "key": "dev-ambiguous-050",
+    "split": "dev",
+    "tags": [
+        "ambiguous"
+    ],
+    "email": {
+        "from_name": "Maria Keller",
+        "from_email": "maria.keller@mail.example.test",
+        "subject": "Invoice and a problem",
+        "body": "Hello, I have a problem with the delivery and I also wanted to ask about the invoice for last month. Could you call me?\n\nRegards,\nMaria Keller",
+        "minutes_ago": 410
+    },
+    "attachments": [],
+    "truth": {
+        "category": "other_or_uncertain",
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [
+            "UNCERTAIN_CATEGORY"
+        ],
+        "ambiguous": true
+    }
+}

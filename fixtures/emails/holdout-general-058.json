@@ -1,0 +1,23 @@
+{
+    "key": "holdout-general-058",
+    "split": "holdout",
+    "tags": [
+        "general",
+        "hard"
+    ],
+    "email": {
+        "from_name": "Samir Petrov",
+        "from_email": "samir.petrov@mail.example.test",
+        "subject": "Quick question",
+        "body": "Hi,\n\nWondering whether the blue one is still around\n\nThanks,\nSamir Petrov",
+        "minutes_ago": 321
+    },
+    "attachments": [],
+    "truth": {
+        "category": "general_question",
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [],
+        "ambiguous": true
+    }
+}

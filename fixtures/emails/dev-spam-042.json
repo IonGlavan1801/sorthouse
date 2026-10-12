@@ -1,0 +1,21 @@
+{
+    "key": "dev-spam-042",
+    "split": "dev",
+    "tags": [
+        "spam"
+    ],
+    "email": {
+        "from_name": "Petra Santos",
+        "from_email": "petra.santos@promo-mailer.example.test",
+        "subject": "Unusual sign-in detected",
+        "body": "We noticed an unusual sign-in. Account suspended until you verify your identity: http://192.0.2.7/verify",
+        "minutes_ago": 73
+    },
+    "attachments": [],
+    "truth": {
+        "category": "spam_or_phishing",
+        "route": "AUTO_ELIGIBLE",
+        "action": "move_to_demo_folder",
+        "reason_codes": []
+    }
+}

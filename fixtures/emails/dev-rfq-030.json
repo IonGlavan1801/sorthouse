@@ -1,0 +1,45 @@
+{
+    "key": "dev-rfq-030",
+    "split": "dev",
+    "tags": [
+        "rfq",
+        "hard"
+    ],
+    "email": {
+        "from_name": "Samir Varga",
+        "from_email": "samir.varga@crestline.example.test",
+        "subject": "Prices?",
+        "body": "Hello,\n\nHi, how much for the following?\n- 145 x cable ties (pack of 100)\n- 190 x thermal labels\n- 190 x fire extinguishers\n\nWe need the offer by 2026-12-15.\n\nRegards,\nSamir Varga\nCrestline Foods SRL",
+        "minutes_ago": 836
+    },
+    "attachments": [],
+    "truth": {
+        "category": "request_for_quote",
+        "schema": "rfq.v1",
+        "fields": {
+            "company_name": "Crestline Foods SRL",
+            "contact_name": "Samir Varga",
+            "contact_email": "samir.varga@crestline.example.test",
+            "deadline": "2026-12-15"
+        },
+        "items": [
+            {
+                "description": "cable ties (pack of 100)",
+                "quantity": 145
+            },
+            {
+                "description": "thermal labels",
+                "quantity": 190
+            },
+            {
+                "description": "fire extinguishers",
+                "quantity": 190
+            }
+        ],
+        "expect_null": [],
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [],
+        "ambiguous": true
+    }
+}

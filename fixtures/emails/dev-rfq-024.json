@@ -1,0 +1,43 @@
+{
+    "key": "dev-rfq-024",
+    "split": "dev",
+    "tags": [
+        "rfq"
+    ],
+    "email": {
+        "from_name": "Pavel Ionescu",
+        "from_email": "pavel.ionescu@hollow.example.test",
+        "subject": "Request for quote",
+        "body": "Hello,\n\nRequest for quote - we need pricing for:\n- 165 x office chairs\n- 190 x USB-C docking stations\n- 30 x ink cartridges\n\nWe need the offer by 16 Dec 2026.\n\nRegards,\nPavel Ionescu\nHollow Oak BV",
+        "minutes_ago": 693
+    },
+    "attachments": [],
+    "truth": {
+        "category": "request_for_quote",
+        "schema": "rfq.v1",
+        "fields": {
+            "company_name": "Hollow Oak BV",
+            "contact_name": "Pavel Ionescu",
+            "contact_email": "pavel.ionescu@hollow.example.test",
+            "deadline": "2026-12-16"
+        },
+        "items": [
+            {
+                "description": "office chairs",
+                "quantity": 165
+            },
+            {
+                "description": "USB-C docking stations",
+                "quantity": 190
+            },
+            {
+                "description": "ink cartridges",
+                "quantity": 30
+            }
+        ],
+        "expect_null": [],
+        "route": "AUTO_ELIGIBLE",
+        "action": "create_demo_task",
+        "reason_codes": []
+    }
+}

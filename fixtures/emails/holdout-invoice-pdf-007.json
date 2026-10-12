@@ -1,0 +1,53 @@
+{
+    "key": "holdout-invoice-pdf-007",
+    "split": "holdout",
+    "order": 99,
+    "tags": [
+        "invoice",
+        "pdf",
+        "layout-A"
+    ],
+    "email": {
+        "from_name": "Irina Santos",
+        "from_email": "irina.santos@brightline.example.test",
+        "subject": "Invoice attached",
+        "body": "Good day,\n\nInvoice enclosed for your records.\n\nBest regards,\nIrina Santos",
+        "minutes_ago": 414
+    },
+    "attachments": [
+        {
+            "file": "invoices/holdout-invoice-pdf-007.pdf",
+            "filename": "invoice-R72013.pdf",
+            "declared_mime": "application/pdf"
+        }
+    ],
+    "truth": {
+        "category": "invoice",
+        "schema": "invoice.v1",
+        "fields": {
+            "vendor_name": "Brightline Logistics GmbH",
+            "invoice_number": "R72013",
+            "issue_date": "2026-02-24",
+            "due_date": "2026-04-10",
+            "currency": "GBP",
+            "subtotal": "365050",
+            "tax": "73010",
+            "total": "438060",
+            "purchase_order_number": "PO-97775"
+        },
+        "expect_null": [],
+        "route": "REVIEW_REQUIRED",
+        "action": "export_invoice_json",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ],
+        "ocr_misread": null,
+        "critical_fields": [
+            "invoice_number",
+            "total",
+            "currency",
+            "due_date",
+            "purchase_order_number"
+        ]
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "key": "holdout-complaint-036",
+    "split": "holdout",
+    "tags": [
+        "complaint",
+        "hard"
+    ],
+    "email": {
+        "from_name": "Lena Popescu",
+        "from_email": "lena.popescu@customer-mail.example.test",
+        "subject": "Damaged goods",
+        "body": "Hi there,\n\nHonestly the whole thing was a mess from start to finish. Reference 14570. Please make this right.\n\nThanks",
+        "minutes_ago": 758
+    },
+    "attachments": [],
+    "truth": {
+        "category": "customer_complaint",
+        "schema": "complaint.v1",
+        "fields": {
+            "order_number": "14570",
+            "customer_name": null
+        },
+        "expect_null": [],
+        "presence": {
+            "issue_summary": true,
+            "requested_resolution": true
+        },
+        "route": "REVIEW_REQUIRED",
+        "action": "queue_reply",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ],
+        "ambiguous": true
+    }
+}

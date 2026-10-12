@@ -1,0 +1,23 @@
+{
+    "key": "dev-spam-041",
+    "split": "dev",
+    "tags": [
+        "spam",
+        "hard"
+    ],
+    "email": {
+        "from_name": "Lena Alves",
+        "from_email": "lena.alves@promo-mailer.example.test",
+        "subject": "Mailbox storage notice",
+        "body": "Dear user, your mailbox storage is almost full. Visit http://mailbox-upgrade.example.test/renew today to avoid any disruption of your service.",
+        "minutes_ago": 510
+    },
+    "attachments": [],
+    "truth": {
+        "category": "spam_or_phishing",
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [],
+        "ambiguous": true
+    }
+}

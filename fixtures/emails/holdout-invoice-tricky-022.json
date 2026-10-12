@@ -1,0 +1,55 @@
+{
+    "key": "holdout-invoice-tricky-022",
+    "split": "holdout",
+    "order": 99,
+    "tags": {
+        "0": "invoice",
+        "1": "pdf",
+        "2": "layout-A",
+        "9": "tricky"
+    },
+    "email": {
+        "from_name": "Oliver Horvat",
+        "from_email": "oliver.horvat@fennel.example.test",
+        "subject": "Your invoice FA-20591 is attached",
+        "body": "Good day,\n\nInvoice enclosed for your records.\n\nBest regards,\nOliver Horvat",
+        "minutes_ago": 267
+    },
+    "attachments": [
+        {
+            "file": "invoices/holdout-invoice-tricky-022.pdf",
+            "filename": "invoice-FA-20591.pdf",
+            "declared_mime": "application/pdf"
+        }
+    ],
+    "truth": {
+        "category": "invoice",
+        "schema": "invoice.v1",
+        "fields": {
+            "vendor_name": "Fennel Row Catering",
+            "invoice_number": "FA-20591",
+            "issue_date": "2026-09-23",
+            "due_date": "2026-11-07",
+            "currency": "USD",
+            "subtotal": "93175",
+            "tax": "0",
+            "total": "93175",
+            "purchase_order_number": "7748325"
+        },
+        "expect_null": [],
+        "route": "REVIEW_REQUIRED",
+        "action": "export_invoice_json",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION",
+            "VENDOR_NOT_FOUND"
+        ],
+        "ocr_misread": null,
+        "critical_fields": [
+            "invoice_number",
+            "total",
+            "currency",
+            "due_date",
+            "purchase_order_number"
+        ]
+    }
+}

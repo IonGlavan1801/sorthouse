@@ -1,0 +1,23 @@
+{
+    "key": "dev-order-045",
+    "split": "dev",
+    "tags": [
+        "order"
+    ],
+    "email": {
+        "from_name": "Pavel Costa",
+        "from_email": "pavel.costa@buyer.example.test",
+        "subject": "Order request",
+        "body": "Hello,\n\nWe would like to place an order for 14 x cardboard boxes 40x30. Please confirm the order and delivery date.\n\nRegards,\nPavel Costa",
+        "minutes_ago": 246
+    },
+    "attachments": [],
+    "truth": {
+        "category": "order_or_purchase_request",
+        "route": "REVIEW_REQUIRED",
+        "action": "create_demo_task",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ]
+    }
+}

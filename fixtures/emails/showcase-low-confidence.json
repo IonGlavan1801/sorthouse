@@ -1,0 +1,25 @@
+{
+    "key": "showcase-low-confidence",
+    "split": "showcase-extra",
+    "tags": [
+        "ambiguous"
+    ],
+    "email": {
+        "from_name": "Marco Santos",
+        "from_email": "marco.santos@mail.example.test",
+        "subject": "Cables",
+        "body": "Need 40 x cable ties and 10 x gloves, thanks\nMarco Santos",
+        "minutes_ago": 345
+    },
+    "attachments": [],
+    "truth": {
+        "category": "other_or_uncertain",
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [
+            "UNCERTAIN_CATEGORY"
+        ],
+        "ambiguous": true
+    },
+    "order": 99
+}

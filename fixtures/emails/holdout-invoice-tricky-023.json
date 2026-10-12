@@ -1,0 +1,57 @@
+{
+    "key": "holdout-invoice-tricky-023",
+    "split": "holdout",
+    "order": 99,
+    "tags": {
+        "0": "invoice",
+        "1": "pdf",
+        "2": "layout-A",
+        "9": "tricky"
+    },
+    "email": {
+        "from_name": "Victor Lindgren",
+        "from_email": "victor.lindgren@redwood.example.test",
+        "subject": "Invoice FA-52200",
+        "body": "Hello,\n\nPlease find attached invoice FA-52200. Payment terms are on the document.\n\nRegards,\nVictor Lindgren",
+        "minutes_ago": 400
+    },
+    "attachments": [
+        {
+            "file": "invoices/holdout-invoice-tricky-023.pdf",
+            "filename": "invoice-FA-52200.pdf",
+            "declared_mime": "application/pdf"
+        }
+    ],
+    "truth": {
+        "category": "invoice",
+        "schema": "invoice.v1",
+        "fields": {
+            "vendor_name": "Redwood Packaging Co",
+            "invoice_number": "FA-52200",
+            "issue_date": "2026-09-23",
+            "due_date": "2026-10-07",
+            "currency": "EUR",
+            "subtotal": "246500",
+            "tax": "24650",
+            "total": "271150",
+            "purchase_order_number": null
+        },
+        "expect_null": [
+            "purchase_order_number"
+        ],
+        "route": "REVIEW_REQUIRED",
+        "action": "export_invoice_json",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION",
+            "MISSING_PO"
+        ],
+        "ocr_misread": null,
+        "critical_fields": [
+            "invoice_number",
+            "total",
+            "currency",
+            "due_date",
+            "purchase_order_number"
+        ]
+    }
+}

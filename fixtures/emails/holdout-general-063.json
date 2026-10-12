@@ -1,0 +1,21 @@
+{
+    "key": "holdout-general-063",
+    "split": "holdout",
+    "tags": [
+        "general"
+    ],
+    "email": {
+        "from_name": "Irina Rossi",
+        "from_email": "irina.rossi@mail.example.test",
+        "subject": "Question about your service",
+        "body": "Hi,\n\nIs it possible to change the delivery address after ordering?\n\nThanks,\nIrina Rossi",
+        "minutes_ago": 139
+    },
+    "attachments": [],
+    "truth": {
+        "category": "general_question",
+        "route": "AUTO_ELIGIBLE",
+        "action": "mark_demo_status",
+        "reason_codes": []
+    }
+}

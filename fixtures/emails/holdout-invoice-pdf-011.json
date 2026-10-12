@@ -1,0 +1,53 @@
+{
+    "key": "holdout-invoice-pdf-011",
+    "split": "holdout",
+    "order": 99,
+    "tags": [
+        "invoice",
+        "pdf",
+        "layout-A"
+    ],
+    "email": {
+        "from_name": "Elena Berg",
+        "from_email": "elena.berg@orbit.example.test",
+        "subject": "Invoice INV-12546",
+        "body": "Hi,\n\nAttached is our invoice. Let us know if you need anything else.\n\nThanks,\nElena Berg",
+        "minutes_ago": 177
+    },
+    "attachments": [
+        {
+            "file": "invoices/holdout-invoice-pdf-011.pdf",
+            "filename": "invoice-INV-12546.pdf",
+            "declared_mime": "application/pdf"
+        }
+    ],
+    "truth": {
+        "category": "invoice",
+        "schema": "invoice.v1",
+        "fields": {
+            "vendor_name": "Orbit Office Furniture",
+            "invoice_number": "INV-12546",
+            "issue_date": "2026-04-13",
+            "due_date": "2026-04-27",
+            "currency": "RON",
+            "subtotal": "748075",
+            "tax": "74808",
+            "total": "822883",
+            "purchase_order_number": "4581684"
+        },
+        "expect_null": [],
+        "route": "REVIEW_REQUIRED",
+        "action": "export_invoice_json",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ],
+        "ocr_misread": null,
+        "critical_fields": [
+            "invoice_number",
+            "total",
+            "currency",
+            "due_date",
+            "purchase_order_number"
+        ]
+    }
+}

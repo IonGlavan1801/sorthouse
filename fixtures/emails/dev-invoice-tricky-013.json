@@ -1,0 +1,55 @@
+{
+    "key": "dev-invoice-tricky-013",
+    "split": "dev",
+    "order": 99,
+    "tags": {
+        "0": "invoice",
+        "1": "pdf",
+        "2": "layout-B",
+        "9": "tricky"
+    },
+    "email": {
+        "from_name": "Sofia Keller",
+        "from_email": "sofia.keller@orbit.example.test",
+        "subject": "Your invoice 2026/27348 is attached",
+        "body": "Hello,\n\nPlease find attached invoice 2026/27348. Payment terms are on the document.\n\nRegards,\nSofia Keller",
+        "minutes_ago": 103
+    },
+    "attachments": [
+        {
+            "file": "invoices/dev-invoice-tricky-013.pdf",
+            "filename": "invoice-2026/27348.pdf",
+            "declared_mime": "application/pdf"
+        }
+    ],
+    "truth": {
+        "category": "invoice",
+        "schema": "invoice.v1",
+        "fields": {
+            "vendor_name": "Orbit Office Furniture",
+            "invoice_number": "2026/27348",
+            "issue_date": "2026-03-27",
+            "due_date": "2026-04-10",
+            "currency": "PLN",
+            "subtotal": "522600",
+            "tax": "52260",
+            "total": "525100",
+            "purchase_order_number": "7736386"
+        },
+        "expect_null": [],
+        "route": "REVIEW_REQUIRED",
+        "action": "export_invoice_json",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION",
+            "TOTAL_MISMATCH"
+        ],
+        "ocr_misread": null,
+        "critical_fields": [
+            "invoice_number",
+            "total",
+            "currency",
+            "due_date",
+            "purchase_order_number"
+        ]
+    }
+}

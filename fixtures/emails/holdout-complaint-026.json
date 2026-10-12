@@ -1,0 +1,33 @@
+{
+    "key": "holdout-complaint-026",
+    "split": "holdout",
+    "tags": [
+        "complaint"
+    ],
+    "email": {
+        "from_name": "Nadia Moreau",
+        "from_email": "nadia.moreau@customer-mail.example.test",
+        "subject": "Damaged goods",
+        "body": "Hello,\n\nI want to complain about order 59241. The order arrived late and the product is not working. Please send a replacement as soon as possible.\n\nRegards,\nNadia Moreau",
+        "minutes_ago": 836
+    },
+    "attachments": [],
+    "truth": {
+        "category": "customer_complaint",
+        "schema": "complaint.v1",
+        "fields": {
+            "order_number": "59241",
+            "customer_name": "Nadia Moreau"
+        },
+        "expect_null": [],
+        "presence": {
+            "issue_summary": true,
+            "requested_resolution": true
+        },
+        "route": "REVIEW_REQUIRED",
+        "action": "queue_reply",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ]
+    }
+}

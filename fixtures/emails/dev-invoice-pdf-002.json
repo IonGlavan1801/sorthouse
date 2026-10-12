@@ -1,0 +1,53 @@
+{
+    "key": "dev-invoice-pdf-002",
+    "split": "dev",
+    "order": 99,
+    "tags": [
+        "invoice",
+        "pdf",
+        "layout-B"
+    ],
+    "email": {
+        "from_name": "Alex Dumont",
+        "from_email": "alex.dumont@maple.example.test",
+        "subject": "Your invoice 2026/73744 is attached",
+        "body": "Hi,\n\nAttached is our invoice. Let us know if you need anything else.\n\nThanks,\nAlex Dumont",
+        "minutes_ago": 110
+    },
+    "attachments": [
+        {
+            "file": "invoices/dev-invoice-pdf-002.pdf",
+            "filename": "invoice-2026/73744.pdf",
+            "declared_mime": "application/pdf"
+        }
+    ],
+    "truth": {
+        "category": "invoice",
+        "schema": "invoice.v1",
+        "fields": {
+            "vendor_name": "Maple Harbor Foods SRL",
+            "invoice_number": "2026/73744",
+            "issue_date": "2026-09-18",
+            "due_date": "2026-10-18",
+            "currency": "USD",
+            "subtotal": "276175",
+            "tax": "0",
+            "total": "276175",
+            "purchase_order_number": "4579017"
+        },
+        "expect_null": [],
+        "route": "REVIEW_REQUIRED",
+        "action": "export_invoice_json",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ],
+        "ocr_misread": null,
+        "critical_fields": [
+            "invoice_number",
+            "total",
+            "currency",
+            "due_date",
+            "purchase_order_number"
+        ]
+    }
+}

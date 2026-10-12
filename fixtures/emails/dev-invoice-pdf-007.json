@@ -1,0 +1,53 @@
+{
+    "key": "dev-invoice-pdf-007",
+    "split": "dev",
+    "order": 99,
+    "tags": [
+        "invoice",
+        "pdf",
+        "layout-C"
+    ],
+    "email": {
+        "from_name": "Daniel Ionescu",
+        "from_email": "daniel.ionescu@alder.example.test",
+        "subject": "Invoice IN61359",
+        "body": "Hi,\n\nAttached is our invoice. Let us know if you need anything else.\n\nThanks,\nDaniel Ionescu",
+        "minutes_ago": 563
+    },
+    "attachments": [
+        {
+            "file": "invoices/dev-invoice-pdf-007.pdf",
+            "filename": "invoice-IN61359.pdf",
+            "declared_mime": "application/pdf"
+        }
+    ],
+    "truth": {
+        "category": "invoice",
+        "schema": "invoice.v1",
+        "fields": {
+            "vendor_name": "Alder & Finch Supplies",
+            "invoice_number": "IN61359",
+            "issue_date": "2026-03-25",
+            "due_date": "2026-04-08",
+            "currency": "PLN",
+            "subtotal": "637900",
+            "tax": "127580",
+            "total": "765480",
+            "purchase_order_number": "4526020"
+        },
+        "expect_null": [],
+        "route": "REVIEW_REQUIRED",
+        "action": "export_invoice_json",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ],
+        "ocr_misread": null,
+        "critical_fields": [
+            "invoice_number",
+            "total",
+            "currency",
+            "due_date",
+            "purchase_order_number"
+        ]
+    }
+}

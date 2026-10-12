@@ -1,0 +1,24 @@
+{
+    "key": "holdout-ambiguous-085",
+    "split": "holdout",
+    "tags": [
+        "ambiguous"
+    ],
+    "email": {
+        "from_name": "Lena Rossi",
+        "from_email": "lena.rossi@mail.example.test",
+        "subject": "Invoice and a problem",
+        "body": "Hello, I have a problem with the delivery and I also wanted to ask about the invoice for last month. Could you call me?\n\nRegards,\nLena Rossi",
+        "minutes_ago": 696
+    },
+    "attachments": [],
+    "truth": {
+        "category": "other_or_uncertain",
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [
+            "UNCERTAIN_CATEGORY"
+        ],
+        "ambiguous": true
+    }
+}

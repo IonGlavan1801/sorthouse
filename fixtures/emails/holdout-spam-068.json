@@ -1,0 +1,21 @@
+{
+    "key": "holdout-spam-068",
+    "split": "holdout",
+    "tags": [
+        "spam"
+    ],
+    "email": {
+        "from_name": "Lena Marin",
+        "from_email": "lena.marin@promo-mailer.example.test",
+        "subject": "Your password expires today",
+        "body": "Your mailbox password expires today. Confirm your identity to keep your account active: http://login-secure.example.click/auth\nSecurity alert.",
+        "minutes_ago": 36
+    },
+    "attachments": [],
+    "truth": {
+        "category": "spam_or_phishing",
+        "route": "AUTO_ELIGIBLE",
+        "action": "move_to_demo_folder",
+        "reason_codes": []
+    }
+}

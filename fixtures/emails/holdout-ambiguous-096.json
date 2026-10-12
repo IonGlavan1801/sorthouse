@@ -1,0 +1,24 @@
+{
+    "key": "holdout-ambiguous-096",
+    "split": "holdout",
+    "tags": [
+        "ambiguous"
+    ],
+    "email": {
+        "from_name": "Alex Varga",
+        "from_email": "alex.varga@mail.example.test",
+        "subject": "Meeting notes",
+        "body": "Please see my notes from the meeting. We need to decide on the supplier soon.\n\nBest,\nAlex Varga",
+        "minutes_ago": 58
+    },
+    "attachments": [],
+    "truth": {
+        "category": "other_or_uncertain",
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [
+            "UNCERTAIN_CATEGORY"
+        ],
+        "ambiguous": true
+    }
+}

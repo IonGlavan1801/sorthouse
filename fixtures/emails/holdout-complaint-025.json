@@ -1,0 +1,33 @@
+{
+    "key": "holdout-complaint-025",
+    "split": "holdout",
+    "tags": [
+        "complaint"
+    ],
+    "email": {
+        "from_name": "Oliver Varga",
+        "from_email": "oliver.varga@customer-mail.example.test",
+        "subject": "Order SO-20979 - complaint",
+        "body": "Hello,\n\nI want to complain about order SO-20979. The parcel arrived damaged and two of the items are broken. I would like a full refund.\n\nRegards,\nOliver Varga",
+        "minutes_ago": 56
+    },
+    "attachments": [],
+    "truth": {
+        "category": "customer_complaint",
+        "schema": "complaint.v1",
+        "fields": {
+            "order_number": "SO-20979",
+            "customer_name": "Oliver Varga"
+        },
+        "expect_null": [],
+        "presence": {
+            "issue_summary": true,
+            "requested_resolution": true
+        },
+        "route": "REVIEW_REQUIRED",
+        "action": "queue_reply",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ]
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "key": "dev-invoice-pdf-004",
+    "split": "dev",
+    "order": 99,
+    "tags": [
+        "invoice",
+        "pdf",
+        "layout-B"
+    ],
+    "email": {
+        "from_name": "Sofia Varga",
+        "from_email": "sofia.varga@zenith.example.test",
+        "subject": "Invoice attached",
+        "body": "Good day,\n\nInvoice enclosed for your records.\n\nBest regards,\nSofia Varga",
+        "minutes_ago": 597
+    },
+    "attachments": [
+        {
+            "file": "invoices/dev-invoice-pdf-004.pdf",
+            "filename": "invoice-2026/51460.pdf",
+            "declared_mime": "application/pdf"
+        }
+    ],
+    "truth": {
+        "category": "invoice",
+        "schema": "invoice.v1",
+        "fields": {
+            "vendor_name": "Zenith Cable & Wire",
+            "invoice_number": "2026/51460",
+            "issue_date": "2026-09-28",
+            "due_date": "2026-10-12",
+            "currency": "RON",
+            "subtotal": "525125",
+            "tax": "99774",
+            "total": "624899",
+            "purchase_order_number": "PO17935"
+        },
+        "expect_null": [],
+        "route": "REVIEW_REQUIRED",
+        "action": "export_invoice_json",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ],
+        "ocr_misread": null,
+        "critical_fields": [
+            "invoice_number",
+            "total",
+            "currency",
+            "due_date",
+            "purchase_order_number"
+        ]
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "key": "holdout-invoice-pdf-004",
+    "split": "holdout",
+    "order": 99,
+    "tags": [
+        "invoice",
+        "pdf",
+        "layout-A"
+    ],
+    "email": {
+        "from_name": "Sofia Rossi",
+        "from_email": "sofia.rossi@verdant.example.test",
+        "subject": "Invoice attached",
+        "body": "Good day,\n\nInvoice enclosed for your records.\n\nBest regards,\nSofia Rossi",
+        "minutes_ago": 267
+    },
+    "attachments": [
+        {
+            "file": "invoices/holdout-invoice-pdf-004.pdf",
+            "filename": "invoice-INV-18123.pdf",
+            "declared_mime": "application/pdf"
+        }
+    ],
+    "truth": {
+        "category": "invoice",
+        "schema": "invoice.v1",
+        "fields": {
+            "vendor_name": "Verdant Garden Supply",
+            "invoice_number": "INV-18123",
+            "issue_date": "2026-02-19",
+            "due_date": "2026-03-21",
+            "currency": "RON",
+            "subtotal": "772500",
+            "tax": "154500",
+            "total": "927000",
+            "purchase_order_number": "PO35829"
+        },
+        "expect_null": [],
+        "route": "REVIEW_REQUIRED",
+        "action": "export_invoice_json",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ],
+        "ocr_misread": null,
+        "critical_fields": [
+            "invoice_number",
+            "total",
+            "currency",
+            "due_date",
+            "purchase_order_number"
+        ]
+    }
+}

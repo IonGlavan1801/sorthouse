@@ -1,0 +1,21 @@
+{
+    "key": "holdout-general-057",
+    "split": "holdout",
+    "tags": [
+        "general"
+    ],
+    "email": {
+        "from_name": "Irina Fischer",
+        "from_email": "irina.fischer@mail.example.test",
+        "subject": "Information request",
+        "body": "Hi,\n\nDo you offer a student discount for the annual plan?\n\nThanks,\nIrina Fischer",
+        "minutes_ago": 245
+    },
+    "attachments": [],
+    "truth": {
+        "category": "general_question",
+        "route": "AUTO_ELIGIBLE",
+        "action": "mark_demo_status",
+        "reason_codes": []
+    }
+}

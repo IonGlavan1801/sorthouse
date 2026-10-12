@@ -1,0 +1,33 @@
+{
+    "key": "dev-complaint-021",
+    "split": "dev",
+    "tags": [
+        "complaint"
+    ],
+    "email": {
+        "from_name": "Tomas Costa",
+        "from_email": "tomas.costa@customer-mail.example.test",
+        "subject": "Problem with my order",
+        "body": "Hello,\n\nI want to complain about order 55083. Several parts were missing from the package and I am very unhappy. Please send a replacement as soon as possible.\n\nRegards,\nTomas Costa",
+        "minutes_ago": 325
+    },
+    "attachments": [],
+    "truth": {
+        "category": "customer_complaint",
+        "schema": "complaint.v1",
+        "fields": {
+            "order_number": "55083",
+            "customer_name": "Tomas Costa"
+        },
+        "expect_null": [],
+        "presence": {
+            "issue_summary": true,
+            "requested_resolution": true
+        },
+        "route": "REVIEW_REQUIRED",
+        "action": "queue_reply",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ]
+    }
+}

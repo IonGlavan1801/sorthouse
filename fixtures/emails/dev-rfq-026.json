@@ -1,0 +1,41 @@
+{
+    "key": "dev-rfq-026",
+    "split": "dev",
+    "tags": [
+        "rfq",
+        "hard"
+    ],
+    "email": {
+        "from_name": "Chloe Fischer",
+        "from_email": "chloe.fischer@hollow.example.test",
+        "subject": "Need rates",
+        "body": "Hello,\n\nWe are comparing suppliers, can you tell us your rates for:\n- 85 x cable ties (pack of 100)\n- 40 x USB-C docking stations\n\nWe need the offer by Oct 14, 2026.\n\nRegards,\nChloe Fischer\nHollow Oak BV",
+        "minutes_ago": 485
+    },
+    "attachments": [],
+    "truth": {
+        "category": "request_for_quote",
+        "schema": "rfq.v1",
+        "fields": {
+            "company_name": "Hollow Oak BV",
+            "contact_name": "Chloe Fischer",
+            "contact_email": "chloe.fischer@hollow.example.test",
+            "deadline": "2026-10-14"
+        },
+        "items": [
+            {
+                "description": "cable ties (pack of 100)",
+                "quantity": 85
+            },
+            {
+                "description": "USB-C docking stations",
+                "quantity": 40
+            }
+        ],
+        "expect_null": [],
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [],
+        "ambiguous": true
+    }
+}

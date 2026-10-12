@@ -1,0 +1,23 @@
+{
+    "key": "fail-empty-body",
+    "split": "failure",
+    "tags": [
+        "failure"
+    ],
+    "email": {
+        "from_name": "Test Sender",
+        "from_email": "sender@external.example.test",
+        "subject": "Hello",
+        "body": "",
+        "minutes_ago": 2
+    },
+    "attachments": [],
+    "truth": {
+        "category": "other_or_uncertain",
+        "route": "REVIEW_REQUIRED",
+        "reason_codes": [
+            "UNCERTAIN_CATEGORY"
+        ],
+        "action": "none"
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "key": "holdout-order-080",
+    "split": "holdout",
+    "tags": [
+        "order"
+    ],
+    "email": {
+        "from_name": "Jonas Ionescu",
+        "from_email": "jonas.ionescu@buyer.example.test",
+        "subject": "Order request",
+        "body": "Hello,\n\nWe would like to place an order for 10 x garden hoses 25m. Please confirm the order and delivery date.\n\nRegards,\nJonas Ionescu",
+        "minutes_ago": 482
+    },
+    "attachments": [],
+    "truth": {
+        "category": "order_or_purchase_request",
+        "route": "REVIEW_REQUIRED",
+        "action": "create_demo_task",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ]
+    }
+}

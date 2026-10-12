@@ -1,0 +1,47 @@
+{
+    "key": "holdout-rfq-040",
+    "split": "holdout",
+    "tags": [
+        "rfq"
+    ],
+    "email": {
+        "from_name": "Nadia Santos",
+        "from_email": "nadia.santos@foxglove.example.test",
+        "subject": "Pricing inquiry",
+        "body": "Hello,\n\nWe would like to request a quotation for:\n- 60 x thermal labels\n- 165 x USB-C docking stations\n- 180 x network patch cables 2m\n- 185 x ink cartridges\n\nWe need the offer by 2026-11-10.\n\nRegards,\nNadia Santos\nFoxglove Studio Co",
+        "minutes_ago": 160
+    },
+    "attachments": [],
+    "truth": {
+        "category": "request_for_quote",
+        "schema": "rfq.v1",
+        "fields": {
+            "company_name": "Foxglove Studio Co",
+            "contact_name": "Nadia Santos",
+            "contact_email": "nadia.santos@foxglove.example.test",
+            "deadline": "2026-11-10"
+        },
+        "items": [
+            {
+                "description": "thermal labels",
+                "quantity": 60
+            },
+            {
+                "description": "USB-C docking stations",
+                "quantity": 165
+            },
+            {
+                "description": "network patch cables 2m",
+                "quantity": 180
+            },
+            {
+                "description": "ink cartridges",
+                "quantity": 185
+            }
+        ],
+        "expect_null": [],
+        "route": "AUTO_ELIGIBLE",
+        "action": "create_demo_task",
+        "reason_codes": []
+    }
+}

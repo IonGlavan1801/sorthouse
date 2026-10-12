@@ -1,0 +1,23 @@
+{
+    "key": "holdout-order-077",
+    "split": "holdout",
+    "tags": [
+        "order"
+    ],
+    "email": {
+        "from_name": "Jonas Moreau",
+        "from_email": "jonas.moreau@buyer.example.test",
+        "subject": "Order request",
+        "body": "Hello,\n\nWe would like to place an order for 12 x safety gloves. Please confirm the order and delivery date.\n\nRegards,\nJonas Moreau",
+        "minutes_ago": 555
+    },
+    "attachments": [],
+    "truth": {
+        "category": "order_or_purchase_request",
+        "route": "REVIEW_REQUIRED",
+        "action": "create_demo_task",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ]
+    }
+}

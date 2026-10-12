@@ -1,0 +1,44 @@
+{
+    "key": "showcase-rfq",
+    "split": "showcase",
+    "tags": [
+        "rfq"
+    ],
+    "email": {
+        "from_name": "Marco Rossi",
+        "from_email": "marco.rossi@harborpoint.example.test",
+        "subject": "Request for quote",
+        "body": "Hello,\n\nCould you please send us a quote for the following items:\n- 200 x steel brackets\n- 50 x safety gloves\n- 20 x LED panels 60x60\n\nWe need the offer by 2026-11-20.\n\nRegards,\nMarco Rossi\nHarbor Point Ltd",
+        "minutes_ago": 15
+    },
+    "attachments": [],
+    "truth": {
+        "category": "request_for_quote",
+        "schema": "rfq.v1",
+        "fields": {
+            "company_name": "Harbor Point Ltd",
+            "contact_name": "Marco Rossi",
+            "contact_email": "marco.rossi@harborpoint.example.test",
+            "deadline": "2026-11-20"
+        },
+        "items": [
+            {
+                "description": "steel brackets",
+                "quantity": 200
+            },
+            {
+                "description": "safety gloves",
+                "quantity": 50
+            },
+            {
+                "description": "LED panels 60x60",
+                "quantity": 20
+            }
+        ],
+        "expect_null": [],
+        "route": "AUTO_ELIGIBLE",
+        "action": "create_demo_task",
+        "reason_codes": []
+    },
+    "order": 4
+}

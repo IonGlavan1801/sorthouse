@@ -1,0 +1,51 @@
+{
+    "key": "holdout-rfq-044",
+    "split": "holdout",
+    "tags": [
+        "rfq",
+        "hard"
+    ],
+    "email": {
+        "from_name": "Chloe Alves",
+        "from_email": "chloe.alves@birchwood.example.test",
+        "subject": "Need rates",
+        "body": "Hello,\n\nHi, how much for the following?\n- 40 x LED panels 60x60\n- 35 x USB-C docking stations\n- 140 x garden hoses 25m\n- 110 x ink cartridges\n\nRegards,\nChloe Alves\nBirchwood Labs GmbH",
+        "minutes_ago": 166
+    },
+    "attachments": [],
+    "truth": {
+        "category": "request_for_quote",
+        "schema": "rfq.v1",
+        "fields": {
+            "company_name": "Birchwood Labs GmbH",
+            "contact_name": "Chloe Alves",
+            "contact_email": "chloe.alves@birchwood.example.test",
+            "deadline": null
+        },
+        "items": [
+            {
+                "description": "LED panels 60x60",
+                "quantity": 40
+            },
+            {
+                "description": "USB-C docking stations",
+                "quantity": 35
+            },
+            {
+                "description": "garden hoses 25m",
+                "quantity": 140
+            },
+            {
+                "description": "ink cartridges",
+                "quantity": 110
+            }
+        ],
+        "expect_null": [
+            "deadline"
+        ],
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [],
+        "ambiguous": true
+    }
+}

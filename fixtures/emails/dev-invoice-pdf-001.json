@@ -1,0 +1,53 @@
+{
+    "key": "dev-invoice-pdf-001",
+    "split": "dev",
+    "order": 99,
+    "tags": [
+        "invoice",
+        "pdf",
+        "layout-B"
+    ],
+    "email": {
+        "from_name": "Marco Novak",
+        "from_email": "marco.novak@quanta.example.test",
+        "subject": "Your invoice R42023 is attached",
+        "body": "Hello,\n\nPlease find attached invoice R42023. Payment terms are on the document.\n\nRegards,\nMarco Novak",
+        "minutes_ago": 37
+    },
+    "attachments": [
+        {
+            "file": "invoices/dev-invoice-pdf-001.pdf",
+            "filename": "invoice-R42023.pdf",
+            "declared_mime": "application/pdf"
+        }
+    ],
+    "truth": {
+        "category": "invoice",
+        "schema": "invoice.v1",
+        "fields": {
+            "vendor_name": "Quanta Cloud Services",
+            "invoice_number": "R42023",
+            "issue_date": "2026-02-14",
+            "due_date": "2026-03-31",
+            "currency": "PLN",
+            "subtotal": "484150",
+            "tax": "48415",
+            "total": "532565",
+            "purchase_order_number": "453194"
+        },
+        "expect_null": [],
+        "route": "REVIEW_REQUIRED",
+        "action": "export_invoice_json",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ],
+        "ocr_misread": null,
+        "critical_fields": [
+            "invoice_number",
+            "total",
+            "currency",
+            "due_date",
+            "purchase_order_number"
+        ]
+    }
+}

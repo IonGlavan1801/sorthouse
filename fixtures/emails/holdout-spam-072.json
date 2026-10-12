@@ -1,0 +1,21 @@
+{
+    "key": "holdout-spam-072",
+    "split": "holdout",
+    "tags": [
+        "spam"
+    ],
+    "email": {
+        "from_name": "Irina Lindgren",
+        "from_email": "irina.lindgren@promo-mailer.example.test",
+        "subject": "Earn $5000 weekly with bitcoin",
+        "body": "Make money fast with crypto. Guaranteed returns! Click here: http://btc-easy.example.top/join\nAct now.",
+        "minutes_ago": 688
+    },
+    "attachments": [],
+    "truth": {
+        "category": "spam_or_phishing",
+        "route": "AUTO_ELIGIBLE",
+        "action": "move_to_demo_folder",
+        "reason_codes": []
+    }
+}

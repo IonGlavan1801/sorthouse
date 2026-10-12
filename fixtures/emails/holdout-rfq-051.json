@@ -1,0 +1,43 @@
+{
+    "key": "holdout-rfq-051",
+    "split": "holdout",
+    "tags": [
+        "rfq"
+    ],
+    "email": {
+        "from_name": "Lena Ionescu",
+        "from_email": "lena.ionescu@delta.example.test",
+        "subject": "Quotation request",
+        "body": "Hello,\n\nCould you please send us a quote for the following items:\n- 115 x cable ties (pack of 100)\n- 45 x thermal labels\n- 150 x cardboard boxes 40x30\n\nWe need the offer by Nov 28, 2026.\n\nRegards,\nLena Ionescu\nDelta Ridge LLC",
+        "minutes_ago": 756
+    },
+    "attachments": [],
+    "truth": {
+        "category": "request_for_quote",
+        "schema": "rfq.v1",
+        "fields": {
+            "company_name": "Delta Ridge LLC",
+            "contact_name": "Lena Ionescu",
+            "contact_email": "lena.ionescu@delta.example.test",
+            "deadline": "2026-11-28"
+        },
+        "items": [
+            {
+                "description": "cable ties (pack of 100)",
+                "quantity": 115
+            },
+            {
+                "description": "thermal labels",
+                "quantity": 45
+            },
+            {
+                "description": "cardboard boxes 40x30",
+                "quantity": 150
+            }
+        ],
+        "expect_null": [],
+        "route": "AUTO_ELIGIBLE",
+        "action": "create_demo_task",
+        "reason_codes": []
+    }
+}

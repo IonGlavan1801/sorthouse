@@ -1,0 +1,53 @@
+{
+    "key": "holdout-invoice-pdf-002",
+    "split": "holdout",
+    "order": 99,
+    "tags": [
+        "invoice",
+        "pdf",
+        "layout-B"
+    ],
+    "email": {
+        "from_name": "Elena Ionescu",
+        "from_email": "elena.ionescu@umbra.example.test",
+        "subject": "Invoice INV-44961",
+        "body": "Good day,\n\nInvoice enclosed for your records.\n\nBest regards,\nElena Ionescu",
+        "minutes_ago": 430
+    },
+    "attachments": [
+        {
+            "file": "invoices/holdout-invoice-pdf-002.pdf",
+            "filename": "invoice-INV-44961.pdf",
+            "declared_mime": "application/pdf"
+        }
+    ],
+    "truth": {
+        "category": "invoice",
+        "schema": "invoice.v1",
+        "fields": {
+            "vendor_name": "Umbra Lighting Studio",
+            "invoice_number": "INV-44961",
+            "issue_date": "2026-08-25",
+            "due_date": "2026-10-09",
+            "currency": "USD",
+            "subtotal": "280200",
+            "tax": "14010",
+            "total": "294210",
+            "purchase_order_number": "4567578"
+        },
+        "expect_null": [],
+        "route": "REVIEW_REQUIRED",
+        "action": "export_invoice_json",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ],
+        "ocr_misread": null,
+        "critical_fields": [
+            "invoice_number",
+            "total",
+            "currency",
+            "due_date",
+            "purchase_order_number"
+        ]
+    }
+}

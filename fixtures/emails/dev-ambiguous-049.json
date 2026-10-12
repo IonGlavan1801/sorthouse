@@ -1,0 +1,24 @@
+{
+    "key": "dev-ambiguous-049",
+    "split": "dev",
+    "tags": [
+        "ambiguous"
+    ],
+    "email": {
+        "from_name": "Petra Fischer",
+        "from_email": "petra.fischer@mail.example.test",
+        "subject": "Re: yesterday",
+        "body": "Can we talk about it tomorrow?",
+        "minutes_ago": 394
+    },
+    "attachments": [],
+    "truth": {
+        "category": "other_or_uncertain",
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [
+            "UNCERTAIN_CATEGORY"
+        ],
+        "ambiguous": true
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "key": "holdout-general-056",
+    "split": "holdout",
+    "tags": [
+        "general"
+    ],
+    "email": {
+        "from_name": "Hana Weber",
+        "from_email": "hana.weber@mail.example.test",
+        "subject": "Quick question",
+        "body": "Hi,\n\nHow do I reset the account password for the shared mailbox?\n\nThanks,\nHana Weber",
+        "minutes_ago": 562
+    },
+    "attachments": [],
+    "truth": {
+        "category": "general_question",
+        "route": "AUTO_ELIGIBLE",
+        "action": "mark_demo_status",
+        "reason_codes": []
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "key": "holdout-ambiguous-098",
+    "split": "holdout",
+    "tags": [
+        "ambiguous"
+    ],
+    "email": {
+        "from_name": "Lena Petrov",
+        "from_email": "lena.petrov@mail.example.test",
+        "subject": "Quick one",
+        "body": "Do you do repairs? Also might need a price, not sure yet.\nLena Petrov",
+        "minutes_ago": 96
+    },
+    "attachments": [],
+    "truth": {
+        "category": "other_or_uncertain",
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [
+            "UNCERTAIN_CATEGORY"
+        ],
+        "ambiguous": true
+    }
+}

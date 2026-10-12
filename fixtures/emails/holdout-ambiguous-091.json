@@ -1,0 +1,24 @@
+{
+    "key": "holdout-ambiguous-091",
+    "split": "holdout",
+    "tags": [
+        "ambiguous"
+    ],
+    "email": {
+        "from_name": "Samir Costa",
+        "from_email": "samir.costa@mail.example.test",
+        "subject": "About the contract",
+        "body": "We are reviewing the contract and have some thoughts about terms and payment. Will send details.\n\nRegards,\nSamir Costa",
+        "minutes_ago": 525
+    },
+    "attachments": [],
+    "truth": {
+        "category": "other_or_uncertain",
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [
+            "UNCERTAIN_CATEGORY"
+        ],
+        "ambiguous": true
+    }
+}

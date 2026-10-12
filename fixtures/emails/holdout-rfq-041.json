@@ -1,0 +1,43 @@
+{
+    "key": "holdout-rfq-041",
+    "split": "holdout",
+    "tags": [
+        "rfq",
+        "hard"
+    ],
+    "email": {
+        "from_name": "Elena Duarte",
+        "from_email": "elena.duarte@granite.example.test",
+        "subject": "Need rates",
+        "body": "Hello,\n\nWe are comparing suppliers, can you tell us your rates for:\n- 10 x cardboard boxes 40x30\n- 40 x network patch cables 2m\n\nRegards,\nElena Duarte\nGranite Bay AG",
+        "minutes_ago": 655
+    },
+    "attachments": [],
+    "truth": {
+        "category": "request_for_quote",
+        "schema": "rfq.v1",
+        "fields": {
+            "company_name": "Granite Bay AG",
+            "contact_name": "Elena Duarte",
+            "contact_email": "elena.duarte@granite.example.test",
+            "deadline": null
+        },
+        "items": [
+            {
+                "description": "cardboard boxes 40x30",
+                "quantity": 10
+            },
+            {
+                "description": "network patch cables 2m",
+                "quantity": 40
+            }
+        ],
+        "expect_null": [
+            "deadline"
+        ],
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [],
+        "ambiguous": true
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "key": "dev-invoice-pdf-003",
+    "split": "dev",
+    "order": 99,
+    "tags": [
+        "invoice",
+        "pdf",
+        "layout-B"
+    ],
+    "email": {
+        "from_name": "Marco Rossi",
+        "from_email": "marco.rossi@maple.example.test",
+        "subject": "Billing: 2026/27706",
+        "body": "Hi,\n\nAttached is our invoice. Let us know if you need anything else.\n\nThanks,\nMarco Rossi",
+        "minutes_ago": 291
+    },
+    "attachments": [
+        {
+            "file": "invoices/dev-invoice-pdf-003.pdf",
+            "filename": "invoice-2026/27706.pdf",
+            "declared_mime": "application/pdf"
+        }
+    ],
+    "truth": {
+        "category": "invoice",
+        "schema": "invoice.v1",
+        "fields": {
+            "vendor_name": "Maple Harbor Foods SRL",
+            "invoice_number": "2026/27706",
+            "issue_date": "2026-02-26",
+            "due_date": "2026-04-12",
+            "currency": "PLN",
+            "subtotal": "652075",
+            "tax": "123894",
+            "total": "775969",
+            "purchase_order_number": "7735550"
+        },
+        "expect_null": [],
+        "route": "REVIEW_REQUIRED",
+        "action": "export_invoice_json",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ],
+        "ocr_misread": null,
+        "critical_fields": [
+            "invoice_number",
+            "total",
+            "currency",
+            "due_date",
+            "purchase_order_number"
+        ]
+    }
+}

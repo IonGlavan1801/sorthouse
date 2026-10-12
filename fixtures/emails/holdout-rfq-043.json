@@ -1,0 +1,43 @@
+{
+    "key": "holdout-rfq-043",
+    "split": "holdout",
+    "tags": [
+        "rfq"
+    ],
+    "email": {
+        "from_name": "Pavel Dumont",
+        "from_email": "pavel.dumont@granite.example.test",
+        "subject": "Quotation request",
+        "body": "Hello,\n\nRequest for quote - we need pricing for:\n- 30 x safety gloves\n- 40 x thermal labels\n- 100 x fire extinguishers\n\nWe need the offer by 12 Nov 2026.\n\nRegards,\nPavel Dumont\nGranite Bay AG",
+        "minutes_ago": 896
+    },
+    "attachments": [],
+    "truth": {
+        "category": "request_for_quote",
+        "schema": "rfq.v1",
+        "fields": {
+            "company_name": "Granite Bay AG",
+            "contact_name": "Pavel Dumont",
+            "contact_email": "pavel.dumont@granite.example.test",
+            "deadline": "2026-11-12"
+        },
+        "items": [
+            {
+                "description": "safety gloves",
+                "quantity": 30
+            },
+            {
+                "description": "thermal labels",
+                "quantity": 40
+            },
+            {
+                "description": "fire extinguishers",
+                "quantity": 100
+            }
+        ],
+        "expect_null": [],
+        "route": "AUTO_ELIGIBLE",
+        "action": "create_demo_task",
+        "reason_codes": []
+    }
+}

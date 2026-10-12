@@ -1,0 +1,47 @@
+{
+    "key": "holdout-rfq-049",
+    "split": "holdout",
+    "tags": [
+        "rfq"
+    ],
+    "email": {
+        "from_name": "Irina Ionescu",
+        "from_email": "irina.ionescu@crestline.example.test",
+        "subject": "RFQ: steel brackets",
+        "body": "Hello,\n\nPlease provide your best price for:\n- 180 x steel brackets\n- 145 x LED panels 60x60\n- 95 x USB-C docking stations\n- 65 x paper reams A4\n\nWe need the offer by Oct 23, 2026.\n\nRegards,\nIrina Ionescu\nCrestline Foods SRL",
+        "minutes_ago": 864
+    },
+    "attachments": [],
+    "truth": {
+        "category": "request_for_quote",
+        "schema": "rfq.v1",
+        "fields": {
+            "company_name": "Crestline Foods SRL",
+            "contact_name": "Irina Ionescu",
+            "contact_email": "irina.ionescu@crestline.example.test",
+            "deadline": "2026-10-23"
+        },
+        "items": [
+            {
+                "description": "steel brackets",
+                "quantity": 180
+            },
+            {
+                "description": "LED panels 60x60",
+                "quantity": 145
+            },
+            {
+                "description": "USB-C docking stations",
+                "quantity": 95
+            },
+            {
+                "description": "paper reams A4",
+                "quantity": 65
+            }
+        ],
+        "expect_null": [],
+        "route": "AUTO_ELIGIBLE",
+        "action": "create_demo_task",
+        "reason_codes": []
+    }
+}

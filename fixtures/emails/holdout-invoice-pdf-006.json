@@ -1,0 +1,53 @@
+{
+    "key": "holdout-invoice-pdf-006",
+    "split": "holdout",
+    "order": 99,
+    "tags": [
+        "invoice",
+        "pdf",
+        "layout-C"
+    ],
+    "email": {
+        "from_name": "Marco Larsen",
+        "from_email": "marco.larsen@umbra.example.test",
+        "subject": "Your invoice IN75656 is attached",
+        "body": "Hello,\n\nPlease find attached invoice IN75656. Payment terms are on the document.\n\nRegards,\nMarco Larsen",
+        "minutes_ago": 11
+    },
+    "attachments": [
+        {
+            "file": "invoices/holdout-invoice-pdf-006.pdf",
+            "filename": "invoice-IN75656.pdf",
+            "declared_mime": "application/pdf"
+        }
+    ],
+    "truth": {
+        "category": "invoice",
+        "schema": "invoice.v1",
+        "fields": {
+            "vendor_name": "Umbra Lighting Studio",
+            "invoice_number": "IN75656",
+            "issue_date": "2026-04-14",
+            "due_date": "2026-05-14",
+            "currency": "USD",
+            "subtotal": "110450",
+            "tax": "20986",
+            "total": "131436",
+            "purchase_order_number": "7750400"
+        },
+        "expect_null": [],
+        "route": "REVIEW_REQUIRED",
+        "action": "export_invoice_json",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ],
+        "ocr_misread": null,
+        "critical_fields": [
+            "invoice_number",
+            "total",
+            "currency",
+            "due_date",
+            "purchase_order_number"
+        ]
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "key": "holdout-general-064",
+    "split": "holdout",
+    "tags": [
+        "general",
+        "hard"
+    ],
+    "email": {
+        "from_name": "Maria Weber",
+        "from_email": "maria.weber@mail.example.test",
+        "subject": "Information request",
+        "body": "Hi,\n\nHey, any chance you guys do weekend drop-offs\n\nThanks,\nMaria Weber",
+        "minutes_ago": 36
+    },
+    "attachments": [],
+    "truth": {
+        "category": "general_question",
+        "route": "REVIEW_REQUIRED",
+        "action": "request_human_review",
+        "reason_codes": [],
+        "ambiguous": true
+    }
+}

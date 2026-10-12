@@ -1,0 +1,29 @@
+{
+    "key": "fail-eicar",
+    "split": "failure",
+    "tags": [
+        "failure"
+    ],
+    "email": {
+        "from_name": "Test Sender",
+        "from_email": "sender@external.example.test",
+        "subject": "Test file",
+        "body": "See attachment.",
+        "minutes_ago": 2
+    },
+    "attachments": [
+        {
+            "filename": "notes.txt",
+            "declared_mime": "text/plain",
+            "inline_bytes_b64": "WDVPIVAlQEFQWzRcUFpYNTQoUF4pN0NDKTd9JEVJQ0FSLVNUQU5EQVJELUFOVElWSVJVUy1URVNULUZJTEUhJEgrSCo="
+        }
+    ],
+    "truth": {
+        "reason_codes": [
+            "ATTACHMENT_QUARANTINED"
+        ],
+        "category": "invoice",
+        "route": "BLOCKED",
+        "action": "none"
+    }
+}

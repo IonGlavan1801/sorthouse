@@ -1,0 +1,33 @@
+{
+    "key": "holdout-complaint-038",
+    "split": "holdout",
+    "tags": [
+        "complaint"
+    ],
+    "email": {
+        "from_name": "Mihai Rossi",
+        "from_email": "mihai.rossi@customer-mail.example.test",
+        "subject": "Order SO-29251 - complaint",
+        "body": "Hello,\n\nThis is a complaint regarding order SO-29251. Several parts were missing from the package and I am very unhappy. I would like a full refund.\n\nRegards,\nMihai Rossi",
+        "minutes_ago": 113
+    },
+    "attachments": [],
+    "truth": {
+        "category": "customer_complaint",
+        "schema": "complaint.v1",
+        "fields": {
+            "order_number": "SO-29251",
+            "customer_name": "Mihai Rossi"
+        },
+        "expect_null": [],
+        "presence": {
+            "issue_summary": true,
+            "requested_resolution": true
+        },
+        "route": "REVIEW_REQUIRED",
+        "action": "queue_reply",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ]
+    }
+}

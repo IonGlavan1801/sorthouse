@@ -1,0 +1,53 @@
+{
+    "key": "holdout-invoice-pdf-009",
+    "split": "holdout",
+    "order": 99,
+    "tags": [
+        "invoice",
+        "pdf",
+        "layout-B"
+    ],
+    "email": {
+        "from_name": "Marco Lindgren",
+        "from_email": "marco.lindgren@quanta.example.test",
+        "subject": "Billing: R41288",
+        "body": "Hi,\n\nAttached is our invoice. Let us know if you need anything else.\n\nThanks,\nMarco Lindgren",
+        "minutes_ago": 551
+    },
+    "attachments": [
+        {
+            "file": "invoices/holdout-invoice-pdf-009.pdf",
+            "filename": "invoice-R41288.pdf",
+            "declared_mime": "application/pdf"
+        }
+    ],
+    "truth": {
+        "category": "invoice",
+        "schema": "invoice.v1",
+        "fields": {
+            "vendor_name": "Quanta Cloud Services",
+            "invoice_number": "R41288",
+            "issue_date": "2026-05-26",
+            "due_date": "2026-06-09",
+            "currency": "PLN",
+            "subtotal": "175975",
+            "tax": "8799",
+            "total": "184774",
+            "purchase_order_number": "PO-92742"
+        },
+        "expect_null": [],
+        "route": "REVIEW_REQUIRED",
+        "action": "export_invoice_json",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ],
+        "ocr_misread": null,
+        "critical_fields": [
+            "invoice_number",
+            "total",
+            "currency",
+            "due_date",
+            "purchase_order_number"
+        ]
+    }
+}

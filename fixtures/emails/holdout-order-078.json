@@ -1,0 +1,23 @@
+{
+    "key": "holdout-order-078",
+    "split": "holdout",
+    "tags": [
+        "order"
+    ],
+    "email": {
+        "from_name": "Lena Dumont",
+        "from_email": "lena.dumont@buyer.example.test",
+        "subject": "Order request",
+        "body": "Hello,\n\nWe would like to place an order for 6 x ceramic mugs. Please confirm the order and delivery date.\n\nRegards,\nLena Dumont",
+        "minutes_ago": 218
+    },
+    "attachments": [],
+    "truth": {
+        "category": "order_or_purchase_request",
+        "route": "REVIEW_REQUIRED",
+        "action": "create_demo_task",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ]
+    }
+}

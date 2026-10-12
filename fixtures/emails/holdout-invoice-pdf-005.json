@@ -1,0 +1,53 @@
+{
+    "key": "holdout-invoice-pdf-005",
+    "split": "holdout",
+    "order": 99,
+    "tags": [
+        "invoice",
+        "pdf",
+        "layout-B"
+    ],
+    "email": {
+        "from_name": "Petra Rossi",
+        "from_email": "petra.rossi@redwood.example.test",
+        "subject": "Invoice FA-72673",
+        "body": "Hello,\n\nPlease find attached invoice FA-72673. Payment terms are on the document.\n\nRegards,\nPetra Rossi",
+        "minutes_ago": 369
+    },
+    "attachments": [
+        {
+            "file": "invoices/holdout-invoice-pdf-005.pdf",
+            "filename": "invoice-FA-72673.pdf",
+            "declared_mime": "application/pdf"
+        }
+    ],
+    "truth": {
+        "category": "invoice",
+        "schema": "invoice.v1",
+        "fields": {
+            "vendor_name": "Redwood Packaging Co",
+            "invoice_number": "FA-72673",
+            "issue_date": "2026-03-19",
+            "due_date": "2026-04-02",
+            "currency": "RON",
+            "subtotal": "677375",
+            "tax": "135475",
+            "total": "812850",
+            "purchase_order_number": "PO-16597"
+        },
+        "expect_null": [],
+        "route": "REVIEW_REQUIRED",
+        "action": "export_invoice_json",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ],
+        "ocr_misread": null,
+        "critical_fields": [
+            "invoice_number",
+            "total",
+            "currency",
+            "due_date",
+            "purchase_order_number"
+        ]
+    }
+}

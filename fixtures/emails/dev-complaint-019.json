@@ -1,0 +1,33 @@
+{
+    "key": "dev-complaint-019",
+    "split": "dev",
+    "tags": [
+        "complaint"
+    ],
+    "email": {
+        "from_name": "Marco Ionescu",
+        "from_email": "marco.ionescu@customer-mail.example.test",
+        "subject": "Damaged goods",
+        "body": "Hello,\n\nI am writing to complain about order SO-27508. The parcel arrived damaged and two of the items are broken. I expect compensation for the delay.\n\nRegards,\nMarco Ionescu",
+        "minutes_ago": 256
+    },
+    "attachments": [],
+    "truth": {
+        "category": "customer_complaint",
+        "schema": "complaint.v1",
+        "fields": {
+            "order_number": "SO-27508",
+            "customer_name": "Marco Ionescu"
+        },
+        "expect_null": [],
+        "presence": {
+            "issue_summary": true,
+            "requested_resolution": true
+        },
+        "route": "REVIEW_REQUIRED",
+        "action": "queue_reply",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ]
+    }
+}

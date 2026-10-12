@@ -1,0 +1,22 @@
+{
+    "key": "showcase-spam",
+    "split": "showcase",
+    "tags": [
+        "spam"
+    ],
+    "email": {
+        "from_name": "Lena Horvat",
+        "from_email": "lena.horvat@promo-mailer.example.test",
+        "subject": "Security alert: verify your account",
+        "body": "Your account will be closed. Please verify your account password now at http://192.0.2.44/login to confirm your identity. Security alert from IT.",
+        "minutes_ago": 814
+    },
+    "attachments": [],
+    "truth": {
+        "category": "spam_or_phishing",
+        "route": "AUTO_ELIGIBLE",
+        "action": "move_to_demo_folder",
+        "reason_codes": []
+    },
+    "order": 5
+}

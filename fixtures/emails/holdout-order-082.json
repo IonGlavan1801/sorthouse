@@ -1,0 +1,25 @@
+{
+    "key": "holdout-order-082",
+    "split": "holdout",
+    "tags": [
+        "order",
+        "hard"
+    ],
+    "email": {
+        "from_name": "Sofia Dumont",
+        "from_email": "sofia.dumont@buyer.example.test",
+        "subject": "Order request",
+        "body": "Hello,\n\nPlease send us 7 x paper reams A4 on the usual terms.\n\nRegards,\nSofia Dumont",
+        "minutes_ago": 778
+    },
+    "attachments": [],
+    "truth": {
+        "category": "order_or_purchase_request",
+        "route": "REVIEW_REQUIRED",
+        "action": "create_demo_task",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ],
+        "ambiguous": true
+    }
+}

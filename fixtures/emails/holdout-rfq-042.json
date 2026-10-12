@@ -1,0 +1,43 @@
+{
+    "key": "holdout-rfq-042",
+    "split": "holdout",
+    "tags": [
+        "rfq"
+    ],
+    "email": {
+        "from_name": "Pavel Petrov",
+        "from_email": "pavel.petrov@granite.example.test",
+        "subject": "Request for quote",
+        "body": "Hello,\n\nRequest for quote - we need pricing for:\n- 25 x cable ties (pack of 100)\n- 40 x thermal labels\n- 170 x fire extinguishers\n\nWe need the offer by Oct 10, 2026.\n\nRegards,\nPavel Petrov\nGranite Bay AG",
+        "minutes_ago": 745
+    },
+    "attachments": [],
+    "truth": {
+        "category": "request_for_quote",
+        "schema": "rfq.v1",
+        "fields": {
+            "company_name": "Granite Bay AG",
+            "contact_name": "Pavel Petrov",
+            "contact_email": "pavel.petrov@granite.example.test",
+            "deadline": "2026-10-10"
+        },
+        "items": [
+            {
+                "description": "cable ties (pack of 100)",
+                "quantity": 25
+            },
+            {
+                "description": "thermal labels",
+                "quantity": 40
+            },
+            {
+                "description": "fire extinguishers",
+                "quantity": 170
+            }
+        ],
+        "expect_null": [],
+        "route": "AUTO_ELIGIBLE",
+        "action": "create_demo_task",
+        "reason_codes": []
+    }
+}

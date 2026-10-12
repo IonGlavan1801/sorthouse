@@ -1,0 +1,53 @@
+{
+    "key": "holdout-invoice-pdf-012",
+    "split": "holdout",
+    "order": 99,
+    "tags": [
+        "invoice",
+        "pdf",
+        "layout-B"
+    ],
+    "email": {
+        "from_name": "Nadia Santos",
+        "from_email": "nadia.santos@brightline.example.test",
+        "subject": "Billing: INV-57485",
+        "body": "Hello,\n\nPlease find attached invoice INV-57485. Payment terms are on the document.\n\nRegards,\nNadia Santos",
+        "minutes_ago": 404
+    },
+    "attachments": [
+        {
+            "file": "invoices/holdout-invoice-pdf-012.pdf",
+            "filename": "invoice-INV-57485.pdf",
+            "declared_mime": "application/pdf"
+        }
+    ],
+    "truth": {
+        "category": "invoice",
+        "schema": "invoice.v1",
+        "fields": {
+            "vendor_name": "Brightline Logistics GmbH",
+            "invoice_number": "INV-57485",
+            "issue_date": "2026-03-24",
+            "due_date": "2026-04-07",
+            "currency": "PLN",
+            "subtotal": "449525",
+            "tax": "44953",
+            "total": "494478",
+            "purchase_order_number": "PO73676"
+        },
+        "expect_null": [],
+        "route": "REVIEW_REQUIRED",
+        "action": "export_invoice_json",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ],
+        "ocr_misread": null,
+        "critical_fields": [
+            "invoice_number",
+            "total",
+            "currency",
+            "due_date",
+            "purchase_order_number"
+        ]
+    }
+}

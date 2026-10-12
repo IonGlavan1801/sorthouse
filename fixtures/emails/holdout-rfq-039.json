@@ -1,0 +1,47 @@
+{
+    "key": "holdout-rfq-039",
+    "split": "holdout",
+    "tags": [
+        "rfq"
+    ],
+    "email": {
+        "from_name": "Sofia Horvat",
+        "from_email": "sofia.horvat@granite.example.test",
+        "subject": "Quotation request",
+        "body": "Hello,\n\nWe would like to request a quotation for:\n- 20 x office chairs\n- 125 x cardboard boxes 40x30\n- 80 x network patch cables 2m\n- 155 x fire extinguishers\n\nWe need the offer by 2026-12-11.\n\nRegards,\nSofia Horvat\nGranite Bay AG",
+        "minutes_ago": 322
+    },
+    "attachments": [],
+    "truth": {
+        "category": "request_for_quote",
+        "schema": "rfq.v1",
+        "fields": {
+            "company_name": "Granite Bay AG",
+            "contact_name": "Sofia Horvat",
+            "contact_email": "sofia.horvat@granite.example.test",
+            "deadline": "2026-12-11"
+        },
+        "items": [
+            {
+                "description": "office chairs",
+                "quantity": 20
+            },
+            {
+                "description": "cardboard boxes 40x30",
+                "quantity": 125
+            },
+            {
+                "description": "network patch cables 2m",
+                "quantity": 80
+            },
+            {
+                "description": "fire extinguishers",
+                "quantity": 155
+            }
+        ],
+        "expect_null": [],
+        "route": "AUTO_ELIGIBLE",
+        "action": "create_demo_task",
+        "reason_codes": []
+    }
+}

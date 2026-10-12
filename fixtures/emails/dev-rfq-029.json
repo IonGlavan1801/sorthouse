@@ -1,0 +1,47 @@
+{
+    "key": "dev-rfq-029",
+    "split": "dev",
+    "tags": [
+        "rfq"
+    ],
+    "email": {
+        "from_name": "Mihai Larsen",
+        "from_email": "mihai.larsen@granite.example.test",
+        "subject": "Quotation request",
+        "body": "Hello,\n\nPlease provide your best price for:\n- 55 x cable ties (pack of 100)\n- 35 x safety gloves\n- 200 x LED panels 60x60\n- 120 x ceramic mugs\n\nWe need the offer by Nov 16, 2026.\n\nRegards,\nMihai Larsen\nGranite Bay AG",
+        "minutes_ago": 731
+    },
+    "attachments": [],
+    "truth": {
+        "category": "request_for_quote",
+        "schema": "rfq.v1",
+        "fields": {
+            "company_name": "Granite Bay AG",
+            "contact_name": "Mihai Larsen",
+            "contact_email": "mihai.larsen@granite.example.test",
+            "deadline": "2026-11-16"
+        },
+        "items": [
+            {
+                "description": "cable ties (pack of 100)",
+                "quantity": 55
+            },
+            {
+                "description": "safety gloves",
+                "quantity": 35
+            },
+            {
+                "description": "LED panels 60x60",
+                "quantity": 200
+            },
+            {
+                "description": "ceramic mugs",
+                "quantity": 120
+            }
+        ],
+        "expect_null": [],
+        "route": "AUTO_ELIGIBLE",
+        "action": "create_demo_task",
+        "reason_codes": []
+    }
+}

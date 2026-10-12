@@ -1,0 +1,35 @@
+{
+    "key": "dev-complaint-018",
+    "split": "dev",
+    "tags": [
+        "complaint",
+        "hard"
+    ],
+    "email": {
+        "from_name": "Nadia Weber",
+        "from_email": "nadia.weber@customer-mail.example.test",
+        "subject": "Damaged goods",
+        "body": "Hi there,\n\nThe box was crushed in transit and the kettle inside is useless. Reference ORD-20996. Please make this right.\n\nCheers,\nNadia Weber",
+        "minutes_ago": 382
+    },
+    "attachments": [],
+    "truth": {
+        "category": "customer_complaint",
+        "schema": "complaint.v1",
+        "fields": {
+            "order_number": "ORD-20996",
+            "customer_name": "Nadia Weber"
+        },
+        "expect_null": [],
+        "presence": {
+            "issue_summary": true,
+            "requested_resolution": true
+        },
+        "route": "REVIEW_REQUIRED",
+        "action": "queue_reply",
+        "reason_codes": [
+            "HIGH_IMPACT_ACTION"
+        ],
+        "ambiguous": true
+    }
+}

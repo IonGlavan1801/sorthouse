@@ -1,0 +1,47 @@
+{
+    "key": "dev-rfq-023",
+    "split": "dev",
+    "tags": [
+        "rfq"
+    ],
+    "email": {
+        "from_name": "Jonas Berg",
+        "from_email": "jonas.berg@evergreen.example.test",
+        "subject": "Quotation request",
+        "body": "Hello,\n\nWe would like to request a quotation for:\n- 115 x cable ties (pack of 100)\n- 30 x LED panels 60x60\n- 150 x office chairs\n- 95 x fire extinguishers\n\nWe need the offer by 2026-12-20.\n\nRegards,\nJonas Berg\nEvergreen Retail Inc",
+        "minutes_ago": 692
+    },
+    "attachments": [],
+    "truth": {
+        "category": "request_for_quote",
+        "schema": "rfq.v1",
+        "fields": {
+            "company_name": "Evergreen Retail Inc",
+            "contact_name": "Jonas Berg",
+            "contact_email": "jonas.berg@evergreen.example.test",
+            "deadline": "2026-12-20"
+        },
+        "items": [
+            {
+                "description": "cable ties (pack of 100)",
+                "quantity": 115
+            },
+            {
+                "description": "LED panels 60x60",
+                "quantity": 30
+            },
+            {
+                "description": "office chairs",
+                "quantity": 150
+            },
+            {
+                "description": "fire extinguishers",
+                "quantity": 95
+            }
+        ],
+        "expect_null": [],
+        "route": "AUTO_ELIGIBLE",
+        "action": "create_demo_task",
+        "reason_codes": []
+    }
+}

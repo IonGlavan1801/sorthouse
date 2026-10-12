@@ -1,0 +1,29 @@
+{
+    "key": "fail-corrupt-pdf",
+    "split": "failure",
+    "tags": [
+        "failure"
+    ],
+    "email": {
+        "from_name": "Test Sender",
+        "from_email": "sender@external.example.test",
+        "subject": "Invoice INV-31337",
+        "body": "Hello, invoice attached.\n\nRegards",
+        "minutes_ago": 2
+    },
+    "attachments": [
+        {
+            "filename": "invoice.pdf",
+            "declared_mime": "application/pdf",
+            "inline_bytes_b64": "JVBERi0xLjQKJSVFT0YgY29ycnVwdGVkIHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4"
+        }
+    ],
+    "truth": {
+        "route": "REVIEW_REQUIRED",
+        "reason_codes": [
+            "OCR_OR_PARSE_FAILED"
+        ],
+        "category": "invoice",
+        "action": "none"
+    }
+}
