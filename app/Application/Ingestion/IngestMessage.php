@@ -45,7 +45,7 @@ final class IngestMessage
                 return new IngestResult($existing, $case, true);
             }
 
-            if (TriageCase::where('workspace_id', $workspace->id)->count() >= config('sorthouse.limits.max_cases_per_session')) {
+            if ($workspace->kind === 'demo' && TriageCase::where('workspace_id', $workspace->id)->count() >= config('sorthouse.limits.max_cases_per_session')) {
                 throw new RuntimeException('Demo session case limit reached. Delete demo data or start a new session.');
             }
 

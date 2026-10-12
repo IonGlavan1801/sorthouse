@@ -1,0 +1,58 @@
+# Production-demo overlay for the shared Syslora VPS. Postgres and Redis stay on the private project network.
+x-runtime: &runtime
+  APP_ENV: production
+  APP_DEBUG: 'false'
+  DB_HOST: db
+  DB_PORT: 5432
+  DB_USERNAME: sorthouse_app
+  DB_PASSWORD: ${DB_RUNTIME_PASSWORD:?Set DB_RUNTIME_PASSWORD}
+  REDIS_HOST: redis
+  REDIS_PORT: 6379
+  CACHE_STORE: redis
+  QUEUE_CONNECTION: redis
+  SESSION_DRIVER: database
+services:
+  db:
+    ports: !reset []
+    mem_limit: 512m
+  redis:
+    ports: !reset []
+    mem_limit: 256m
+  app:
+    environment: *runtime
+    mem_limit: 512m
+  worker:
+    environment: *runtime
+    mem_limit: 512m
+  scheduler:
+    environment: *runtime
+    mem_limit: 256m
+  migrate:
+    profiles: [maintenance]
+    image: sorthouse-app:${RELEASE_TAG:-local}
+    env_file: .env
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USERNAME: sorthouse
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      QUEUE_CONNECTION: sync
+    volumes: ["storage:/var/www/html/storage"]
+    command: ["sh", "-c", "php artisan migrate --force --no-interaction && php artisan db:seed --force --no-interaction"]
+  web:
+    networks: [default, devpulse]
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=devpulse
+      - traefik.http.routers.sorthouse.rule=Host(`sorthouse.syslora.com`)
+      - traefik.http.routers.sorthouse.entrypoints=web
+      - traefik.http.routers.sorthouse.service=sorthouse
+      - traefik.http.routers.sorthouse.middlewares=sorthouse-https
+      - traefik.http.services.sorthouse.loadbalancer.server.port=80
+      - traefik.http.middlewares.sorthouse-https.headers.customrequestheaders.X-Forwarded-Proto=https
+      - traefik.http.middlewares.sorthouse-https.headers.customresponseheaders.X-Robots-Tag=noindex, nofollow
+    mem_limit: 128m
+networks:
+  devpulse:
+    external: true

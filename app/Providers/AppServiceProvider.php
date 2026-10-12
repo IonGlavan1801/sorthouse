@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
     {
         // separate limits for session creation, ingestion, reprocessing/AI-heavy work and failure simulation
         $key = fn (Request $r) => $r->session()->getId() ?: $r->ip();
-        RateLimiter::for('demo-launch', fn (Request $r) => Limit::perMinute(6)->by($r->ip()));
+        RateLimiter::for('demo-launch', fn (Request $r) => Limit::perMinute(config('sorthouse.limits.launch_per_minute'))->by($r->ip()));
         RateLimiter::for('ingest', fn (Request $r) => Limit::perMinute(30)->by($key($r)));
         RateLimiter::for('reprocess', fn (Request $r) => Limit::perMinute(12)->by($key($r)));
         RateLimiter::for('failure-sim', fn (Request $r) => Limit::perMinute(20)->by($key($r)));

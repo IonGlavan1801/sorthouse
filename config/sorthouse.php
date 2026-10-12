@@ -48,6 +48,7 @@ return [
         'pdf_max_pages' => 6,
         'session_ttl_minutes' => (int) env('DEMO_SESSION_TTL_MINUTES', 120),
         'max_cases_per_session' => 80,
+        'launch_per_minute' => (int) env('DEMO_LAUNCH_PER_MINUTE', 6),
     ],
 
     'allowed_mimes' => ['application/pdf', 'image/jpeg', 'image/png', 'text/plain'],

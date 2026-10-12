@@ -37,6 +37,7 @@ services:
       CACHE_STORE: redis
       QUEUE_CONNECTION: redis
       SESSION_DRIVER: database
+      DEMO_LAUNCH_PER_MINUTE: ${DEMO_LAUNCH_PER_MINUTE:-6}
     volumes: ["storage:/var/www/html/storage"]
     networks:
       default:

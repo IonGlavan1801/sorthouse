@@ -114,14 +114,20 @@ class SessionController extends Controller
         $inflight = ['received', 'sanitizing', 'processing', 'classified', 'extracting', 'validating', 'awaiting_policy', 'failed_retryable'];
 
         return [
-            'ready' => $c->filter(fn ($s) => $s['state'] === 'awaiting_review' && $s['issue_count'] === 0)->count(),
-            'needs_review' => $c->filter(fn ($s) => ($s['state'] === 'awaiting_review' && $s['issue_count'] > 0) || $s['state'] === 'needs_review')->count(),
+            'ready' => $c->filter(fn ($s) => $this->isReady($s))->count(),
+            'needs_review' => $c->filter(fn ($s) => ($s['state'] === 'awaiting_review' && ! $this->isReady($s)) || $s['state'] === 'needs_review')->count(),
             'blocked' => $c->where('state', 'blocked')->count(),
             'executed' => $c->filter(fn ($s) => in_array($s['state'], ['executed'], true))->count(),
             'in_progress' => $c->filter(fn ($s) => in_array($s['state'], array_merge($inflight, ['approved', 'queued_action', 'executing', 'pending_reconciliation', 'execution_failed']), true))->count(),
             'rejected' => $c->where('state', 'rejected')->count(),
             'total' => $c->count(),
         ];
+    }
+
+    /** Ready = clean extraction whose only reason for a human is that the action is approval-only. */
+    private function isReady(array $s): bool
+    {
+        return $s['state'] === 'awaiting_review' && $s['issue_count'] === 0 && array_diff($s['reasons'], ['HIGH_IMPACT_ACTION']) === [];
     }
 
     private function state(string $sessionId, Workspace $workspace): array

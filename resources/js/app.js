@@ -114,13 +114,14 @@ Alpine.data('sorthouse', () => ({
     },
     matches(c) {
         switch (this.filter) {
-            case 'ready': return c.state === 'awaiting_review' && c.issue_count === 0;
-            case 'needs_review': return (c.state === 'awaiting_review' && c.issue_count > 0) || c.state === 'needs_review';
+            case 'ready': return this.isReady(c);
+            case 'needs_review': return (c.state === 'awaiting_review' && !this.isReady(c)) || c.state === 'needs_review';
             case 'blocked': return c.state === 'blocked';
             case 'executed': return c.state === 'executed';
             default: return true;
         }
     },
+    isReady(c) { return c.state === 'awaiting_review' && c.issue_count === 0 && c.reasons.every((r) => r === 'HIGH_IMPACT_ACTION'); },
     queue() { return this.sorted(this.cases.filter((c) => ['awaiting_review', 'needs_review', 'blocked', 'executed', 'pending_reconciliation', 'queued_action', 'execution_failed'].includes(c.state) || c.auto_processed)); },
     setFilter(f) { this.filter = this.filter === f ? 'all' : f; },
     pct(v) { return v === null || v === undefined ? '–' : Math.round(v * 100) + '%'; },

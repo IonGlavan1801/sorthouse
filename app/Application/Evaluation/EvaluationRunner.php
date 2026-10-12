@@ -209,9 +209,9 @@ final class EvaluationRunner
                 $byField[$schema.'.'.$name]['ok'] = ($byField[$schema.'.'.$name]['ok'] ?? 0) + ($f['ok'] ? 1 : 0);
             }
         }
-        $criticalCells = $fieldRows->flatMap(fn ($r) => collect($r['fields'])->filter(fn ($f) => $f['critical']))->values();
+        $criticalCells = $fieldRows->flatMap(fn ($r) => collect($r['fields'])->filter(fn ($f) => $f['critical'])->values()->all())->values();
         $invoiceRows = $fieldRows->filter(fn ($r) => ($r['truth']['schema'] ?? '') === 'invoice.v1');
-        $optional = $fieldRows->flatMap(fn ($r) => collect($r['fields'])->filter(fn ($f) => $f['null_expected'] || $f['predicted'] !== null)->filter(fn ($f) => ! $f['critical'] || $f['null_expected']))->values();
+        $optional = $fieldRows->flatMap(fn ($r) => collect($r['fields'])->filter(fn ($f) => $f['null_expected'] || $f['predicted'] !== null)->filter(fn ($f) => ! $f['critical'] || $f['null_expected'])->values()->all())->values();
         $optPred = $optional->filter(fn ($f) => $f['predicted'] !== null);
         $evidenceNonNull = $fieldRows->sum(fn ($r) => $r['evidence']['non_null']);
         $evidenceWith = $fieldRows->sum(fn ($r) => $r['evidence']['with_evidence']);
@@ -231,7 +231,7 @@ final class EvaluationRunner
                 'per_class' => $per, 'confusion' => $confusion, 'ambiguous_accuracy' => $ambiguous->count() ? round($ambiguous->filter(fn ($r) => $r['predicted_category'] === $r['truth']['category'])->count() / $ambiguous->count(), 4) : null, 'ambiguous_n' => $ambiguous->count(), 'n' => $classRows->count(),
             ],
             'extraction' => [
-                'field_accuracy' => round($fieldRows->flatMap(fn ($r) => $r['fields'])->avg(fn ($f) => $f['ok'] ? 1 : 0) ?? 0, 4),
+                'field_accuracy' => round($fieldRows->flatMap(fn ($r) => array_values($r['fields']))->avg(fn ($f) => $f['ok'] ? 1 : 0) ?? 0, 4),
                 'critical_field_accuracy' => round($criticalCells->avg(fn ($f) => $f['ok'] ? 1 : 0) ?? 0, 4), 'critical_cells' => $criticalCells->count(),
                 'document_exactness' => round($fieldRows->avg(fn ($r) => $r['critical_correct'] ? 1 : 0) ?? 0, 4), 'documents' => $fieldRows->count(),
                 'invoice_document_exactness' => round($invoiceRows->avg(fn ($r) => $r['critical_correct'] ? 1 : 0) ?? 0, 4), 'invoice_documents' => $invoiceRows->count(),

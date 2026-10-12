@@ -1,0 +1,10 @@
+.git
+.env*
+node_modules
+vendor
+storage/logs
+storage/framework
+storage/app
+test-results
+.local
+.deploy-key.pub.line

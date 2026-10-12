@@ -1,0 +1,64 @@
+name: Verify and deploy
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env: { POSTGRES_DB: sorthouse_test, POSTGRES_USER: sorthouse, POSTGRES_PASSWORD: local-only }
+        ports: ['5432:5432']
+        options: --health-cmd "pg_isready -U sorthouse" --health-interval 5s --health-retries 20
+    env:
+      DB_HOST: 127.0.0.1
+      DB_PORT: 5432
+      DB_DATABASE: sorthouse_test
+      DB_USERNAME: sorthouse
+      DB_PASSWORD: local-only
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: pdo_pgsql, pcntl, posix, bcmath, intl, gd, mbstring
+          coverage: none
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: cp .env.example .env && composer install --no-interaction --prefer-dist
+      - run: php artisan key:generate && npm ci && npm run build
+      - run: vendor/bin/pint --test
+      - run: vendor/bin/phpstan analyse --memory-limit=1G
+      - run: php artisan test --compact
+      - name: Evaluation smoke (dev split, heuristic baseline)
+        env: { DB_DATABASE: sorthouse_test, QUEUE_CONNECTION: sync, CACHE_STORE: array, SESSION_DRIVER: array }
+        run: php artisan migrate:fresh --seed --force && php artisan eval:run dev
+      - run: bash -n scripts/deploy.sh && composer audit && npm audit --audit-level=high
+      - run: docker build --target web .
+  deploy:
+    needs: check
+    if: github.event_name == 'push' && vars.DEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: sorthouse-production
+      cancel-in-progress: false
+    steps:
+      - name: Deploy after checks
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+        run: |
+          set -euo pipefail
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/id_ed25519
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/id_ed25519 ~/.ssh/known_hosts
+          ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -o IdentitiesOnly=yes "$DEPLOY_USER@$DEPLOY_HOST" deploy

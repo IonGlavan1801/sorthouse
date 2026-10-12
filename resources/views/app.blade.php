@@ -68,7 +68,7 @@
                 </div>
 
                 {{-- case --}}
-                <div class="pane" :data-mobile="pane === 'case' ? 'show' : 'hidden'" style="display:flex;flex-direction:column">
+                <div class="pane case-pane" :data-mobile="pane === 'case' ? 'show' : 'hidden'">
                     <template x-if="!detail"><div class="empty">Select a message to inspect the case.</div></template>
                     <template x-if="detail">
                         <div style="flex:1;display:flex;flex-direction:column;min-height:0">
@@ -108,9 +108,9 @@
                                     <div class="muted" style="font-size:12.5px;margin-bottom:8px" x-show="detail.extraction">
                                         <span x-text="detail.extraction?.schema_version"></span> · <span x-text="detail.extraction?.provider"></span> / <span x-text="detail.extraction?.model"></span> ·
                                         validation <span x-text="detail.validation?.rules_version"></span> · schema <b x-text="detail.validation?.schema_valid ? 'valid' : 'INVALID'"></b>
-                                        <span x-show="detail.extraction?.retries > 0" x-text="' · ' + detail.extraction.retries + ' retry'"></span>
+                                        <span x-show="detail.extraction?.retries > 0" x-text="' · ' + detail.extraction?.retries + ' retry'"></span>
                                     </div>
-                                    <table class="fields">
+                                    <div style="overflow-x:auto"><table class="fields">
                                         <thead><tr><th>Field</th><th>Value</th><th>Signal</th><th>Validation</th><th>Evidence</th></tr></thead>
                                         <tbody>
                                         <template x-for="f in detail.extraction?.fields ?? []" :key="f.name">
@@ -132,7 +132,7 @@
                                             </tr>
                                         </template>
                                         </tbody>
-                                    </table>
+                                    </table></div>
                                     <div class="callout" x-show="detail.validation?.issues.length">
                                         <b>Validation issues</b>
                                         <ul style="margin:6px 0 0;padding-left:18px">
@@ -176,7 +176,7 @@
                                     </div>
                                     <div class="callout" style="border-color:rgba(255,107,107,.45)" x-show="detail.policy?.context?.injection?.length">
                                         <b>Instruction-like content detected</b> and treated as data:
-                                        <ul style="margin:6px 0 0;padding-left:18px"><template x-for="i in detail.policy.context.injection" :key="i.code + i.source_id"><li><code class="mono" x-text="i.code"></code> in <span class="mono" x-text="i.source_id"></span>: “<span x-text="i.quote"></span>”</li></template></ul>
+                                        <ul style="margin:6px 0 0;padding-left:18px"><template x-for="i in (detail.policy?.context?.injection ?? [])" :key="i.code + i.source_id"><li><code class="mono" x-text="i.code"></code> in <span class="mono" x-text="i.source_id"></span>: “<span x-text="i.quote"></span>”</li></template></ul>
                                     </div>
                                 </div>
 
@@ -264,7 +264,7 @@
                             <div class="trace-section" x-show="trace.provider_calls.length"><h4>Provider calls</h4>
                                 <ol class="tl"><template x-for="(c, i) in trace.provider_calls" :key="i"><li><span><span x-text="c.stage + ' #' + c.attempt"></span> <span class="badge plain" :class="'badge-' + (c.status === 'ok' ? 'ok' : 'FALLBACK')" x-text="c.status"></span><small x-text="c.provider + ' / ' + c.model + (c.error ? ' · ' + c.error : '')"></small></span><span class="ms" x-text="c.latency_ms + ' ms'"></span></li></template></ol></div>
                             <div class="trace-section" x-show="detail.confidence"><h4>Confidence signals <span class="faint" style="text-transform:none">(<span x-text="detail.confidence?.formula"></span>)</span></h4>
-                                <dl class="kv"><dt>classification</dt><dd x-text="pct(detail.confidence?.signals.classification) + ' model signal'"></dd><dt>extraction</dt><dd x-text="detail.confidence?.signals.extraction !== undefined ? pct(detail.confidence.signals.extraction) + ' (min of critical fields + mean)' : 'n/a (no schema)'"></dd><dt>overall</dt><dd><b x-text="pct(detail.confidence?.overall)"></b> · <span x-text="detail.confidence?.band"></span></dd></dl>
+                                <dl class="kv"><dt>classification</dt><dd x-text="pct(detail.confidence?.signals.classification) + ' model signal'"></dd><dt>extraction</dt><dd x-text="detail.confidence?.signals.extraction !== undefined ? pct(detail.confidence?.signals.extraction) + ' (min of critical fields + mean)' : 'n/a (no schema)'"></dd><dt>overall</dt><dd><b x-text="pct(detail.confidence?.overall)"></b> · <span x-text="detail.confidence?.band"></span></dd></dl>
                                 <p class="faint" style="font-size:12px;margin:6px 0 0">Signals from the model, OCR and validation are kept separate; they are not comparable probabilities and the thresholds are tuned on the dev set, not calibrated.</p></div>
                             <div class="trace-section"><h4>Policy</h4>
                                 <ol class="tl"><template x-for="(p, i) in detail.policy_history" :key="i"><li><span><span class="badge plain" :class="'badge-' + (p.decision === 'AUTO_PROCESS' ? 'AUTO_ELIGIBLE' : p.decision)" x-text="p.decision"></span> <span x-text="p.policy"></span><small x-text="p.codes.join(', ') + ' · case v' + p.case_version"></small></span></li></template></ol></div>

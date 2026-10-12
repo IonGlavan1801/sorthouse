@@ -1,0 +1,823 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Cannot call method isFuture\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Application/ActionExecution/OutboxProcessor.php
+
+		-
+			message: '#^Property App\\Application\\ActionExecution\\OutboxProcessor\:\:\$audit is never read, only written\.$#'
+			identifier: property.onlyWritten
+			count: 1
+			path: app/Application/ActionExecution/OutboxProcessor.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$sender_email\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Application/ActionExecution/SimulatedActionExecutor.php
+
+		-
+			message: '#^Method App\\Application\\ActionExecution\\SimulatedActionExecutor\:\:lookup\(\) never returns array so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: app/Application/ActionExecution/SimulatedActionExecutor.php
+
+		-
+			message: '#^Method App\\Application\\ActionExecution\\SimulatedActionExecutor\:\:lookup\(\) should return array\|null but returns string\|null\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Application/ActionExecution/SimulatedActionExecutor.php
+
+		-
+			message: '#^Offset ''draft_id'' on string on left side of \?\? does not exist\.$#'
+			identifier: nullCoalesce.offset
+			count: 2
+			path: app/Application/ActionExecution/SimulatedActionExecutor.php
+
+		-
+			message: '#^Offset ''folder'' on string on left side of \?\? does not exist\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: app/Application/ActionExecution/SimulatedActionExecutor.php
+
+		-
+			message: '#^Offset ''payload'' on string on left side of \?\? does not exist\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: app/Application/ActionExecution/SimulatedActionExecutor.php
+
+		-
+			message: '#^Offset ''status'' on string on left side of \?\? does not exist\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: app/Application/ActionExecution/SimulatedActionExecutor.php
+
+		-
+			message: '#^Offset ''title'' on string on left side of \?\? does not exist\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: app/Application/ActionExecution/SimulatedActionExecutor.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>edited_body" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Application/ActionExecution/SimulatedActionExecutor.php
+
+		-
+			message: '#^Cannot call method isFuture\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Application/Demo/DemoSessionService.php
+
+		-
+			message: '#^Offset ''quote'' on array\{source_id\: string, quote\: string\} on left side of \?\? always exists and is not nullable\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: app/Application/Drafting/DraftService.php
+
+		-
+			message: '#^Offset ''source_id'' on array\{source_id\: string, quote\: string\} on left side of \?\? always exists and is not nullable\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: app/Application/Drafting/DraftService.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$reasons\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Application/Evaluation/EvaluationRunner.php
+
+		-
+			message: '#^Offset ''auto_actions'' does not exist on string\.$#'
+			identifier: offsetAccess.notFound
+			count: 1
+			path: app/Application/Evaluation/EvaluationRunner.php
+
+		-
+			message: '#^Offset ''auto_min'' does not exist on string\.$#'
+			identifier: offsetAccess.notFound
+			count: 1
+			path: app/Application/Evaluation/EvaluationRunner.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>reasons" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 2
+			path: app/Application/Evaluation/EvaluationRunner.php
+
+		-
+			message: '#^Expression on left side of \?\? is not nullable\.$#'
+			identifier: nullCoalesce.expr
+			count: 1
+			path: app/Application/Ingestion/HtmlSanitizer.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$correlation_id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Application/Ingestion/IngestMessage.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$attachments\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Application/Pipeline/AttachmentProcessor.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$attachments\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Application/Pipeline/CaseEvaluator.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$sender_email\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Application/Pipeline/CaseEvaluator.php
+
+		-
+			message: '#^Offset ''category_corrected'' on array\{\}\|string in empty\(\) does not exist\.$#'
+			identifier: empty.offset
+			count: 1
+			path: app/Application/Pipeline/CaseEvaluator.php
+
+		-
+			message: '#^Offset ''injection'' on array\{\}\|string on left side of \?\? does not exist\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: app/Application/Pipeline/CaseEvaluator.php
+
+		-
+			message: '#^Offset ''margin'' on string\|null on left side of \?\? does not exist\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: app/Application/Pipeline/CaseEvaluator.php
+
+		-
+			message: '#^Offset ''model_signal'' on string\|null on left side of \?\? does not exist\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: app/Application/Pipeline/CaseEvaluator.php
+
+		-
+			message: '#^Offset ''proposed_actions'' on array\{\}\|string on left side of \?\? does not exist\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: app/Application/Pipeline/CaseEvaluator.php
+
+		-
+			message: '#^Offset ''provider_fallback'' on array\{\}\|string in empty\(\) does not exist\.$#'
+			identifier: empty.offset
+			count: 1
+			path: app/Application/Pipeline/CaseEvaluator.php
+
+		-
+			message: '#^Offset ''provider_override'' on array\{\}\|string on left side of \?\? does not exist\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: app/Application/Pipeline/CaseEvaluator.php
+
+		-
+			message: '#^Ternary operator condition is always false\.$#'
+			identifier: ternary.alwaysFalse
+			count: 1
+			path: app/Application/Pipeline/CaseEvaluator.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>allowed_recipients" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Application/Pipeline/CaseEvaluator.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>issues" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Application/Pipeline/CaseEvaluator.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$attachments\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Application/Pipeline/InputBuilder.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$recipients\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Application/Pipeline/InputBuilder.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$sender_email\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Application/Pipeline/InputBuilder.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$sender_name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Application/Pipeline/InputBuilder.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$subject\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Application/Pipeline/InputBuilder.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>text_plain" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Application/Pipeline/InputBuilder.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$attachments\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Application/Pipeline/TriagePipeline.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$code\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Application/Pipeline/TriagePipeline.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$sanitization\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Application/Pipeline/TriagePipeline.php
+
+		-
+			message: '#^Offset ''category_corrected'' on string\|null in empty\(\) does not exist\.$#'
+			identifier: empty.offset
+			count: 1
+			path: app/Application/Pipeline/TriagePipeline.php
+
+		-
+			message: '#^Offset ''epoch'' on string\|null on left side of \?\? does not exist\.$#'
+			identifier: nullCoalesce.offset
+			count: 2
+			path: app/Application/Pipeline/TriagePipeline.php
+
+		-
+			message: '#^Offset ''provider_override'' on string\|null on left side of \?\? does not exist\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: app/Application/Pipeline/TriagePipeline.php
+
+		-
+			message: '#^Offset ''auto_actions'' on string on left side of \?\? does not exist\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: app/Application/Policy/ActionPolicy.php
+
+		-
+			message: '#^Offset ''auto_min'' does not exist on string\.$#'
+			identifier: offsetAccess.notFound
+			count: 2
+			path: app/Application/Policy/ActionPolicy.php
+
+		-
+			message: '#^Offset ''block_min'' does not exist on string\.$#'
+			identifier: offsetAccess.notFound
+			count: 2
+			path: app/Application/Policy/ActionPolicy.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between null and null will always evaluate to true\.$#'
+			identifier: identical.alwaysTrue
+			count: 1
+			path: app/Application/Policy/ActionPolicy.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$code\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Application/Review/ReviewService.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$field_name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Application/Review/ReviewService.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Application/Review/ReviewService.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$predicted_value\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Application/Review/ReviewService.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$severity\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Application/Review/ReviewService.php
+
+		-
+			message: '#^Cannot unset offset ''category_corrected'' on array\{epoch\: 1\}\.$#'
+			identifier: unset.offset
+			count: 1
+			path: app/Application/Review/ReviewService.php
+
+		-
+			message: '#^Cannot unset offset ''extraction_failed'' on array\{epoch\: 1\}\.$#'
+			identifier: unset.offset
+			count: 1
+			path: app/Application/Review/ReviewService.php
+
+		-
+			message: '#^Cannot unset offset ''ocr_failed'' on array\{epoch\: 1\}\.$#'
+			identifier: unset.offset
+			count: 1
+			path: app/Application/Review/ReviewService.php
+
+		-
+			message: '#^Cannot unset offset ''provider_fallback'' on array\{epoch\: 1\}\.$#'
+			identifier: unset.offset
+			count: 1
+			path: app/Application/Review/ReviewService.php
+
+		-
+			message: '#^Offset ''draft_id'' on array\{\}\|string on left side of \?\? does not exist\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: app/Application/Review/ReviewService.php
+
+		-
+			message: '#^Offset ''epoch'' on array\{\}\|string on left side of \?\? does not exist\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: app/Application/Review/ReviewService.php
+
+		-
+			message: '#^Offset ''policy_version'' on string\|null on left side of \?\? does not exist\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: app/Application/Review/ReviewService.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>corrected_value" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Application/Review/ReviewService.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$evidence\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Application/Validation/ValidationEngine.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$field_name\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Application/Validation/ValidationEngine.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$normalized_value\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Application/Validation/ValidationEngine.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$predicted_value\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Application/Validation/ValidationEngine.php
+
+		-
+			message: '#^Offset ''classification'' does not exist on string\.$#'
+			identifier: offsetAccess.notFound
+			count: 2
+			path: app/Console/Commands/RunEvaluation.php
+
+		-
+			message: '#^Offset ''extraction'' does not exist on string\.$#'
+			identifier: offsetAccess.notFound
+			count: 2
+			path: app/Console/Commands/RunEvaluation.php
+
+		-
+			message: '#^Offset ''policy'' does not exist on string\.$#'
+			identifier: offsetAccess.notFound
+			count: 8
+			path: app/Console/Commands/RunEvaluation.php
+
+		-
+			message: '#^Offset ''system'' does not exist on string\.$#'
+			identifier: offsetAccess.notFound
+			count: 2
+			path: app/Console/Commands/RunEvaluation.php
+
+		-
+			message: '#^Offset ''auto_min'' does not exist on string\.$#'
+			identifier: offsetAccess.notFound
+			count: 4
+			path: app/Console/Commands/SimulatePolicy.php
+
+		-
+			message: '#^Offset ''critical_correct'' on string on left side of \?\? does not exist\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: app/Console/Commands/SimulatePolicy.php
+
+		-
+			message: '#^Offset ''predicted_action'' does not exist on string\.$#'
+			identifier: offsetAccess.notFound
+			count: 1
+			path: app/Console/Commands/SimulatePolicy.php
+
+		-
+			message: '#^Offset ''predicted_category'' does not exist on string\.$#'
+			identifier: offsetAccess.notFound
+			count: 1
+			path: app/Console/Commands/SimulatePolicy.php
+
+		-
+			message: '#^Offset ''signal'' does not exist on string\.$#'
+			identifier: offsetAccess.notFound
+			count: 1
+			path: app/Console/Commands/SimulatePolicy.php
+
+		-
+			message: '#^Offset ''truth'' does not exist on string\.$#'
+			identifier: offsetAccess.notFound
+			count: 1
+			path: app/Console/Commands/SimulatePolicy.php
+
+		-
+			message: '#^Offset ''truth'' on string on left side of \?\? does not exist\.$#'
+			identifier: nullCoalesce.offset
+			count: 2
+			path: app/Console/Commands/SimulatePolicy.php
+
+		-
+			message: '#^Offset ''would_auto_without_threshold'' does not exist on string\.$#'
+			identifier: offsetAccess.notFound
+			count: 1
+			path: app/Console/Commands/SimulatePolicy.php
+
+		-
+			message: '#^Result of && is always false\.$#'
+			identifier: booleanAnd.alwaysFalse
+			count: 2
+			path: app/Console/Commands/SimulatePolicy.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between '''' and ''AUTO_ELIGIBLE'' will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: app/Console/Commands/SimulatePolicy.php
+
+		-
+			message: '#^Match expression does not handle remaining values\: \(int\|string\)$#'
+			identifier: match.unhandled
+			count: 1
+			path: app/Console/Support/CorpusBuilder.php
+
+		-
+			message: '#^Access to an undefined property App\\Models\\FieldEvidence\:\:\$field\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Controllers/CaseController.php
+
+		-
+			message: '#^Relation ''field'' is not found in App\\Models\\FieldEvidence model\.$#'
+			identifier: larastan.relationExistence
+			count: 1
+			path: app/Http/Controllers/CaseController.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$key\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Controllers/MetaController.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$received_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Controllers/SessionController.php
+
+		-
+			message: '#^Cannot call method toIso8601String\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Http/Controllers/SessionController.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$actor\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$alternatives\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$attachments\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$attempt\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$attempts\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$body\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$case_version\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$code\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$context\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$decision\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$detail\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$duplicate_count\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$event\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$evidence_refs\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$field_name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$from_state\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$label\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$latency_ms\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$message\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$mode\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$model\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$outcome\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$policyVersion\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$prompt_version\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$provider\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$reason_codes\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$reasons\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$received_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$recipients\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$sanitization\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$sender_email\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$sender_name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$severity\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$signals\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$status\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$subject\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$taxonomy_version\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$to_state\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$version\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Cannot call method toIso8601String\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 2
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Offset ''provider_fallback'' on array\{\}\|string in empty\(\) does not exist\.$#'
+			identifier: empty.offset
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>provider" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>reasons" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Http/Presenters/CasePresenter.php
+
+		-
+			message: '#^Constant App\\Infrastructure\\AI\\Providers\\HeuristicExtractor\:\:CODES is unused\.$#'
+			identifier: classConstant.unused
+			count: 1
+			path: app/Infrastructure/AI/Providers/HeuristicExtractor.php
+
+		-
+			message: '#^Comparison operation "\<\=" between 0 and 0 is always true\.$#'
+			identifier: smallerOrEqual.alwaysTrue
+			count: 1
+			path: app/Infrastructure/Faults/FaultInjector.php
+
+		-
+			message: '#^Comparison operation "\>" between \*NEVER\* and 0 results in an error\.$#'
+			identifier: greater.invalid
+			count: 1
+			path: app/Infrastructure/Faults/FaultInjector.php
+
+		-
+			message: '#^Offset string on array\{\}\|string on left side of \?\? does not exist\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: app/Infrastructure/Faults/FaultInjector.php
+
+		-
+			message: '#^Unreachable statement \- code above always terminates\.$#'
+			identifier: deadCode.unreachable
+			count: 1
+			path: app/Infrastructure/Faults/FaultInjector.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>fault_flags" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 2
+			path: app/Infrastructure/Faults/FaultInjector.php
