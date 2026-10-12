@@ -92,7 +92,8 @@ class CaseController extends Controller
         abort_if($file->scan_status !== 'clean' || ! $file->storage_key, 403, 'Attachment is quarantined or unavailable');
 
         return Storage::disk('local')->response($file->storage_key, $file->filename, [
-            'Content-Type' => $file->detected_mime, 'Content-Disposition' => 'inline; filename="'.addslashes($file->filename).'"',
+            'Content-Type' => $file->detected_mime,
+            'Content-Disposition' => (str_starts_with((string) $file->detected_mime, 'image/') ? 'inline' : 'attachment').'; filename="'.addslashes($file->filename).'"',
             'X-Content-Type-Options' => 'nosniff', 'Content-Security-Policy' => "sandbox; default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'", 'Cache-Control' => 'private, no-store',
         ]);
     }
