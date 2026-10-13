@@ -6,6 +6,8 @@ Demo: https://sorthouse.syslora.com (noindex, synthetic data). This is a portfol
 
 The question it answers is not "can an LLM say this is an invoice?" but: can the system decide when it has enough evidence to automate, send uncertain cases to a person, keep the provenance of every field, and never run an action twice when jobs, webhooks or providers fail?
 
+The public demo runs a deterministic baseline. LLM adapters are pluggable; reported baseline metrics are not LLM results.
+
 ## Hero flow (about two minutes)
 
 1. `Launch demo` starts an isolated session with a synthetic inbox: invoices (text PDF, photographed), a complaint, a request for quote, spam/phishing, a general question, an ambiguous message.

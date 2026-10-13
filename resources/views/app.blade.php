@@ -20,6 +20,7 @@
             <span class="badge" :class="session?.provider.live ? 'badge-LIVE' : 'badge-SIMULATED'" x-text="session?.provider.live ? 'LIVE · ' + session.provider.name : 'SIMULATED · heuristic baseline'" title="Which engine classified and extracted"></span>
             <template x-for="(n, k) in faults" :key="k"><span class="badge badge-FALLBACK plain" x-text="'armed: ' + human(k) + ' ×' + n"></span></template>
             <span class="spacer"></span>
+            <a href="https://github.com/IonGlavan1801/sorthouse" class="quiet-link">Source ↗</a>
             <label class="muted" style="display:flex;gap:6px;align-items:center;font-size:12.5px">Reviewer
                 <select x-model="reviewer" aria-label="Acting reviewer"><option value="a">A</option><option value="b">B</option></select>
             </label>
@@ -27,7 +28,7 @@
             <button class="btn btn-sm btn-ghost" @click="deleteNow()">Delete demo data now</button>
         </header>
         <div class="demo-banner">
-            <strong>DEMO</strong> Synthetic inbox. Classifier, OCR, malware scan and actions are <b>SIMULATED</b> unless a badge says LIVE. Scores are model signals, not probabilities.
+            <strong>DEMO</strong> The public demo runs a deterministic baseline. LLM adapters are pluggable; reported baseline metrics are not LLM results. Synthetic inbox. Classifier, OCR, malware scan and actions are <b>SIMULATED</b> unless a badge says LIVE. Scores are model signals, not probabilities.
         </div>
 
         <nav class="tabs" role="tablist" aria-label="Sections">

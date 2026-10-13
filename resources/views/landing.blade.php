@@ -4,6 +4,7 @@
 <header class="topbar">
     <a class="brand" href="/">@include('partials.logo') SORTHOUSE</a>
     <span class="spacer"></span>
+    <a href="https://github.com/IonGlavan1801/sorthouse" class="quiet-link">Source ↗</a>
     <span class="badge badge-SIMULATED">Demo · synthetic data</span>
 </header>
 <main>
@@ -47,6 +48,7 @@
 
 <section class="section">
     <h2>Live vs simulated, stated plainly</h2>
+    <p class="muted">The public demo runs a deterministic baseline. LLM adapters are pluggable; reported baseline metrics are not LLM results.</p>
     <table class="simple">
         <thead><tr><th>Part</th><th>Status</th><th>Detail</th></tr></thead>
         <tbody>
