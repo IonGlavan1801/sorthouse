@@ -33,17 +33,20 @@
 <section class="section" id="how">
     <h2>What you can try in two minutes</h2>
     <p class="muted">Open the approval queue, inspect a text PDF invoice, then a photographed one where the OCR confuses <span class="mono">8</span> and <span class="mono">B</span>. Correct the field, approve a complaint reply, then break things on purpose in the Failure Lab: prompt injection, duplicate delivery, concurrent reviewers, a timeout after send.</p>
-    <div class="metric-grid" x-data="{ run: null }" x-init="fetch('/api/evaluation').then(r => r.json()).then(d => run = d.runs.find(r => r.dataset === 'holdout') ?? null)">
-        <template x-if="run">
+    <div class="metric-grid" x-data="evaluationSummary" x-init="load()">
+        <template x-if="status === 'ready' && run">
             <div style="display:contents">
-                <div class="metric"><div class="n" x-text="run.cases"></div><div class="l">cases in the published holdout run (synthetic)</div></div>
+                <div class="metric"><div class="n" x-text="run.cases"></div><div class="l">synthetic evaluation cases</div></div>
                 <div class="metric"><div class="n" x-text="(run.metrics.classification.macro_f1 * 100).toFixed(1) + '%'"></div><div class="l">macro F1, <span x-text="run.simulated ? 'SIMULATED heuristic baseline' : run.provider"></span></div></div>
                 <div class="metric"><div class="n" x-text="run.metrics.policy.false_auto_actions"></div><div class="l">false auto actions in that run</div></div>
                 <div class="metric"><div class="n" x-text="run.metrics.policy.unsafe_blocked + '/' + run.metrics.policy.unsafe_total"></div><div class="l">adversarial and unsafe cases blocked</div></div>
             </div>
         </template>
-        <template x-if="!run"><div class="callout" style="grid-column:1/-1">No evaluation run has been published on this deployment yet.</div></template>
+        <template x-if="status === 'loading'"><div class="callout" style="grid-column:1/-1" role="status">Loading evaluation…</div></template>
+        <template x-if="status === 'error'"><div class="callout" style="grid-column:1/-1" role="alert">Could not load evaluation. <button class="btn btn-sm" @click="load()">Retry</button></div></template>
+        <template x-if="status === 'ready' && !run"><div class="callout" style="grid-column:1/-1">No evaluation run has been published on this deployment yet.</div></template>
     </div>
+    <p class="muted">The evaluation includes 100 held-out emails, 12 adversarial cases and 10 failure fixtures.</p>
 </section>
 
 <section class="section">

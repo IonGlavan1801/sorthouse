@@ -32,12 +32,24 @@ const STAGES = [
 const IN_FLIGHT = ['received', 'sanitizing', 'processing', 'classified', 'extracting', 'validating', 'awaiting_policy', 'failed_retryable', 'approved', 'queued_action', 'executing'];
 const RISK_ORDER = { blocked: 0, high: 1, medium: 2, low: 3 };
 
+Alpine.data('evaluationSummary', () => ({
+    run: null, status: 'loading',
+    async load() {
+        this.status = 'loading';
+        try {
+            const data = await api('GET', '/api/evaluation');
+            this.run = data.runs.find(r => r.dataset === 'holdout') ?? null;
+            this.status = 'ready';
+        } catch { this.status = 'error'; }
+    },
+}));
+
 Alpine.data('sorthouse', () => ({
     // ---- state
     ready: false, noSession: false, session: null, cases: [], counters: {}, selectedId: null, detail: null, trace: null,
     tab: 'inbox', pane: 'list', caseTab: 'fields', sort: 'risk', filter: 'all', reviewer: 'a', busy: false, toasts: [],
     modal: null, form: { fields: {}, category: '', reason: '', errorCategory: 'extraction_wrong', draft: '', rejectReason: 'not_actionable', note: '' }, lastChange: null,
-    activeField: null, activeEvidence: null, scenarios: [], faults: {}, labLog: [], evaluation: null, capabilities: null, usage: null, events: [], timer: null, now: Date.now(),
+    activeField: null, activeEvidence: null, scenarios: [], faults: {}, labLog: [], evaluation: null, evaluationStatus: 'idle', capabilities: null, capabilitiesStatus: 'idle', usage: null, events: [], timer: null, now: Date.now(),
     rejectReasons: ['not_actionable', 'wrong_category', 'wrong_extraction', 'duplicate', 'suspected_fraud', 'policy_violation'],
     errorCategories: ['classification_wrong', 'extraction_wrong', 'normalization_wrong', 'validation_rule_wrong', 'evidence_wrong', 'policy_too_strict', 'policy_too_permissive'],
     categories: ['invoice', 'customer_complaint', 'request_for_quote', 'order_or_purchase_request', 'general_question', 'spam_or_phishing', 'other_or_uncertain'],
@@ -260,10 +272,18 @@ Alpine.data('sorthouse', () => ({
     // ---- other tabs
     async openTab(t) {
         this.tab = t;
-        if (t === 'eval' && !this.evaluation) this.evaluation = await this.call('GET', '/api/evaluation');
-        if (t === 'caps' && !this.capabilities) this.capabilities = await this.call('GET', '/api/capabilities');
+        if (t === 'eval' && !this.evaluation) await this.loadPanel('evaluation', '/api/evaluation');
+        if (t === 'caps' && !this.capabilities) await this.loadPanel('capabilities', '/api/capabilities');
         if (t === 'queue' || t === 'inbox') this.refresh(true);
         if (t === 'usage') this.usage = await this.call('GET', '/api/usage');
+    },
+    async loadPanel(key, url) {
+        if (this[key + 'Status'] === 'loading') return;
+        this[key + 'Status'] = 'loading';
+        try {
+            this[key] = await this.call('GET', url);
+            this[key + 'Status'] = 'ready';
+        } catch { this[key + 'Status'] = 'error'; }
     },
     async deleteNow() {
         if (!confirm('Disable this session now and purge its data? Disabling is immediate; the purge runs asynchronously.')) return;

@@ -339,7 +339,9 @@
         {{-- ===== EVALUATION ===== --}}
         <section x-show="tab === 'eval'" class="page">
             <h2>Evaluation</h2>
-            <template x-if="evaluation && !evaluation.runs.length"><div class="callout">No evaluation run is stored on this deployment. Run <span class="mono">php artisan eval:run holdout</span>.</div></template>
+            <div class="callout" x-show="evaluationStatus === 'loading'" role="status">Loading evaluation…</div>
+            <div class="callout" x-show="evaluationStatus === 'error'" role="alert">Could not load evaluation. <button class="btn btn-sm" @click="openTab('eval')">Retry</button></div>
+            <template x-if="evaluationStatus === 'ready' && evaluation && !evaluation.runs.length"><div class="callout">No evaluation run is stored on this deployment. Run <span class="mono">php artisan eval:run holdout</span>.</div></template>
             <template x-for="r in (evaluation?.runs ?? []).filter(x => x.dataset === 'holdout').slice(0, 1).concat((evaluation?.runs ?? []).filter(x => x.dataset === 'dev').slice(0, 1))" :key="r.id">
                 <div style="margin-bottom:40px">
                     <h3 style="margin-top:22px"><span x-text="r.dataset === 'holdout' ? 'Held-out set' : 'Dev (tuning) set'"></span> · <span x-text="r.cases + ' cases'"></span> <span class="badge" :class="r.simulated ? 'badge-SIMULATED' : 'badge-LIVE'" x-text="r.simulated ? 'SIMULATED heuristic baseline' : 'LIVE ' + r.provider"></span></h3>
@@ -383,6 +385,8 @@
         {{-- ===== PROVIDERS & DATA ===== --}}
         <section x-show="tab === 'caps'" class="page">
             <h2>Providers &amp; data</h2>
+            <div class="callout" x-show="capabilitiesStatus === 'loading'" role="status">Loading configuration…</div>
+            <div class="callout" x-show="capabilitiesStatus === 'error'" role="alert">Could not load configuration. <button class="btn btn-sm" @click="openTab('caps')">Retry</button></div>
             <template x-if="capabilities">
                 <div>
                     <p class="muted">Configured provider: <span class="chip" x-text="capabilities.configured_provider"></span>. The matrix describes each adapter as implemented. “Verified” says whether it has run against the real API.</p>

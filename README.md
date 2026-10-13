@@ -54,7 +54,7 @@ On the included synthetic corpus, with the SIMULATED heuristic baseline and poli
 | Dev (tuning) | 76 | 89.6% | 95.1% (82 cells) | 15.8% | 100% (12) | 0 | 16/16 |
 | **Held-out** | 122 | 80.0% | 93.1% (144 cells) | 16.4% | 100% (20) | 0 | 16/16 |
 
-The held-out run includes 100 held-out emails plus 22 adversarial and failure fixtures. Photographed and scanned invoices are read with deliberate misreads, so their documents are only exact after a human correction (PDF 100%, photo 0%, scan 0% before review), which is the point of the review step. These numbers describe this synthetic lab, not any real inbox, and a rules engine will not generalise. Real-model runs are stored separately with their own provider label.
+The held-out run includes 100 held-out emails, 12 adversarial cases and 10 failure fixtures. Photographed and scanned invoices are read with deliberate misreads, so their documents are only exact after a human correction (PDF 100%, photo 0%, scan 0% before review), which is the point of the review step. These numbers describe this synthetic lab, not any real inbox, and a rules engine will not generalise. Real-model runs are stored separately with their own provider label.
 
 ## Run it
 
